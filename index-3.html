@@ -168,14 +168,9 @@
                             <nav class="main-menu navbar-expand-md navbar-light clearfix">
                                 <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                                     <ul class="navigation clearfix">
-                                        <li class="current dropdown"><a href="#">Home</a>
-                                            <ul>
-                                                <li><a href="index-2.html">Home Page 1</a></li>
-                                                <li><a href="index-3.html">Home Page 2</a></li>
-                                                <li><a href="index-4.html">Home Page 3</a></li>
-                                                <li><a href="index-5.html">Home Page 4</a></li>
-                                            </ul>
-                                        </li>  
+                                        <li class="current">
+  <a href="index-3.html">Home</a>
+</li> 
                                         <li class="dropdown"><a href="#">About Us</a>
                                             <ul>
                                                 <li><a href="about.html">About Us</a></li>
@@ -855,6 +850,208 @@
     <script src="assets/js/script.js"></script>
 
 </body><!-- End of .page_wrapper -->
+<!-- ================= PREMIUM CONSULTATION POPUP ================= -->
+<style>
+  .lux-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    z-index: 999999;
+    backdrop-filter: blur(4px);
+  }
 
+  .lux-box {
+    max-width: 900px;
+    margin: 6% auto;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    animation: scaleIn 0.4s ease;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+  }
+
+  @keyframes scaleIn {
+    from { transform: scale(0.92); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+  }
+
+  .lux-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #aaa;
+    z-index: 10;
+  }
+
+  .lux-left {
+    width: 45%;
+    background: url("assets/images/project/project-5.jpg") center/cover no-repeat;
+    position: relative;
+  }
+
+  .lux-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0,0,0,0.25), rgba(0,0,0,0.6));
+    padding: 30px;
+    color: #fff;
+  }
+
+  .lux-overlay h3 {
+    font-size: 26px;
+    margin-bottom: 10px;
+  }
+
+  .lux-overlay p {
+    font-size: 16px;
+    opacity: 0.9;
+  }
+
+  .lux-overlay ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+
+  .lux-overlay li {
+    margin-bottom: 8px;
+    font-size: 14px;
+  }
+
+  .lux-right {
+    width: 55%;
+    padding: 40px;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .lux-right h2 {
+    font-size: 28px;
+    margin-bottom: 5px;
+  }
+
+  .lux-right span {
+    font-size: 14px;
+    color: #777;
+  }
+
+  .lux-form {
+    margin-top: 25px;
+  }
+
+  .lux-form input,
+  .lux-form select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 12px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    outline: none;
+  }
+
+  .lux-form button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 14px;
+    background: #1f3d3b;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .lux-form button:hover {
+    background: #152c2a;
+  }
+
+  @media(max-width: 768px) {
+    .lux-box {
+      flex-direction: column;
+      margin: 10% 15px;
+    }
+    .lux-left, .lux-right {
+      width: 100%;
+    }
+    .lux-left {
+      height: 260px;
+    }
+  }
+</style>
+
+<div id="luxPopup" class="lux-modal">
+  <div class="lux-box">
+    <div class="lux-close">&times;</div>
+
+    <!-- LEFT IMAGE -->
+    <div class="lux-left">
+      <div class="lux-overlay">
+        <h3>Full Home Interior</h3>
+        <p>Premium modular kitchens & interiors</p>
+        <ul>
+          <li>✔ Modular Kitchen</li>
+          <li>✔ Wardrobes</li>
+          <li>✔ TV & Crockery Units</li>
+          <li>✔ End-to-End Execution</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="lux-right">
+      <h2>Free Design Consultation</h2>
+      <span>Talk to our interior experts today</span>
+
+      <form id="luxForm" class="lux-form">
+        <select required>
+          <option value="">Property Type</option>
+          <option>1 BHK</option>
+          <option>2 BHK</option>
+          <option>3 BHK</option>
+        </select>
+
+        <input type="text" placeholder="Location" required>
+        <input type="text" placeholder="Estimated Budget">
+        <input type="text" placeholder="When do you want to start?">
+
+        <input type="text" placeholder="Your Name *" required>
+        <input type="tel" placeholder="Phone Number *" required>
+        <input type="email" placeholder="Email Address *" required>
+
+        <button type="submit">Book Free Consultation</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  const luxPopup = document.getElementById("luxPopup");
+  const luxClose = document.querySelector(".lux-close");
+
+  window.addEventListener("load", () => {
+    if (!localStorage.getItem("luxPopupSeen")) {
+      setTimeout(() => {
+        luxPopup.style.display = "block";
+      }, 1200);
+    }
+  });
+
+  luxClose.onclick = () => {
+    luxPopup.style.display = "none";
+    localStorage.setItem("luxPopupSeen", "true");
+  };
+
+  document.getElementById("luxForm").addEventListener("submit", () => {
+    localStorage.setItem("luxPopupSeen", "true");
+    luxPopup.style.display = "none";
+    alert("Thank you! Our team will contact you shortly.");
+  });
+</script>
+<!-- ================= END POPUP ================= -->
 <!-- Mirrored from azim.hostlin.com/Kitchnox/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2025 15:38:49 GMT -->
 </html>
