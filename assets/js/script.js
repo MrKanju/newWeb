@@ -249,6 +249,62 @@
 		});    		
 	}
 
+	// project-carousel (2 items at a time)
+	if ($('.project-carousel').length) {
+		// Load projects from JSON and initialize carousel
+		$.getJSON('assets/data/projects.json', function(data) {
+			const carousel = $('#projectCarousel');
+			
+			// Create project items from JSON data
+			data.projects.forEach(function(project) {
+				const projectHTML = `
+					<div class="project-block">
+						<div class="project-block-two">
+							<div class="inner-box">
+								<figure class="image-box"><img src="${project.image}" alt="${project.title}"></figure>
+								<div class="text-box">
+									<h3><a href="${project.link}">${project.title}</a></h3>
+									<span>${project.category} • ${project.date}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				`;
+				carousel.append(projectHTML);
+			});
+			
+			// Initialize Owl Carousel after loading data
+			carousel.owlCarousel({
+				loop:true,
+				margin:30,
+				nav:true,
+				dots:false,
+				smartSpeed: 700,
+				autoplay: 4000,
+				autoplayTimeout: 4000,
+				autoplayHoverPause: true,
+				navText: [ '<span class="icon-6"></span>', '<span class="icon-7"></span>' ],
+				responsive:{
+					0:{
+						items:1
+					},
+					480:{
+						items:1
+					},
+					600:{
+						items:2
+					},
+					800:{
+						items:2
+					},			
+					1200:{
+						items:2
+					}
+				}
+			});
+		});
+	}
+
 
     // three-item-carousel
 	if ($('.three-item-carousel').length) {
@@ -514,6 +570,44 @@
 	$(window).on('load', function() {
 		handlePreloader();
 		enableMasonry();
+		
+		// Simple banner slideshow
+		if ($('#bannerSlideshow').length) {
+			var slides = $('.banner-slide');
+			var currentSlide = 0;
+			var slideCount = slides.length;
+			var dotsContainer = $('.banner-dots');
+			
+			// Create dots
+			for (var i = 0; i < slideCount; i++) {
+				dotsContainer.append('<span class="banner-dot" data-slide="' + i + '"></span>');
+			}
+			
+			var dots = $('.banner-dot');
+			dots.first().addClass('active');
+			
+			// Dot click handler
+			dots.on('click', function() {
+				var slideIndex = $(this).data('slide');
+				goToSlide(slideIndex);
+			});
+			
+			function goToSlide(index) {
+				slides.removeClass('active');
+				dots.removeClass('active');
+				
+				$(slides[index]).addClass('active');
+				$(dots[index]).addClass('active');
+				
+				currentSlide = index;
+			}
+			
+			// Auto slide
+			setInterval(function() {
+				currentSlide = (currentSlide + 1) % slideCount;
+				goToSlide(currentSlide);
+			}, 10000);
+		}
 	});
 
 	
