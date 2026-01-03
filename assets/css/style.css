@@ -68,7 +68,7 @@
 
 
 :root{
-  --theme-color: #d29251;
+  --theme-color: #c70010;
   --secondary-color: #272e35;
   --text-color: #444444;
   --title-color: #010101;
@@ -682,6 +682,39 @@ img {
   -op-animation-iteration-count: 1;
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
+}
+
+/*** header-style-two ***/
+
+.header-style-two{
+  position: absolute;
+  left: 0px;
+  top: 30px;
+  width: 100%;
+  background: transparent;
+}
+
+.header-style-two .outer-container{
+  position: relative;
+  padding: 0px 70px;
+}
+
+.header-style-two .main-menu .navigation > li > a{
+  color: #010101 !important;
+}
+
+.header-style-two .sticky-header{
+  background: #2a2e33 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.header-style-two .sticky-header .main-menu .navigation > li > a{
+  color: #ffffff !important;
+}
+
+.header-style-two .sticky-header .main-menu .navigation > li:hover > a,
+.header-style-two .sticky-header .main-menu .navigation > li.current > a{
+  color: var(--theme-color) !important;
 }
 
 /*** Search Popup ***/
@@ -2342,15 +2375,6 @@ div#mCSB_1_container{
   right: 7px;
 }
 
-.faq-section .accordion-box .accordion .acc-btn.active .icon-box{
-  transform: rotate(180deg);
-}
-
-.faq-section .accordion-box .accordion .acc-content{
-  padding-top: 26px;
-  padding-bottom: 26px;
-}
-
 faq-section .accordion-box{
   margin-top: -33px;
 }
@@ -3210,8 +3234,12 @@ html.lenis {
 
 .banner-style-two{
   position: relative;
-  background: #24292f;
+  background: #ffffff;
   padding-top: 210px;
+}
+
+.banner-style-two .title-box h2{
+  color: #010101;
 }
 
 .banner-style-two .outer-container{
@@ -3281,7 +3309,7 @@ html.lenis {
 .offer-section{
   position: relative;
   padding: 0px 0px 100px 0px;
-  background: #24292f;
+  background: #ffffff;
 }
 
 .offer-section .auto-container{
@@ -3318,7 +3346,7 @@ html.lenis {
 }
 
 .offer-block-one .inner-box:hover:before{
-  background: linear-gradient(135deg, rgba(210, 146, 81, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(45deg, rgba(210, 81, 81, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .offer-block-one .inner-box .content-overlay{
@@ -3377,7 +3405,7 @@ html.lenis {
 
 .about-style-two{
   position: relative;
-  background: #24292f;
+  background: #ffffff;
   padding-top: 100px;
   padding-bottom: 100px;
 }
@@ -3394,7 +3422,7 @@ html.lenis {
 .about-style-two .content-box .text-box p:first-child{
   font-size: 26px;
   line-height: 32px;
-  color: #fff;
+  color: #010101;
   margin-bottom: 30px;
 }
 
@@ -4490,11 +4518,6 @@ html.lenis {
   border-radius: 5px;
   padding: 10px 28px;
   transition: all 500ms ease;
-}
-
-.contact-section .form-inner .form-group input:focus,
-.contact-section .form-inner .form-group textarea:focus{
-
 }
 
 contact-section .form-inner .form-group textarea{
