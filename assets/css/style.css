@@ -1,4 +1,4 @@
-Css For Kitchnox
+/* Css For Kitchnox */
 
 /************ TABLE OF CONTENTS ***************
 1. Fonts
@@ -50,7 +50,7 @@ Css For Kitchnox
 ====================================================================
 
  ***/
-* {
+ * {
   margin:0px;
   padding:0px;
   border:none;
@@ -68,7 +68,7 @@ Css For Kitchnox
 
 
 :root{
-  --theme-color: #c70010;
+  --theme-color: #d29251;
   --secondary-color: #272e35;
   --text-color: #444444;
   --title-color: #010101;
@@ -682,39 +682,6 @@ img {
   -op-animation-iteration-count: 1;
   -webkit-animation-iteration-count: 1;
   animation-iteration-count: 1;
-}
-
-/*** header-style-two ***/
-
-.header-style-two{
-  position: absolute;
-  left: 0px;
-  top: 30px;
-  width: 100%;
-  background: transparent;
-}
-
-.header-style-two .outer-container{
-  position: relative;
-  padding: 0px 70px;
-}
-
-.header-style-two .main-menu .navigation > li > a{
-  color: #010101 !important;
-}
-
-.header-style-two .sticky-header{
-  background: #2a2e33 !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.10);
-}
-
-.header-style-two .sticky-header .main-menu .navigation > li > a{
-  color: #ffffff !important;
-}
-
-.header-style-two .sticky-header .main-menu .navigation > li:hover > a,
-.header-style-two .sticky-header .main-menu .navigation > li.current > a{
-  color: var(--theme-color) !important;
 }
 
 /*** Search Popup ***/
@@ -2375,6 +2342,15 @@ div#mCSB_1_container{
   right: 7px;
 }
 
+.faq-section .accordion-box .accordion .acc-btn.active .icon-box{
+  transform: rotate(180deg);
+}
+
+.faq-section .accordion-box .accordion .acc-content{
+  padding-top: 26px;
+  padding-bottom: 26px;
+}
+
 faq-section .accordion-box{
   margin-top: -33px;
 }
@@ -3234,12 +3210,8 @@ html.lenis {
 
 .banner-style-two{
   position: relative;
-  background: #ffffff;
+  background: #24292f;
   padding-top: 210px;
-}
-
-.banner-style-two .title-box h2{
-  color: #010101;
 }
 
 .banner-style-two .outer-container{
@@ -3309,7 +3281,7 @@ html.lenis {
 .offer-section{
   position: relative;
   padding: 0px 0px 100px 0px;
-  background: #ffffff;
+  background: #24292f;
 }
 
 .offer-section .auto-container{
@@ -3346,7 +3318,7 @@ html.lenis {
 }
 
 .offer-block-one .inner-box:hover:before{
-  background: linear-gradient(45deg, rgba(210, 81, 81, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
+  background: linear-gradient(135deg, rgba(210, 146, 81, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 .offer-block-one .inner-box .content-overlay{
@@ -3405,7 +3377,7 @@ html.lenis {
 
 .about-style-two{
   position: relative;
-  background: #ffffff;
+  background: #24292f;
   padding-top: 100px;
   padding-bottom: 100px;
 }
@@ -3422,7 +3394,7 @@ html.lenis {
 .about-style-two .content-box .text-box p:first-child{
   font-size: 26px;
   line-height: 32px;
-  color: #010101;
+  color: #fff;
   margin-bottom: 30px;
 }
 
@@ -4518,6 +4490,11 @@ html.lenis {
   border-radius: 5px;
   padding: 10px 28px;
   transition: all 500ms ease;
+}
+
+.contact-section .form-inner .form-group input:focus,
+.contact-section .form-inner .form-group textarea:focus{
+
 }
 
 contact-section .form-inner .form-group textarea{
@@ -6893,3 +6870,144 @@ appointment-checkbox label span:before {
 .appointment-form .single-box.selectbox{
   min-height: 77px;
 }
+/* ===== Light Background Inversion ===== */
+
+.banner-style-two {
+  background-color: #f4f1ec; /* light cream / grey */
+}
+/* Invert dark grid to light background */
+.banner-style-two .shape {
+  filter: invert(1) contrast(1.1);
+  opacity: 0.35;
+}
+/* Banner text color for light background */
+.banner-style-two h2 {
+  color: #2b2b2b;
+}
+.banner-style-two h2 {
+  color: #1f2933;
+}
+.main-header,
+.sticky-header {
+  background: #2e2e2e;
+}
+.main-header {
+  background: rgba(40, 40, 40, 0.85);
+  backdrop-filter: blur(6px);
+}
+/* Darker grid lines on light background */
+.banner-style-two .shape {
+  filter: invert(0.85) contrast(1.35);
+  opacity: 0.55;
+}
+.banner-style-two .shape {
+  filter: invert(0.8) contrast(1.5);
+  opacity: 0.6;
+}
+/* Remove gap above header */
+body {
+  margin: 0;
+  padding: 0;
+}
+/* Continuous navbar from top */
+.main-header {
+  top: 0;
+  background: #4a4a4a; /* same grey, but solid */
+}
+.boxed_wrapper {
+  padding-top: 0 !important;
+}
+
+.main-header {
+  background: #4a4a4a;
+  border-bottom: none;
+}
+.main-header {
+  background: rgba(74, 74, 74, 0.95);
+  backdrop-filter: blur(4px);
+}
+/* Make navbar always visible on scroll */
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  background: #4a4a4a; /* your current grey */
+}
+/* Disable secondary sticky header */
+.sticky-header {
+  display: none !important;
+}
+.main-header {
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+.main-header {
+  backdrop-filter: blur(6px);
+}
+.banner-style-two {
+  background-color: #f4f1ec; /* cream */
+}
+/* Premium cube grid with subtle fill */
+.banner-style-two::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+
+  background-image:
+    /* cube fill */
+    linear-gradient(
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.03) 1px,
+      transparent 1px
+    ),
+
+    /* grid lines */
+    linear-gradient(
+      to right,
+      rgba(120, 120, 120, 0.18) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      rgba(120, 120, 120, 0.18) 1px,
+      transparent 1px
+    );
+
+  background-size:
+    80px 80px,
+    80px 80px,
+    80px 80px,
+    80px 80px;
+}
+.banner-style-two > * {
+  position: relative;
+  z-index: 1;
+}
+.banner-style-two .link a {
+  background: #3a3732;   /* warm dark grey */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
