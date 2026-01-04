@@ -1,41 +1,67 @@
-/* Banner Slideshow Styles */
-.banner-slideshow-wrapper {
+/* Banner Carousel Styles */
+.banner-carousel-wrapper {
   position: relative;
   width: 100%;
   overflow: hidden;
 }
 
-.banner-slides {
-  position: relative;
+.banner-carousel-wrapper .owl-stage-outer {
+  overflow: hidden;
+}
+
+.banner-carousel-wrapper .banner-slide {
   width: 100%;
 }
 
-.banner-slide {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
-}
-
-.banner-slide:first-child {
-  position: relative;
-}
-
-.banner-slide.active {
-  opacity: 1;
-  visibility: visible;
-  z-index: 2;
-}
-
-.banner-slide img {
+.banner-carousel-wrapper .banner-slide img {
   width: 100%;
   display: block;
 }
 
-.banner-dots {
+/* Navigation Arrows */
+.banner-carousel-wrapper .owl-nav {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  transform: translateY(-50%);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.banner-carousel-wrapper .owl-nav button {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  pointer-events: all;
+  border: none;
+  cursor: pointer;
+}
+
+.banner-carousel-wrapper .owl-nav button:hover {
+  background: #d29251;
+  color: #fff;
+}
+
+.banner-carousel-wrapper .owl-nav .owl-prev {
+  left: 30px;
+}
+
+.banner-carousel-wrapper .owl-nav .owl-next {
+  right: 30px;
+}
+
+.banner-carousel-wrapper .owl-nav button span {
+  font-size: 24px;
+}
+
+/* Dots */
+.banner-carousel-wrapper .owl-dots {
   position: absolute;
   bottom: 30px;
   left: 50%;
@@ -45,7 +71,7 @@
   z-index: 10;
 }
 
-.banner-dot {
+.banner-carousel-wrapper .owl-dots .owl-dot {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -55,12 +81,32 @@
   border: 2px solid transparent;
 }
 
-.banner-dot.active {
+.banner-carousel-wrapper .owl-dots .owl-dot.active {
   background: #d29251;
   border-color: #fff;
   transform: scale(1.2);
 }
 
-.banner-dot:hover {
+.banner-carousel-wrapper .owl-dots .owl-dot:hover {
   background: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .banner-carousel-wrapper .owl-nav button {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .banner-carousel-wrapper .owl-nav .owl-prev {
+    left: 15px;
+  }
+  
+  .banner-carousel-wrapper .owl-nav .owl-next {
+    right: 15px;
+  }
+  
+  .banner-carousel-wrapper .owl-dots {
+    bottom: 20px;
+  }
 }

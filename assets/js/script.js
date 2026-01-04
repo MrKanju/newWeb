@@ -187,6 +187,38 @@
         });
     }
 
+	// banner-carousel-wrapper (for index.html banner)
+	if ($('.banner-carousel-wrapper').length) {
+        $('.banner-carousel-wrapper').owlCarousel({
+            loop:true,
+			margin:0,
+			nav:true,
+			dots:false,
+			animateOut: 'fadeOut',
+    		animateIn: 'fadeIn',
+    		active: true,
+			smartSpeed: 1000,
+			autoplay: 5000,
+			autoplayTimeout: 5000,
+			autoplayHoverPause: true,
+            navText: [ '<span class="icon-6"></span>', '<span class="icon-7"></span>' ],
+            responsive:{
+                0:{
+                    items:1
+                },
+                600:{
+                    items:1
+                },
+                800:{
+                    items:1
+                },
+                1024:{
+                    items:1
+                }
+            }
+        });
+    }
+
 
     // single-item-carousel
 	if ($('.single-item-carousel').length) {
@@ -570,44 +602,6 @@
 	$(window).on('load', function() {
 		handlePreloader();
 		enableMasonry();
-		
-		// Simple banner slideshow
-		if ($('#bannerSlideshow').length) {
-			var slides = $('.banner-slide');
-			var currentSlide = 0;
-			var slideCount = slides.length;
-			var dotsContainer = $('.banner-dots');
-			
-			// Create dots
-			for (var i = 0; i < slideCount; i++) {
-				dotsContainer.append('<span class="banner-dot" data-slide="' + i + '"></span>');
-			}
-			
-			var dots = $('.banner-dot');
-			dots.first().addClass('active');
-			
-			// Dot click handler
-			dots.on('click', function() {
-				var slideIndex = $(this).data('slide');
-				goToSlide(slideIndex);
-			});
-			
-			function goToSlide(index) {
-				slides.removeClass('active');
-				dots.removeClass('active');
-				
-				$(slides[index]).addClass('active');
-				$(dots[index]).addClass('active');
-				
-				currentSlide = index;
-			}
-			
-			// Auto slide
-			setInterval(function() {
-				currentSlide = (currentSlide + 1) % slideCount;
-				goToSlide(currentSlide);
-			}, 10000);
-		}
 	});
 
 	
