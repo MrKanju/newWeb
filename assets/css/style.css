@@ -2393,6 +2393,8 @@ faq-section .accordion-box{
   position: relative;
   display: block;
   overflow: hidden;
+  height: 350px; /* Fixed height for consistency */
+  background-color: #f5f5f5;
 }
 
 .project-block-one .inner-box .image-box .image{
@@ -2412,6 +2414,72 @@ faq-section .accordion-box{
 
 .project-block-one .inner-box .image-box img{
   width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crop to fit while maintaining aspect ratio */
+  object-position: center;
+  transition: all 500ms ease;
+}
+
+.project-block-one .inner-box:hover .image-box img{
+  transform: scale(1.05);
+}
+
+/* View button - top right corner */
+.project-block-one .inner-box .image-box .view-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.project-block-one .inner-box:hover .image-box .view-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
+.project-block-one .inner-box .image-box .view-btn a {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-radius: 4px;
+  display: inline-block;
+  text-align: center;
+  font-size: 18px;
+  color: #1f3d3b;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.project-block-one .inner-box .image-box .view-btn a:hover {
+  background-color: #1f3d3b;
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* Fix text colors */
+.project-block-one .inner-box .lower-content h3 a {
+  color: #1f3d3b;
+  transition: all 0.3s ease;
+}
+
+.project-block-one .inner-box .lower-content h3 a:hover {
+  color: #c5a47e;
+}
+
+.project-block-one .inner-box .lower-content .designation {
+  color: #777;
+  font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+  .project-block-one .inner-box .image-box {
+    height: 280px;
+  }
 }
 
 .project-block-one .inner-box .image-box .overlay-image{
