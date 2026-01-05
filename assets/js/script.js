@@ -400,21 +400,26 @@
 	}
 
 
-	// five-item-carousel
+	// five-item-carousel (partners/clients)
 	if ($('.five-item-carousel').length) {
 		$('.five-item-carousel').owlCarousel({
 			loop:true,
 			margin:30,
-			nav:true,
+			nav:false,
+			dots:false,
 			smartSpeed: 500,
-			autoplay: 1000,
+			autoplay: 3000,
+			autoplayTimeout: 3000,
+			autoplayHoverPause: true,
 			navText: [ '<span class="fal fa-angle-left"></span>', '<span class="fal fa-angle-right"></span>' ],
 			responsive:{
 				0:{
-					items:1
+					items:2,
+					margin:20
 				},
 				480:{
-					items:2
+					items:2,
+					margin:20
 				},
 				600:{
 					items:3

@@ -36,6 +36,11 @@
     padding: 15px 0px;
   }
 
+  .main-header .logo-box img{
+    max-width: 180px;
+    height: auto;
+  }
+
   .project-section .outer-container{
     padding-left: 15px;
     padding-right: 15px;
@@ -409,9 +414,14 @@
     justify-content: center;
   }
 
+  .main-header .logo-box img{
+    max-width: 150px;
+    height: auto;
+  }
+
   .banner-carousel .content-box h2{
-    font-size: 50px;
-    line-height: 60px;
+    font-size: 36px;
+    line-height: 44px;
   }
 
   .banner-section .year-box{
@@ -422,34 +432,40 @@
   }
 
   .banner-section .year-box span{
-    line-height: 120px;
+    line-height: 100px;
+    font-size: 60px;
   }
 
   .banner-section .banner-carousel .slide-item{
-    padding: 100px 0px;
+    padding: 80px 0px;
   }
 
   .banner-section{
-    padding-bottom: 110px;
+    padding-bottom: 80px;
   }
 
   .about-section,
   .faq-section,
   .testimonial-section{
-    padding: 70px 0px;
+    padding: 50px 0px;
   }
 
   .sec-title h2{
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 26px;
+    line-height: 34px;
+  }
+
+  .sec-title .sub-title{
+    font-size: 14px;
+    margin-bottom: 8px;
   }
 
   .project-section{
-    padding-top: 65px;
+    padding-top: 50px;
   }
 
   .funfact-section .outer-container{
-    padding: 40px 15px;
+    padding: 30px 15px;
   }
 
   .testimonial-section .owl-nav,
@@ -457,44 +473,49 @@
     display: none;
   }
 
+  /* Hide project carousel navigation on mobile */
+  .project-style-two .owl-nav{
+    display: none !important;
+  }
+
   .video-section{
-    padding: 65px 0px 70px 0px;
+    padding: 50px 0px;
   }
 
   .working-section,
   .news-section{
-    padding: 65px 0px 35px 0px;
+    padding: 50px 0px 30px 0px;
   }
 
   .transforming-section{
-    padding-top: 60px;
+    padding-top: 50px;
   }
 
   .transforming-section .title-text{
     text-align: left;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
   }
 
   .transforming-section .image-box{
-    margin-bottom: 30px;
+    margin-bottom: 25px;
   }
 
   .slide-text-outer .text-box.italic{
-    font-size: 80px;
-    line-height: 80px;
+    font-size: 50px;
+    line-height: 50px;
   }
 
   .slide-text-outer{
-    padding-bottom: 60px;
+    padding-bottom: 40px;
   }
 
   .footer-widget .links-widget{
-    margin: 0px 0px 30px 0px;
+    margin: 0px 0px 25px 0px;
   }
 
   .banner-style-two h2{
-    font-size: 50px;
-    line-height: 60px;
+    font-size: 32px;
+    line-height: 40px;
   }
 
   .banner-style-two h2 br{
@@ -502,7 +523,8 @@
   }
 
   .banner-style-two{
-    padding-top: 150px;
+    padding-top: 120px;
+    padding-bottom: 40px;
   }
 
   .banner-style-two .outer-container{
@@ -515,333 +537,48 @@
     left: 0px;
     top: 0px;
     transform: rotate(0deg);
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .banner-style-two .title-box{
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+  }
+
+  .banner-carousel-wrapper .banner-slide img{
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
   }
 
   .offer-section,
   .service-section{
-    padding: 65px 0px 40px 0px;
+    padding: 50px 0px 30px 0px;
   }
 
   .about-style-two{
-    padding-bottom: 70px;
+    padding: 50px 0px;
   }
 
-  .feature-section .inner-container{
-    padding-bottom: 70px;
+  .about-style-two .content-box .text-box p:first-child{
+    font-size: 18px !important;
+    line-height: 28px !important;
   }
 
-  .project-style-two,
-  .consulting-section{
-    padding-top: 65px;
+  .about-style-two .content-box .text-box p{
+    font-size: 16px;
+    line-height: 26px;
+    margin-bottom: 15px;
   }
 
-  .consulting-section .content-box h2{
-    font-size: 30px;
-    line-height: 40px;
+  .service-block-one .inner-box p{
+    font-size: 16px;
+    line-height: 25px;
   }
 
-  .funfact-section{
-    padding: 0px;
-  }
-
-  .chooseus-section .inner-container{
-    padding: 65px 0px 35px 0px;
-  }
-
-  .news-section .sec-title a{
-    position: relative;
-    display: inline-block;
-    top: 0px;
-    margin-top: 15px;
-  }
-
-  .fluid-section .left-column .image-box{
-    position: relative;
-    width: 100%;
-  }
-
-  .fluid-section .left-column .image-box .bg-layer{
-    display: none;
-  }
-
-  .fluid-section .left-column .image-box .image{
-    display: block;
-  }
-
-  .fluid-section .left-column .content-box{
-    float: none;
-    width: 100%;
-  }
-
-  .fluid-section .left-column .content-box h3 br,
-  .fluid-section .right-column .content-box h3 br{
-    display: none;
-  }
-
-  .banner-style-three .content-box h2{
-    font-size: 40px;
-    line-height: 50px;
-  }
-
-  .content_block_three .content-box .lower-box{
-    display: block;
-  }
-
-  .content_block_three .content-box .lower-box h3{
-    margin-right: 0px;
-    margin-bottom: 20px;
-  }
-
-  .content_block_three .content-box .inner-box .single-item{
-    margin-bottom: 30px;
-  }
-
-  .about-style-three{
-    padding: 65px 0px 70px 0px;
-  }
-
-  .project-style-three{
-    padding-top: 65px;
-    padding-bottom: 40px;
-  }
-
-  .sec-title h2 br{
-    display: none;
-  }
-
-  .feature-section.pb_110{
-    padding-bottom: 65px;
-  }
-
-  .consulting-section{
-    padding-top: 0px;
-  }
-
-  .consulting-section .inner-container{
-    padding-top: 0px;
-    border-top: none;
-    padding-bottom: 70px;
-  }
-
-  .faq-style-two{
-    padding: 50px 0px 70px 0px;
-  }
-
-  .testimonial-style-two{
-    padding-bottom: 70px;
-  }
-
-  .contact-section{
-    padding: 65px 0px 70px 0px;
-  }
-
-  .banner-style-three.home-4 .content-box{
-    padding-left: 15px;
-  }
-
-  .about-style-four{
-    padding-top: 0px;
-  }
-
-  .about-style-four{
-    padding-bottom: 70px;
-  }
-
-  .service-style-two{
-    padding: 65px 0px 40px 0px;
-  }
-
-  .chooseus-style-two{
-    padding-top: 40px;
-    padding-bottom: 35px;
-  }
-
-  .consulting-style-two{
-    padding-top: 60px;
-  }
-
-  .consulting-style-two .inner-container{
-    padding-top: 0px;
-    padding-bottom: 70px;
-  }
-
-  .bestselling-section .sec-title h2,
-  .contact-style-two .content-box .sec-title h2{
-    font-size: 30px;
-    line-height: 40px;
-  }
-
-  .team-section{
-    padding-top: 70px;
-    padding-bottom: 35px;
-  }
-
-  .about-style-five,
-  .contact-style-two .inner-container,
-  .about-style-six{
-    padding: 65px 0px 70px 0px;
-  }
-
-  .page-title{
-    padding: 90px 0px;
-  }
-
-  .page-title .content-box h1{
-    font-size: 50px;
-    line-height: 60px;
-  }
-
-  .chooseus-section.about-page .inner-container{
-    padding-top: 65px;
-  }
-
-  .consulting-section.pt_130{
-    padding-top: 65px;
-  }
-
-  .chooseus-section.about-page{
-    padding-bottom: 0px;
-  }
-
-  .service-style-three,
-  .project-details{
-    padding: 65px 0px 40px 0px;
-  }
-
-  .chooseus-section.pt_110.pb_120{
-    padding-top: 65px;
-  }
-
-  .project-section.project-page{
-    padding-bottom: 40px;
-  }
-
-  .appointment-title h2,
-  .faq-form-section h2{
-    font-size: 30px;
-    line-height: 40px;
-  }
-
-  .appointment-area,
-  .faq-page-section,
-  .faq-form-section,
-  .blog-grid,
-  .sidebar-page-container,
-  .contact-style-three{
-    padding: 70px 0px;
-  }
-
-  .testimonial-page-section .sec-title{
-    margin-top: 0px;
-    margin-bottom: 40px;
-  }
-
-  .testimonial-page-section{
-    padding: 65px 0px 10px 0px;
-  }
-
-  .sidebar-page-container .pagination-wrapper{
-    padding-top: 40px;
-  }
-
-  .transforming-section .title-text h2{
-    font-size: 30px;
-    line-height: 40px;
-  }
-
-  .funfact-section.pt_120{
-    padding-top: 80px;
-    padding-bottom: 40px;
-  }
-
-  .chooseus-section.pb_120{
-    padding-bottom: 35px;
-  }
-
-}
-
-@media only screen and (max-width: 599px){
-
-  .header-top .info-list li{
-    margin-right: 10px;
-  }
-
-  .banner-section .year-box span{
-    font-size: 80px;
-    line-height: 80px;
-  }
-
-  .content_block_one .content-box .list-style-one li{
-    float: none;
-    width: 100%;
-  }
-
-  .news-block-two .inner-box .lower-content .post-info li{
-    margin-right: 20px;
-  }
-
-  .news-block-two .inner-box .lower-content .post-info li:last-child{
-    margin-right: 0px;
-  }
-
-  .news-block-two .inner-box .lower-content .post-info li:before{
-    right: -16px; 
-  }
-
-  .blog-details-content .comment-inner .comment{
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .blog-details-content .comment-inner .comment .thumb-box{
-    position: relative;
-    left: 0px;
-    top: 0px;
-    margin-bottom: 20px;
-  }
-
-  .blog-details-content .comment-inner .comment.replay-comment{
-    padding-left: 0px;
-    padding-right: 0px;
-  }
-
-  .banner-style-three .content-box{
-    float: none;
-    width: 100%;
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-
-  .content_block_two .content-box h2{
-    font-size: 30px;
-    line-height: 40px;
-  }
-
-  .banner-style-three.home-4 .content-box{
-    width: 100%;
-  }
-
-}
-
-
-@media only screen and (max-width: 499px){
-
-  .mobile-menu{
-    width: 100%;
-  }
-
-  .header-top .info-list{
-    display: block;
-  }
-
-  .main-header .search-toggler,
-  .main-header .nav-btn{
-    display: none;
+  .testimonial-section .text-box p{
+    font-size: 13px;
+    line-height: 22px;
   }
 
   .main-footer .logo-widget .info-list{
@@ -849,7 +586,7 @@
   }
 
   .main-footer .logo-widget .info-list li{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
   }
 
   .main-footer .logo-widget .info-list li:last-child{
@@ -858,6 +595,7 @@
 
   .offer-block-one .inner-box{
     padding-right: 0px;
+    min-height: 250px;
   }
 
   .header-style-two .outer-container,
@@ -873,7 +611,7 @@
 
   .image_block_one .image-box .image-2{
     position: relative;
-    margin-top: 30px;
+    margin-top: 20px;
   }
 
   .about-style-five .content-box .lower-box{
@@ -882,12 +620,12 @@
 
   .about-style-five .content-box .author-info{
     margin-right: 0px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 
   .error-section .inner-box h1{
-    font-size: 160px;
-    line-height: 150px;
+    font-size: 120px;
+    line-height: 110px;
   }
 
   .appointment-form .date-box .nice-select{
@@ -899,8 +637,224 @@
   }
 
   .blog-details-content .comments-form-area .form-inner{
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .banner-style-two h2{
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .sec-title h2{
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .theme-btn{
+    font-size: 13px;
+    padding: 10px 24px;
+  }
+
+  .banner-style-two{
+    padding-top: 100px;
+  }
+
+  .banner-carousel-wrapper .banner-slide img{
+    max-height: 250px;
+  }
+
+  .about-style-two .content-box .text-box p:first-child{
+    font-size: 16px !important;
+    line-height: 25px !important;
+  }
+
+  .about-style-two .content-box .text-box p{
+    font-size: 14px;
+    line-height: 23px;
+  }
+
+  .service-block-one .inner-box p{
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .testimonial-section .text-box p{
+    font-size: 13px;
+    line-height: 21px;
+  }
+
+  /* Popup responsive improvements */
+  .lux-box{
+    margin: 5% 10px;
+  }
+
+  .lux-left{
+    height: 200px;
+  }
+
+  .lux-right{
+    padding: 25px 20px;
+  }
+
+  .lux-right h2{
+    font-size: 22px;
+  }
+
+  .lux-overlay h3{
+    font-size: 20px;
+  }
+
+  .lux-overlay ul{
+    margin-top: 10px;
+  }
+
+  .lux-overlay li{
+    font-size: 12px;
+  }
+
+  .lux-form input,
+  .lux-form select{
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .lux-form button{
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .clients-logo img{
+    max-width: 90px;
+    height: auto;
+  }
+
+  /* Better spacing for partner logos on small screens */
+  .five-item-carousel{
+    margin: 0 -10px;
+  }
+
+  .five-item-carousel .clients-logo{
+    padding: 0 10px;
+  }
+
+}
+
+@media only screen and (max-width: 599px){
+
+  .about-style-two .content-box .text-box p:first-child{
+    font-size: 17px !important;
+    line-height: 26px !important;
+  }
+
+  .about-style-two .content-box .text-box p{
+    font-size: 15px;
+    line-height: 25px;
+  }
+
+  .service-block-one .inner-box p{
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .testimonial-section .text-box p{
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+}
+
+@media only screen and (max-width: 499px){
+
+  .about-style-two .content-box .text-box p:first-child{
+    font-size: 16px !important;
+    line-height: 25px !important;
+  }
+
+  .about-style-two .content-box .text-box p{
+    font-size: 15px;
+    line-height: 24px;
+  }
+
+  .service-block-one .inner-box p{
+    font-size: 15px;
+    line-height: 23px;
+  }
+
+  .testimonial-section .text-box p{
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+}
+
+/* Extra small devices */
+@media only screen and (max-width: 400px){
+  
+  .banner-style-two h2{
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  .sec-title h2{
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .service-block-one .inner-box{
+    padding: 20px 15px !important;
+    min-height: 280px !important;
+  }
+
+  .service-block-one .inner-box h3{
+    font-size: 17px;
+    line-height: 24px;
+  }
+
+  .service-block-one .inner-box .icon-box img{
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .service-block-one .inner-box p{
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .offer-block-one .inner-box h3{
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .testimonial-section .text-box p{
+    font-size: 11px;
+    line-height: 19px;
+  }
+
+  .clients-logo img{
+    max-width: 80px;
+  }
+
+  .banner-carousel-wrapper .banner-slide img{
+    max-height: 220px;
+  }
+
+  .lux-right h2{
+    font-size: 20px;
+  }
+
+  .lux-right span{
+    font-size: 12px;
+  }
+
+  .about-style-two .content-box .text-box p:first-child{
+    font-size: 15px !important;
+    line-height: 24px !important;
+  }
+
+  .about-style-two .content-box .text-box p{
+    font-size: 14px;
+    line-height: 23px;
   }
 
 }
