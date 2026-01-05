@@ -270,7 +270,7 @@ h1,h2,h3,h4,h5,h6{
   position: relative;
   font-size: 70px;
   line-height: 70px;
-  text-transform: uppercase;
+  text-transform: none;
   color: transparent;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: rgba(255, 255, 255, 0.30);
@@ -6822,7 +6822,7 @@ appointment-checkbox label span:before {
 }
 
 .blog-details-content .comments-form-area .form-inner .form-group input:focus,
-.blog-details-content .comments-form-area .form-group textarea:focus{
+.blog-details-content .form-group textarea:focus{
   
 }
 
