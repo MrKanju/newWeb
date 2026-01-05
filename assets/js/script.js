@@ -607,7 +607,33 @@
 	$(window).on('load', function() {
 		handlePreloader();
 		enableMasonry();
+		truncateTestimonials();
 	});
+
+	// Truncate long testimonials and add "Read More" link
+	function truncateTestimonials() {
+		if ($('.testimonial-section .testimonial-block').length) {
+			$('.testimonial-section .testimonial-block').each(function() {
+				var $block = $(this);
+				var $textBox = $block.find('.text-box');
+				var $paragraph = $textBox.find('p').first();
+				
+				// Add class to paragraph for styling
+				$paragraph.addClass('testimonial-text');
+				
+				// Check if text is too long (more than 200 characters)
+				var text = $paragraph.text();
+				if (text.length > 200) {
+					// Add truncated class
+					$paragraph.addClass('truncated');
+					
+					// Add "Read More" link
+					var readMoreLink = '<a href="testimonial.html" class="read-more-link">Read Full Review <i class="fas fa-arrow-right"></i></a>';
+					$paragraph.after(readMoreLink);
+				}
+			});
+		}
+	}
 
 	
 

@@ -2708,6 +2708,44 @@ faq-section .accordion-box{
   margin-bottom: 32px;
 }
 
+/* Testimonial text truncation for long reviews */
+.testimonial-section .testimonial-block .text-box p.testimonial-text {
+  position: relative;
+  max-height: 150px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.testimonial-section .testimonial-block .text-box p.testimonial-text.truncated {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+}
+
+.testimonial-section .testimonial-block .text-box .read-more-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #d9b256;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: var(--jost);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+  border-bottom: 2px solid transparent;
+}
+
+.testimonial-section .testimonial-block .text-box .read-more-link:hover {
+  color: #c19156;
+  border-bottom-color: #c19156;
+}
+
+.testimonial-section .testimonial-block .text-box .read-more-link i {
+  margin-left: 5px;
+  font-size: 14px;
+}
+
 .testimonial-section .testimonial-block .text-box .name{
   position: relative;
   display: block;
@@ -4279,7 +4317,7 @@ html.lenis {
   position: relative;
 }
 
-.faq-style-two .accordion .acc-btn{
+faq-style-two .accordion .acc-btn{
   position: relative;
   font-size: 20px;
   line-height: 30px;
@@ -4548,7 +4586,7 @@ html.lenis {
 
 .contact-section .form-inner .form-group input[type='text'],
 .contact-section .form-inner .form-group input[type='email'],
-.contact-section .form-inner .form-group textarea{
+contact-section .form-inner .form-group textarea{
   position: relative;
   display: block;
   width: 100%;
@@ -5309,44 +5347,6 @@ contact-section .form-inner .form-group textarea{
   background: #24292f;
   border-bottom: none;
 }
-
-.header-style-five .header-top .text-box p{
-  font-size: 17px;
-  color: #fff;
-}
-
-.header-style-five .main-menu .navigation > li > a{
-  color: #000000;
-}
-
-.header-style-five .nav-btn{
-  border-color: #575757;
-}
-
-.header-style-five .sticky-header{
-  background: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-
-/** page-title **/
-
-.page-title{
-  position: relative;
-  padding: 137px 0px 136px 0px;
-}
-
-.page-title .bg-layer{
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left center;
-}
-
 .page-title .bg-layer:before{
   position: absolute;
   content: '';
