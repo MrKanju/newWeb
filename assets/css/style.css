@@ -2671,10 +2671,10 @@ faq-section .accordion-box{
 }
 
 .testimonial-section .testimonial-block .image-box .thumb-box img{
-  width: 100%;
+  width: 133px !important;
+  height: 133px !important;
+  object-fit: cover;
   border-radius: 50%;
-  height: 133px;
-  width: 133px;
 }
 
 .testimonial-section .testimonial-block .image-box .icon-box{
@@ -4368,7 +4368,9 @@ html.lenis {
 }
 
 .testimonial-block-one .inner-box .author-box .author-thumb img{
-  width: 100%;
+  width: 133px !important;
+  height: 133px !important;
+  object-fit: cover;
   border-radius: 50%;
 }
 
@@ -6280,6 +6282,13 @@ appointment-checkbox label span:before {
 
 .testimonial-page-section .testimonial-block-one .inner-box{
   margin-bottom: 60px;
+}
+
+.testimonial-page-section .testimonial-block-one .inner-box .thumb-box img {
+  width: 133px !important;
+  height: 133px !important;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 
