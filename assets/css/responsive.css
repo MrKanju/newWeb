@@ -392,6 +392,35 @@
     display: none;
   }
 
+  /* Fix footer email spacing on medium screens */
+  .main-footer .logo-widget .info-list li{
+    margin-bottom: 25px;
+  }
+
+  .main-footer .logo-widget .info-list li a{
+    display: inline-block;
+    word-break: break-word;
+  }
+
+  /* Fix footer info-list layout on medium screens */
+  .main-footer .logo-widget .info-list{
+    display: block !important;
+  }
+
+  .main-footer .logo-widget .info-list li{
+    display: block !important;
+    margin-bottom: 25px;
+  }
+
+  .main-footer .logo-widget .info-list li:last-child{
+    margin-bottom: 0px;
+  }
+
+  .main-footer .logo-widget .info-list li a{
+    display: inline-block;
+    word-break: break-word;
+  }
+
 }
 
 
@@ -583,6 +612,51 @@
 
   .main-footer .logo-widget .info-list{
     display: block;
+  }
+
+  .main-footer .logo-widget .info-list li{
+    margin-bottom: 20px;
+  }
+
+  .main-footer .logo-widget .info-list li:last-child{
+    margin-bottom: 0px;
+  }
+
+  /* Make phone numbers appear on separate lines */
+  .main-footer .logo-widget .info-list li a{
+    display: block;
+  }
+
+  /* Keep Company and Services side by side on mobile */
+  .footer-widget.ml_170 .row{
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .footer-widget.ml_170 .links-column{
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .footer-widget.ml_170 .links-widget{
+    margin: 0px 0px 25px 0px;
+    padding-right: 10px;
+  }
+
+  .footer-widget.ml_170{
+    margin-left: 0px;
+  }
+
+  .footer-widget .links-widget .widget-title span{
+    font-size: 14px;
+  }
+
+  .footer-widget .links-widget .links-list li{
+    font-size: 13px;
+  }
+
+  .footer-widget .links-widget .links-list li a{
+    font-size: 13px;
   }
 
   .main-footer .logo-widget .info-list li{
