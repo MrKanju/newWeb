@@ -5420,6 +5420,26 @@ contact-section .form-inner .form-group textarea{
   background: #24292f;
   border-bottom: none;
 }
+/** page-title **/
+
+.page-title {
+  position: relative;
+  padding: 180px 0px 120px 0px;
+  z-index: 1;
+}
+
+.page-title .bg-layer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
 .page-title .bg-layer:before{
   position: absolute;
   content: '';
@@ -5467,7 +5487,7 @@ contact-section .form-inner .form-group textarea{
 }
 
 .page-title .content-box .bread-crumb li a:hover{
-
+  color: var(--theme-color);
 }
 
 .page-title .content-box .bread-crumb li:before{
