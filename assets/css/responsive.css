@@ -497,6 +497,39 @@
     padding: 30px 15px;
   }
 
+  /* Make funfact blocks 2x2 grid on mobile */
+  .funfact-section .row{
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .funfact-section .funfact-block{
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 30px;
+  }
+
+  .funfact-block-one{
+    margin: 0px;
+    padding: 0 10px;
+  }
+
+  .funfact-block-one .inner-box{
+    text-align: center;
+  }
+
+  .funfact-block-one .inner-box .count-outer{
+    font-size: 60px;
+    line-height: 60px;
+    height: 60px;
+    margin-bottom: 10px;
+  }
+
+  .funfact-block-one .inner-box p{
+    font-size: 14px;
+    line-height: 20px;
+  }
+
   .testimonial-section .owl-nav,
   .working-section .pattern-layer{
     display: none;

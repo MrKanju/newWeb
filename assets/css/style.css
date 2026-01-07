@@ -2602,6 +2602,7 @@ faq-section .accordion-box{
 
 .funfact-section{
   position: relative;
+  background: #24292f;
 }
 
 .funfact-section .outer-container{
@@ -2640,6 +2641,7 @@ faq-section .accordion-box{
 .funfact-block-one .inner-box p{
   font-size: 20px;
   font-weight: 500;
+  color: #fff;
 }
 
 
@@ -3062,7 +3064,7 @@ html.lenis {
 }
 
 .bg-color-1{
-  background: #fbf9f5;
+  background: #000000;
 }
 
 
@@ -4601,7 +4603,7 @@ contact-section .form-inner .form-group textarea{
 }
 
 .contact-section .form-inner .form-group input:focus,
-.contact-section .form-inner .form-group textarea:focus{
+contact-section .form-inner .form-group textarea:focus{
 
 }
 
