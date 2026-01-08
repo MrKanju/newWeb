@@ -667,6 +667,41 @@
     margin-top: 25px;
   }
 
+  .form-step {
+    display: none;
+  }
+
+  .form-step.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+  }
+
+  .progress-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .progress-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    transition: 0.3s;
+  }
+
+  .progress-dot.active {
+    background: #1f3d3b;
+    width: 30px;
+    border-radius: 5px;
+  }
+
   .lux-form input,
   .lux-form select {
     width: 100%;
@@ -695,16 +730,49 @@
     background: #152c2a;
   }
 
+  .form-navigation {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+  }
+
+  .btn-back {
+    background: #6c757d;
+    flex: 1;
+  }
+
+  .btn-back:hover {
+    background: #5a6268;
+  }
+
+  .btn-continue {
+    flex: 2;
+  }
+
   @media(max-width: 768px) {
     .lux-box {
       flex-direction: column;
       margin: 10% 15px;
+      max-width: 95%;
     }
-    .lux-left, .lux-right {
-      width: 100%;
-    }
+    
     .lux-left {
-      height: 260px;
+      display: none;
+    }
+    
+    .lux-right {
+      width: 100%;
+      padding: 30px 25px;
+    }
+    
+    .lux-right h2 {
+      font-size: 24px;
+    }
+    
+    .lux-close {
+      right: 15px;
+      top: 12px;
+      color: #333;
     }
   }
 </style>
@@ -732,23 +800,44 @@
       <h2>Free Design Consultation</h2>
       <span>Talk to our interior experts today</span>
 
+      <!-- Progress Indicator -->
+      <div class="progress-indicator">
+        <div class="progress-dot active" id="dot1"></div>
+        <div class="progress-dot" id="dot2"></div>
+      </div>
+
       <form id="luxForm" class="lux-form">
-        <select required>
-          <option value="">Property Type</option>
-          <option>1 BHK</option>
-          <option>2 BHK</option>
-          <option>3 BHK</option>
-        </select>
+        <!-- STEP 1: Property Details -->
+        <div class="form-step active" id="step1">
+          <select id="propertyType" required>
+            <option value="">Property Type *</option>
+            <option>1 BHK</option>
+            <option>2 BHK</option>
+            <option>3 BHK</option>
+            <option>4+ BHK</option>
+            <option>Villa</option>
+          </select>
 
-        <input type="text" placeholder="Location" required>
-        <input type="text" placeholder="Estimated Budget">
-        <input type="text" placeholder="When do you want to start?">
+          <input type="text" id="location" placeholder="Location *" required>
+          <input type="text" id="budget" placeholder="Estimated Budget">
+          <input type="text" id="timeline" placeholder="When do you want to start?">
 
-        <input type="text" placeholder="Your Name *" required>
-        <input type="tel" placeholder="Phone Number *" required>
-        <input type="email" placeholder="Email Address *" required>
+          <div class="form-navigation">
+            <button type="button" class="btn-continue" id="continueBtn">Continue</button>
+          </div>
+        </div>
 
-        <button type="submit">Book Free Consultation</button>
+        <!-- STEP 2: Contact Details -->
+        <div class="form-step" id="step2">
+          <input type="text" id="name" placeholder="Your Name *" required>
+          <input type="tel" id="phone" placeholder="Phone Number *" required pattern="[0-9]{10}">
+          <input type="email" id="email" placeholder="Email Address *" required>
+
+          <div class="form-navigation">
+            <button type="button" class="btn-back" id="backBtn">Back</button>
+            <button type="submit" class="btn-continue">Book Free Consultation</button>
+          </div>
+        </div>
       </form>
     </div>
   </div>
@@ -757,7 +846,16 @@
 <script>
   const luxPopup = document.getElementById("luxPopup");
   const luxClose = document.querySelector(".lux-close");
+  const step1 = document.getElementById("step1");
+  const step2 = document.getElementById("step2");
+  const continueBtn = document.getElementById("continueBtn");
+  const backBtn = document.getElementById("backBtn");
+  const dot1 = document.getElementById("dot1");
+  const dot2 = document.getElementById("dot2");
 
+  let currentStep = 1;
+
+  // Show popup on load
   window.addEventListener("load", () => {
     if (!localStorage.getItem("luxPopupSeen")) {
       setTimeout(() => {
@@ -766,16 +864,76 @@
     }
   });
 
+  // Close popup
   luxClose.onclick = () => {
     luxPopup.style.display = "none";
     localStorage.setItem("luxPopupSeen", "true");
   };
 
-  document.getElementById("luxForm").addEventListener("submit", () => {
+  // Continue to step 2
+  continueBtn.onclick = () => {
+    // Validate step 1 required fields
+    const propertyType = document.getElementById("propertyType").value;
+    const location = document.getElementById("location").value;
+
+    if (!propertyType || !location) {
+      alert("Please fill in all required fields (Property Type and Location)");
+      return;
+    }
+
+    currentStep = 2;
+    step1.classList.remove("active");
+    step2.classList.add("active");
+    dot1.classList.remove("active");
+    dot2.classList.add("active");
+  };
+
+  // Back to step 1
+  backBtn.onclick = () => {
+    currentStep = 1;
+    step2.classList.remove("active");
+    step1.classList.add("active");
+    dot2.classList.remove("active");
+    dot1.classList.add("active");
+  };
+
+  // Form submission
+  document.getElementById("luxForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    
+    // Get all form data
+    const formData = {
+      propertyType: document.getElementById("propertyType").value,
+      location: document.getElementById("location").value,
+      budget: document.getElementById("budget").value,
+      timeline: document.getElementById("timeline").value,
+      name: document.getElementById("name").value,
+      phone: document.getElementById("phone").value,
+      email: document.getElementById("email").value
+    };
+
+    console.log("Form submitted:", formData);
+    
     localStorage.setItem("luxPopupSeen", "true");
     luxPopup.style.display = "none";
     alert("Thank you! Our team will contact you shortly.");
+    
+    // Reset form and go back to step 1
+    document.getElementById("luxForm").reset();
+    currentStep = 1;
+    step2.classList.remove("active");
+    step1.classList.add("active");
+    dot2.classList.remove("active");
+    dot1.classList.add("active");
   });
+
+  // Close on outside click
+  luxPopup.onclick = (e) => {
+    if (e.target === luxPopup) {
+      luxPopup.style.display = "none";
+      localStorage.setItem("luxPopupSeen", "true");
+    }
+  };
 </script>
 <!-- ================= END POPUP ================= -->
 <!-- Mirrored from azim.hostlin.com/Kitchnox/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2025 15:38:49 GMT -->
