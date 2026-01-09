@@ -560,6 +560,19 @@
 
     <!-- jequery plugins -->
     <script src="assets/js/jquery.js"></script>
+    
+    <script>
+    jQuery(document).ready(function($) {
+      var originalNiceSelect = $.fn.niceSelect;
+      $.fn.niceSelect = function(method) {
+        var filtered = this.filter(function() {
+          return !$(this).closest('.lux-form').length;
+        });
+        return originalNiceSelect.call(filtered, method);
+      };
+    });
+    </script>
+    
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/owl.js"></script>
     <script src="assets/js/wow.js"></script>
@@ -595,6 +608,7 @@
     display: flex;
     animation: scaleIn 0.4s ease;
     box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+    position: relative;
   }
 
   @keyframes scaleIn {
@@ -604,18 +618,127 @@
 
   .lux-close {
     position: absolute;
-    right: 20px;
+    right: 15px;
     top: 15px;
-    font-size: 22px;
+    width: 35px;
+    height: 35px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
     cursor: pointer;
-    color: #aaa;
+    color: #666;
     z-index: 10;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-weight: 300;
+    line-height: 1;
+    font-family: Arial, sans-serif;
+  }
+
+  .lux-close:hover {
+    background: #1f3d3b;
+    color: #fff;
+    border-color: #1f3d3b;
+    transform: rotate(90deg);
+    box-shadow: 0 4px 12px rgba(31, 61, 59, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    .lux-close {
+      width: 40px;
+      height: 40px;
+      font-size: 28px;
+      right: 10px;
+      top: 10px;
+    }
   }
 
   .lux-left {
     width: 45%;
     background: url("assets/images/project/project-5.jpg") center/cover no-repeat;
     position: relative;
+  }
+
+  @media (max-width: 768px) {
+    .lux-left {
+      display: none;
+    }
+
+    .lux-box {
+      margin: 5% 10px;
+      max-width: 100%;
+    }
+
+    .lux-right {
+      width: 100% !important;
+      padding: 30px 25px;
+    }
+
+    .lux-right h2 {
+      font-size: 24px;
+    }
+
+    .lux-right span {
+      font-size: 13px;
+    }
+
+    .form-navigation {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-continue,
+    .btn-back {
+      flex: 1;
+    }
+
+    .lux-form {
+      max-width: 100%;
+    }
+
+    .month-year-picker {
+      left: 0 !important;
+      right: 0 !important;
+      transform: none !important;
+      width: calc(100% - 20px) !important;
+      max-width: 100% !important;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .month-year-picker.active {
+      transform: none !important;
+    }
+
+    .dropdown-options {
+      width: 100%;
+    }
+
+    .lux-form input,
+    .lux-form select {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box;
+    }
+
+    .form-group {
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    .custom-dropdown {
+      width: 100%;
+    }
+
+    .custom-dropdown input {
+      width: 100% !important;
+      box-sizing: border-box;
+    }
   }
 
   .lux-overlay {
@@ -667,6 +790,27 @@
     margin-top: 25px;
   }
 
+  .form-group {
+    margin-bottom: 25px;
+    clear: both;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 8px;
+    text-align: left;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .form-label .required {
+    color: #e74c3c;
+  }
+
   .form-step {
     display: none;
   }
@@ -705,75 +849,258 @@
   .lux-form input,
   .lux-form select {
     width: 100%;
-    padding: 12px;
-    margin-bottom: 12px;
-    border: none;
-    border-bottom: 1px solid #ddd;
+    padding: 12px 12px 12px 0;
+    margin-bottom: 0;
+    border: none !important;
+    border-bottom: 1px solid #ddd !important;
     font-size: 14px;
     outline: none;
+    transition: border-color 0.3s;
+    background: transparent !important;
+    font-family: 'Jost', sans-serif;
+    box-shadow: none !important;
+    display: block;
   }
 
-  .lux-form button {
-    width: 100%;
-    margin-top: 15px;
-    padding: 14px;
+  .lux-form select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: transparent !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23333' d='M6 9L1 4h10z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat;
+    background-position: right 0 center;
+    padding-right: 25px;
+    color: #333;
+    border-radius: 0 !important;
+  }
+
+  .lux-form select option {
+    padding: 10px;
+    background: #fff;
+    color: #333;
+  }
+
+  .lux-form select:invalid {
+    color: #999;
+  }
+
+  .lux-form select option:first-child {
+    color: #999;
+  }
+
+  .lux-form .nice-select {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    left: -9999px !important;
+  }
+
+  .lux-form .nice-select::after {
+    display: none !important;
+  }
+
+  .lux-form .nice-select::before {
+    display: none !important;
+  }
+
+  .lux-form select.ignore {
+    display: block !important;
+  }
+
+  .lux-form .list {
+    display: none !important;
+  }
+
+  .lux-form .current {
+    display: none !important;
+  }
+
+  .lux-form select {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+  }
+
+  .lux-form .form-group::after,
+  .lux-form .form-group::before {
+    display: none !important;
+  }
+
+  .custom-dropdown {
+    position: relative;
+  }
+
+  .custom-dropdown input {
+    cursor: pointer;
+  }
+
+  .dropdown-arrow {
+    position: absolute;
+    right: 0;
+    top: 12px;
+    font-size: 10px;
+    color: #333;
+    pointer-events: none;
+  }
+
+  .dropdown-options {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    margin-top: 5px;
+  }
+
+  .dropdown-options.active {
+    display: block;
+  }
+
+  .dropdown-option {
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .dropdown-option:hover {
+    background: #f5f5f5;
+  }
+
+  .month-year-picker {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    display: none;
+    margin-bottom: 5px;
+    width: 280px;
+    padding: 15px;
+  }
+
+  .month-year-picker.active {
+    display: block;
+  }
+
+  .picker-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .picker-nav {
+    background: #f5f5f5;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    transition: background 0.2s;
+  }
+
+  .picker-nav:hover {
+    background: #e0e0e0;
+  }
+
+  .picker-year {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .months-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .month-option {
+    padding: 10px;
+    text-align: center;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    background: #f8f8f8;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
+
+  .month-option:hover {
     background: #1f3d3b;
     color: #fff;
-    border: none;
-    border-radius: 30px;
-    font-size: 15px;
-    cursor: pointer;
-    transition: 0.3s;
   }
 
-  .lux-form button:hover {
-    background: #152c2a;
+  .month-option.selected {
+    background: #1f3d3b;
+    color: #fff;
+    border-color: #1f3d3b;
   }
 
   .form-navigation {
+    margin-top: 30px;
     display: flex;
     gap: 10px;
-    margin-top: 15px;
   }
 
+  .btn-continue,
   .btn-back {
-    background: #6c757d;
+    padding: 14px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-family: 'Jost', sans-serif;
     flex: 1;
   }
 
-  .btn-back:hover {
-    background: #5a6268;
-  }
-
   .btn-continue {
-    flex: 2;
+    background: #ccc;
+    color: #888;
+    cursor: not-allowed;
+    pointer-events: none;
   }
 
-  @media(max-width: 768px) {
-    .lux-box {
-      flex-direction: column;
-      margin: 10% 15px;
-      max-width: 95%;
-    }
-    
-    .lux-left {
-      display: none;
-    }
-    
-    .lux-right {
-      width: 100%;
-      padding: 30px 25px;
-    }
-    
-    .lux-right h2 {
-      font-size: 24px;
-    }
-    
-    .lux-close {
-      right: 15px;
-      top: 12px;
-      color: #333;
-    }
+  .btn-continue.enabled {
+    background: #1f3d3b;
+    color: #fff;
+    cursor: pointer;
+    pointer-events: auto;
+  }
+
+  .btn-continue.enabled:hover {
+    background: #152d2b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(31, 61, 59, 0.3);
+  }
+
+  .btn-back {
+    background: #f5f5f5;
+    color: #333;
+  }
+
+  .btn-back:hover {
+    background: #e0e0e0;
   }
 </style>
 
@@ -809,18 +1136,59 @@
       <form id="luxForm" class="lux-form">
         <!-- STEP 1: Property Details -->
         <div class="form-step active" id="step1">
-          <select id="propertyType" required>
-            <option value="">Property Type *</option>
-            <option>1 BHK</option>
-            <option>2 BHK</option>
-            <option>3 BHK</option>
-            <option>4+ BHK</option>
-            <option>Villa</option>
-          </select>
+          <div class="form-group">
+            <label class="form-label">What type of property do you have? <span class="required">*</span></label>
+            <div class="custom-dropdown">
+              <input type="text" id="propertyType" placeholder="Select Property Type" required readonly>
+              <div class="dropdown-arrow">▼</div>
+              <div class="dropdown-options" id="propertyOptions">  
+                <div class="dropdown-option" data-value="Flat">Flat</div>
+                <div class="dropdown-option" data-value="House">House</div>
+                <div class="dropdown-option" data-value="Commercial Space">Commercial Space</div>
+              </div>
+            </div>
+          </div>
 
-          <input type="text" id="location" placeholder="Location *" required>
-          <input type="text" id="budget" placeholder="Estimated Budget">
-          <input type="text" id="timeline" placeholder="When do you want to start?">
+          <div class="form-group">
+            <label class="form-label">What's your budget preference? <span class="required">*</span></label>
+            <div class="custom-dropdown">
+              <input type="text" id="budget" placeholder="Select Budget" required readonly>
+              <div class="dropdown-arrow">▼</div>
+              <div class="dropdown-options" id="budgetOptions">
+                <div class="dropdown-option" data-value="Standard">Standard</div>
+                <div class="dropdown-option" data-value="Premium">Premium</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Expected Delivery <span class="required">*</span></label>
+            <div class="custom-dropdown">
+              <input type="text" id="expectedDelivery" placeholder="Select Month & Year" required readonly>
+              <div class="dropdown-arrow">▼</div>
+              <div class="month-year-picker" id="monthYearPicker">
+                <div class="picker-header">
+                  <button type="button" class="picker-nav" id="prevYear">‹</button>
+                  <span class="picker-year" id="pickerYear">2026</span>
+                  <button type="button" class="picker-nav" id="nextYear">›</button>
+                </div>
+                <div class="months-grid" id="monthsGrid">
+                  <div class="month-option" data-month="0">Jan</div>
+                  <div class="month-option" data-month="1">Feb</div>
+                  <div class="month-option" data-month="2">Mar</div>
+                  <div class="month-option" data-month="3">Apr</div>
+                  <div class="month-option" data-month="4">May</div>
+                  <div class="month-option" data-month="5">Jun</div>
+                  <div class="month-option" data-month="6">Jul</div>
+                  <div class="month-option" data-month="7">Aug</div>
+                  <div class="month-option" data-month="8">Sep</div>
+                  <div class="month-option" data-month="9">Oct</div>
+                  <div class="month-option" data-month="10">Nov</div>
+                  <div class="month-option" data-month="11">Dec</div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div class="form-navigation">
             <button type="button" class="btn-continue" id="continueBtn">Continue</button>
@@ -829,9 +1197,20 @@
 
         <!-- STEP 2: Contact Details -->
         <div class="form-step" id="step2">
-          <input type="text" id="name" placeholder="Your Name *" required>
-          <input type="tel" id="phone" placeholder="Phone Number *" required pattern="[0-9]{10}">
-          <input type="email" id="email" placeholder="Email Address *" required>
+          <div class="form-group">
+            <label class="form-label">Your Name <span class="required">*</span></label>
+            <input type="text" id="name" placeholder="Enter your full name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Phone Number <span class="required">*</span></label>
+            <input type="tel" id="phone" placeholder="Enter 10-digit mobile number" required pattern="[0-9]{10}">
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email (optional)">
+          </div>
 
           <div class="form-navigation">
             <button type="button" class="btn-back" id="backBtn">Back</button>
@@ -855,29 +1234,208 @@
 
   let currentStep = 1;
 
+  (function() {
+    const popupSelect = document.querySelector('#propertyType');
+    if (popupSelect) {
+      popupSelect.setAttribute('data-no-nice-select', 'true');
+    }
+    
+    const removeNiceSelect = setInterval(() => {
+      const niceSelectInPopup = document.querySelector('.lux-form .nice-select');
+      if (niceSelectInPopup) {
+        const originalSelect = niceSelectInPopup.previousElementSibling || niceSelectInPopup.nextElementSibling;
+        if (originalSelect && originalSelect.tagName === 'SELECT') {
+          originalSelect.style.display = 'block';
+          niceSelectInPopup.remove();
+        }
+      }
+    }, 100);
+    
+    setTimeout(() => clearInterval(removeNiceSelect), 3000);
+  })();
+
   // Show popup on load
   window.addEventListener("load", () => {
     if (!localStorage.getItem("luxPopupSeen")) {
       setTimeout(() => {
         luxPopup.style.display = "block";
+        
+        setTimeout(() => {
+          const niceSelect = document.querySelector('.lux-form .nice-select');
+          if (niceSelect) {
+            niceSelect.remove();
+          }
+          const select = document.querySelector('#propertyType');
+          if (select) {
+            select.style.display = 'block';
+          }
+        }, 100);
       }, 1200);
     }
   });
 
-  // Close popup
-  luxClose.onclick = () => {
-    luxPopup.style.display = "none";
-    localStorage.setItem("luxPopupSeen", "true");
-  };
+  const propertyTypeInput = document.getElementById("propertyType");
+  const propertyDropdownOptions = document.getElementById("propertyOptions");
+  const budgetInput = document.getElementById("budget");
+  const budgetDropdownOptions = document.getElementById("budgetOptions");
+  const expectedDeliveryInput = document.getElementById("expectedDelivery");
+  const monthYearPicker = document.getElementById("monthYearPicker");
+  const pickerYearDisplay = document.getElementById("pickerYear");
+  const prevYearBtn = document.getElementById("prevYear");
+  const nextYearBtn = document.getElementById("nextYear");
+  const monthsGrid = document.getElementById("monthsGrid");
+
+  function validateStep1() {
+    const propertyType = document.getElementById("propertyType").value;
+    const budget = document.getElementById("budget").value;
+    const expectedDelivery = document.getElementById("expectedDelivery").value;
+
+    if (propertyType && budget && expectedDelivery) {
+      continueBtn.classList.add("enabled");
+    } else {
+      continueBtn.classList.remove("enabled");
+    }
+  }
+
+  function validateStep2() {
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const submitBtn = document.querySelector('#step2 .btn-continue[type="submit"]');
+
+    if (name.trim() && phone.match(/^[0-9]{10}$/)) {
+      submitBtn.classList.add("enabled");
+    } else {
+      submitBtn.classList.remove("enabled");
+    }
+  }
+
+  propertyTypeInput.addEventListener("click", (e) => {
+    e.stopPropagation();
+    propertyDropdownOptions.classList.toggle("active");
+    budgetDropdownOptions.classList.remove("active");
+    monthYearPicker.classList.remove("active");
+  });
+
+  budgetInput.addEventListener("click", (e) => {
+    e.stopPropagation();
+    budgetDropdownOptions.classList.toggle("active");
+    propertyDropdownOptions.classList.remove("active");
+    monthYearPicker.classList.remove("active");
+  });
+
+  const currentDate = new Date();
+  const currentYear = currentDate.getFullYear();
+  const currentMonth = currentDate.getMonth();
+  
+  let selectedYear = currentYear;
+  let selectedMonth = null;
+
+  pickerYearDisplay.textContent = selectedYear;
+
+  function updateMonthAvailability() {
+    const monthOptions = document.querySelectorAll(".month-option");
+    monthOptions.forEach(option => {
+      const monthIndex = parseInt(option.getAttribute("data-month"));
+      
+      if (selectedYear < currentYear || (selectedYear === currentYear && monthIndex < currentMonth)) {
+        option.style.opacity = "0.3";
+        option.style.cursor = "not-allowed";
+        option.style.pointerEvents = "none";
+      } else {
+        option.style.opacity = "1";
+        option.style.cursor = "pointer";
+        option.style.pointerEvents = "auto";
+      }
+    });
+
+    if (selectedYear <= currentYear) {
+      prevYearBtn.style.opacity = "0.3";
+      prevYearBtn.style.cursor = "not-allowed";
+      prevYearBtn.disabled = true;
+    } else {
+      prevYearBtn.style.opacity = "1";
+      prevYearBtn.style.cursor = "pointer";
+      prevYearBtn.disabled = false;
+    }
+  }
+
+  expectedDeliveryInput.addEventListener("click", (e) => {
+    e.stopPropagation();
+    monthYearPicker.classList.toggle("active");
+    propertyDropdownOptions.classList.remove("active");
+    budgetDropdownOptions.classList.remove("active");
+    updateMonthAvailability();
+  });
+
+  prevYearBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (selectedYear > currentYear) {
+      selectedYear--;
+      pickerYearDisplay.textContent = selectedYear;
+      updateMonthAvailability();
+    }
+  });
+
+  nextYearBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    selectedYear++;
+    pickerYearDisplay.textContent = selectedYear;
+    updateMonthAvailability();
+  });
+
+  monthsGrid.addEventListener("click", (e) => {
+    if (e.target.classList.contains("month-option")) {
+      e.stopPropagation();
+      
+      const monthIndex = parseInt(e.target.getAttribute("data-month"));
+      
+      if (selectedYear < currentYear || (selectedYear === currentYear && monthIndex < currentMonth)) {
+        return;
+      }
+      
+      document.querySelectorAll(".month-option").forEach(opt => opt.classList.remove("selected"));
+      
+      e.target.classList.add("selected");
+      
+      selectedMonth = monthIndex;
+      const monthNames = ["January", "February", "March", "April", "May", "June", 
+                         "July", "August", "September", "October", "November", "December"];
+      
+      expectedDeliveryInput.value = `${monthNames[selectedMonth]} ${selectedYear}`;
+      
+      validateStep1();
+      
+      setTimeout(() => {
+        monthYearPicker.classList.remove("active");
+      }, 200);
+    }
+  });
+
+  document.querySelectorAll(".dropdown-option").forEach(option => {
+    option.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const parent = option.closest(".custom-dropdown");
+      const input = parent.querySelector("input");
+      input.value = option.getAttribute("data-value");
+      document.querySelectorAll(".dropdown-options").forEach(dd => dd.classList.remove("active"));
+      validateStep1();
+    });
+  });
+
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".dropdown-options").forEach(dd => dd.classList.remove("active"));
+    monthYearPicker.classList.remove("active");
+  });
 
   // Continue to step 2
   continueBtn.onclick = () => {
     // Validate step 1 required fields
     const propertyType = document.getElementById("propertyType").value;
-    const location = document.getElementById("location").value;
+    const budget = document.getElementById("budget").value;
+    const expectedDelivery = document.getElementById("expectedDelivery").value;
 
-    if (!propertyType || !location) {
-      alert("Please fill in all required fields (Property Type and Location)");
+    if (!propertyType || !budget || !expectedDelivery) {
+      alert("Please fill in all required fields");
       return;
     }
 
@@ -897,6 +1455,9 @@
     dot1.classList.add("active");
   };
 
+  document.getElementById("name").addEventListener("input", validateStep2);
+  document.getElementById("phone").addEventListener("input", validateStep2);
+
   // Form submission
   document.getElementById("luxForm").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -904,9 +1465,8 @@
     // Get all form data
     const formData = {
       propertyType: document.getElementById("propertyType").value,
-      location: document.getElementById("location").value,
       budget: document.getElementById("budget").value,
-      timeline: document.getElementById("timeline").value,
+      expectedDelivery: document.getElementById("expectedDelivery").value,
       name: document.getElementById("name").value,
       phone: document.getElementById("phone").value,
       email: document.getElementById("email").value
@@ -933,6 +1493,12 @@
       luxPopup.style.display = "none";
       localStorage.setItem("luxPopupSeen", "true");
     }
+  };
+
+  // Close popup
+  luxClose.onclick = () => {
+    luxPopup.style.display = "none";
+    localStorage.setItem("luxPopupSeen", "true");
   };
 </script>
 <!-- ================= END POPUP ================= -->
