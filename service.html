@@ -447,6 +447,9 @@
                 <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
             </svg>
         </div>
+
+        <!-- Include Contact Widget -->
+        <div id="contact-widget-container"></div>
         
     </div>
 
@@ -466,6 +469,15 @@
 
     <!-- main-js -->
     <script src="assets/js/script.js"></script>
+
+    <!-- Load Contact Widget -->
+    <script>
+        fetch('contact-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('contact-widget-container').innerHTML = data;
+            });
+    </script>
     
 </body><!-- End of .page_wrapper -->
 
