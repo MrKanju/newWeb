@@ -34,6 +34,128 @@
 <link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/css/responsive.css" rel="stylesheet">
 
+<!-- Contact Form Styling -->
+<style>
+    /* Fix for phone input and all form inputs to have visible borders */
+    .contact-style-three .form-inner .form-group input[type='text'],
+    .contact-style-three .form-inner .form-group input[type='email'],
+    .contact-style-three .form-inner .form-group input[type='tel'],
+    .contact-style-three .form-inner .form-group textarea {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 55px;
+        background: #fff;
+        border: 1px solid #e2e4eb !important;
+        border-radius: 5px;
+        font-size: 18px;
+        color: #444444;
+        padding: 10px 35px;
+        transition: all 500ms ease;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    }
+
+    .contact-style-three .form-inner .form-group textarea {
+        height: 190px;
+        resize: none;
+        padding-top: 15px;
+    }
+
+    /* Focus state for inputs */
+    .contact-style-three .form-inner .form-group input:focus,
+    .contact-style-three .form-inner .form-group textarea:focus {
+        border-color: #d29251 !important;
+        box-shadow: 0 0 0 3px rgba(210, 146, 81, 0.1) !important;
+    }
+
+    /* Progress dots styling - Fixed */
+    .progress-indicator {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 10px !important;
+        margin-bottom: 30px !important;
+    }
+
+    .progress-dot {
+        width: 10px !important;
+        height: 10px !important;
+        border-radius: 50% !important;
+        background: #ddd !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .progress-dot.active {
+        background: #d29251 !important;
+        width: 30px !important;
+        border-radius: 5px !important;
+    }
+
+    /* Continue button - disabled state */
+    #contact-continueBtn {
+        width: 100%;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+    }
+
+    /* Continue button - enabled/active state with theme color */
+    #contact-continueBtn.enabled {
+        background: #d29251 !important;
+        color: #fff !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+    }
+
+    #contact-continueBtn.enabled:hover {
+        background: #c5894a !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(210, 146, 81, 0.3) !important;
+    }
+
+    /* Back button - better visibility and styling */
+    #contact-backBtn {
+        background: #f5f5f5 !important;
+        color: #333 !important;
+        border: 1px solid #ddd !important;
+        transition: all 0.3s ease;
+    }
+
+    #contact-backBtn:hover {
+        background: #d29251 !important;
+        color: #fff !important;
+        border-color: #d29251 !important;
+        transform: translateY(-1px);
+        box-shadow: 0 2px 6px rgba(210, 146, 81, 0.3) !important;
+    }
+
+    /* Get Quote button - disabled state */
+    #contact-submitBtn {
+        transition: all 0.3s ease;
+    }
+
+    /* Get Quote button - enabled/active state with theme color */
+    #contact-submitBtn.enabled {
+        background: #d29251 !important;
+        color: #fff !important;
+        cursor: pointer !important;
+        pointer-events: auto !important;
+    }
+
+    #contact-submitBtn.enabled:hover {
+        background: #c5894a !important;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(210, 146, 81, 0.3) !important;
+    }
+
+    /* Ensure buttons have consistent styling */
+    .contact-style-three .form-inner .form-group .theme-btn {
+        font-weight: 700;
+        font-family: var(--jost);
+        text-transform: uppercase;
+        letter-spacing: 0.7px;
+    }
+</style>
+
 </head>
 
 
@@ -180,21 +302,100 @@
                 <div class="row clearfix">
                     <div class="col-lg-7 col-md-12 col-sm-12 form-column">
                         <div class="form-inner">
-                            <form method="post" action="https://azim.hostlin.com/Kitchnox/sendemail.php" id="contact-form">
-                                <div class="form-group">
-                                    <input type="text" name="username" placeholder="Your Name" required>
+                            <!-- Progress Indicator -->
+                            <div class="progress-indicator" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px;">
+                                <div class="progress-dot active" id="contact-dot1" style="width: 10px; height: 10px; border-radius: 50%; background: #ddd; transition: 0.3s;"></div>
+                                <div class="progress-dot" id="contact-dot2" style="width: 10px; height: 10px; border-radius: 50%; background: #ddd; transition: 0.3s;"></div>
+                            </div>
+
+                            <form method="post" id="contact-form" novalidate>
+                                <!-- STEP 1: Property Details -->
+                                <div class="form-step active" id="contact-step1" style="display: block;">
+                                    <div class="form-group">
+                                        <label style="display: block; font-size: 14px; font-weight: 500; color: #333; margin-bottom: 8px;">What type of property do you have? <span style="color: #e74c3c;">*</span></label>
+                                        <div class="custom-dropdown" style="position: relative;">
+                                            <input type="text" id="contact-propertyType" name="propertyType" placeholder="Select Property Type" required readonly style="cursor: pointer; padding-right: 25px;">
+                                            <div class="dropdown-arrow" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #333; pointer-events: none;">▼</div>
+                                            <div class="dropdown-options" id="contact-propertyOptions" style="position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #ddd; border-radius: 4px; max-height: 200px; overflow-y: auto; z-index: 1000; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-top: 5px;">
+                                                <div class="dropdown-option" data-value="Flat" style="padding: 10px 12px; cursor: pointer; transition: background 0.2s;">Flat</div>
+                                                <div class="dropdown-option" data-value="House" style="padding: 10px 12px; cursor: pointer; transition: background 0.2s;">House</div>
+                                                <div class="dropdown-option" data-value="Commercial Space" style="padding: 10px 12px; cursor: pointer; transition: background 0.2s;">Commercial Space</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="display: block; font-size: 14px; font-weight: 500; color: #333; margin-bottom: 8px;">What's your budget preference? <span style="color: #e74c3c;">*</span></label>
+                                        <div class="custom-dropdown" style="position: relative;">
+                                            <input type="text" id="contact-budget" name="budget" placeholder="Select Budget" required readonly style="cursor: pointer; padding-right: 25px;">
+                                            <div class="dropdown-arrow" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #333; pointer-events: none;">▼</div>
+                                            <div class="dropdown-options" id="contact-budgetOptions" style="position: absolute; top: 100%; left: 0; right: 0; background: #fff; border: 1px solid #ddd; border-radius: 4px; max-height: 200px; overflow-y: auto; z-index: 1000; display: none; box-shadow: 0 4px 12px rgba(0,0,0,0.15); margin-top: 5px;">
+                                                <div class="dropdown-option" data-value="Standard" style="padding: 10px 12px; cursor: pointer; transition: background 0.2s;">Standard</div>
+                                                <div class="dropdown-option" data-value="Premium" style="padding: 10px 12px; cursor: pointer; transition: background 0.2s;">Premium</div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="display: block; font-size: 14px; font-weight: 500; color: #333; margin-bottom: 8px;">Expected Delivery <span style="color: #e74c3c;">*</span></label>
+                                        <div class="custom-dropdown" style="position: relative;">
+                                            <input type="text" id="contact-expectedDelivery" name="expectedDelivery" placeholder="Select Month & Year" required readonly style="cursor: pointer; padding-right: 25px;">
+                                            <div class="dropdown-arrow" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); font-size: 10px; color: #333; pointer-events: none;">▼</div>
+                                            <div class="month-year-picker" id="contact-monthYearPicker" style="position: absolute; bottom: 100%; left: 0; background: #fff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 1000; display: none; margin-bottom: 5px; width: 280px; padding: 15px;">
+                                                <div class="picker-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 1px solid #eee;">
+                                                    <button type="button" class="picker-nav" id="contact-prevYear" style="background: #f5f5f5; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 16px; color: #333; transition: background 0.2s;">‹</button>
+                                                    <span class="picker-year" id="contact-pickerYear" style="font-size: 16px; font-weight: 600; color: #333;">2026</span>
+                                                    <button type="button" class="picker-nav" id="contact-nextYear" style="background: #f5f5f5; border: none; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 16px; color: #333; transition: background 0.2s;">›</button>
+                                                </div>
+                                                <div class="months-grid" id="contact-monthsGrid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                                                    <div class="month-option" data-month="0" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Jan</div>
+                                                    <div class="month-option" data-month="1" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Feb</div>
+                                                    <div class="month-option" data-month="2" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Mar</div>
+                                                    <div class="month-option" data-month="3" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Apr</div>
+                                                    <div class="month-option" data-month="4" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">May</div>
+                                                    <div class="month-option" data-month="5" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Jun</div>
+                                                    <div class="month-option" data-month="6" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Jul</div>
+                                                    <div class="month-option" data-month="7" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Aug</div>
+                                                    <div class="month-option" data-month="8" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Sep</div>
+                                                    <div class="month-option" data-month="9" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Oct</div>
+                                                    <div class="month-option" data-month="10" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Nov</div>
+                                                    <div class="month-option" data-month="11" style="padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-size: 13px; background: #f8f8f8; transition: all 0.2s;">Dec</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group message-btn pt_25">
+                                        <button type="button" class="theme-btn" id="contact-continueBtn" style="background: #ccc; color: #888; cursor: not-allowed; pointer-events: none;">Continue</button>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <input type="email" name="email" placeholder="Your Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" name="phone" placeholder="Phone Number" required>
-                                </div>
-                                <div class="form-group">
-                                    <textarea name="message" placeholder="Message"></textarea>
-                                </div>
-                                <div class="form-group message-btn pt_25">
-                                    <button type="submit" class="theme-btn" name="submit-form">discover more</button>
+
+                                <!-- STEP 2: Contact Details -->
+                                <div class="form-step" id="contact-step2" style="display: none;">
+                                    <div class="form-group">
+                                        <label style="display: block; font-size: 14px; font-weight: 500; color: #333; margin-bottom: 8px;">Your Name <span style="color: #e74c3c;">*</span></label>
+                                        <input type="text" id="contact-name" name="username" placeholder="Enter your full name" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="display: block; font-size: 14px; font-weight: 500; color: #333; margin-bottom: 8px;">Phone Number <span style="color: #e74c3c;">*</span></label>
+                                        <input type="tel" id="contact-phone" name="phone" placeholder="Enter 10-digit mobile number" required>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="display: block; font-size: 14px; font-weight: 500; color: #333; margin-bottom: 8px;">Email Address (Optional)</label>
+                                        <input type="text" id="contact-email" name="email" placeholder="Enter your email (optional)">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label style="display: block; font-size: 14px; font-weight: 500; color: #333; margin-bottom: 8px;">Message</label>
+                                        <textarea id="contact-message" name="message" placeholder="Tell us more about your requirements (optional)" style="min-height: 100px;"></textarea>
+                                    </div>
+
+                                    <div class="form-group message-btn pt_25" style="display: flex; gap: 10px;">
+                                        <button type="button" class="theme-btn" id="contact-backBtn" style="background: #f5f5f5; color: #333; flex: 1;">Back</button>
+                                        <button type="submit" class="theme-btn" id="contact-submitBtn" name="submit-form" style="background: #ccc; color: #888; cursor: not-allowed; pointer-events: none; flex: 1;">Get Quote</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -474,6 +675,408 @@
             .then(data => {
                 document.getElementById('contact-widget-container').innerHTML = data;
             });
+    </script>
+
+    <!-- Contact Form Two-Step Functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof jQuery !== 'undefined' && jQuery.validator) {
+                jQuery('#contact-email').rules('remove');
+                jQuery('#contact-message').rules('remove');
+                
+                jQuery('#contact-form').validate({
+                    ignore: "#contact-email, #contact-message",
+                    rules: {
+                        email: false,
+                        message: false
+                    },
+                    errorPlacement: function() {
+                        return false;
+                    },
+                    submitHandler: function(form) {
+                        return false;
+                    }
+                });
+            }
+            
+            const contactStep1 = document.getElementById('contact-step1');
+            const contactStep2 = document.getElementById('contact-step2');
+            const continueBtn = document.getElementById('contact-continueBtn');
+            const backBtn = document.getElementById('contact-backBtn');
+            const dot1 = document.getElementById('contact-dot1');
+            const dot2 = document.getElementById('contact-dot2');
+            
+            // Dropdown elements
+            const propertyTypeInput = document.getElementById('contact-propertyType');
+            const propertyDropdownOptions = document.getElementById('contact-propertyOptions');
+            const budgetInput = document.getElementById('contact-budget');
+            const budgetDropdownOptions = document.getElementById('contact-budgetOptions');
+            const expectedDeliveryInput = document.getElementById('contact-expectedDelivery');
+            const monthYearPicker = document.getElementById('contact-monthYearPicker');
+            const pickerYearDisplay = document.getElementById('contact-pickerYear');
+            const prevYearBtn = document.getElementById('contact-prevYear');
+            const nextYearBtn = document.getElementById('contact-nextYear');
+            const monthsGrid = document.getElementById('contact-monthsGrid');
+            
+            const currentDate = new Date();
+            const currentYear = currentDate.getFullYear();
+            const currentMonth = currentDate.getMonth();
+            let selectedYear = currentYear;
+            let selectedMonth = null;
+            
+            pickerYearDisplay.textContent = selectedYear;
+            
+            function validateStep1() {
+                const propertyType = propertyTypeInput.value;
+                const budget = budgetInput.value;
+                const expectedDelivery = expectedDeliveryInput.value;
+                
+                if (propertyType && budget && expectedDelivery) {
+                    continueBtn.classList.add('enabled');
+                    continueBtn.style.background = '#d29251';
+                    continueBtn.style.color = '#fff';
+                    continueBtn.style.cursor = 'pointer';
+                    continueBtn.style.pointerEvents = 'auto';
+                } else {
+                    continueBtn.classList.remove('enabled');
+                    continueBtn.style.background = '#ccc';
+                    continueBtn.style.color = '#888';
+                    continueBtn.style.cursor = 'not-allowed';
+                    continueBtn.style.pointerEvents = 'none';
+                }
+            }
+            
+            // Validate Step 2
+            function validateStep2() {
+                const name = document.getElementById('contact-name').value;
+                const phone = document.getElementById('contact-phone').value;
+                const submitBtn = document.getElementById('contact-submitBtn');
+                
+                if (name.trim() && phone.match(/^[0-9]{10}$/)) {
+                    submitBtn.classList.add('enabled');
+                    submitBtn.style.background = '#d29251';
+                    submitBtn.style.color = '#fff';
+                    submitBtn.style.cursor = 'pointer';
+                    submitBtn.style.pointerEvents = 'auto';
+                } else {
+                    submitBtn.classList.remove('enabled');
+                    submitBtn.style.background = '#ccc';
+                    submitBtn.style.color = '#888';
+                    submitBtn.style.cursor = 'not-allowed';
+                    submitBtn.style.pointerEvents = 'none';
+                }
+            }
+            
+            // Property Type Dropdown
+            propertyTypeInput.addEventListener('click', function(e) {
+                e.stopPropagation();
+                propertyDropdownOptions.style.display = propertyDropdownOptions.style.display === 'block' ? 'none' : 'block';
+                budgetDropdownOptions.style.display = 'none';
+                monthYearPicker.style.display = 'none';
+            });
+            
+            // Budget Dropdown
+            budgetInput.addEventListener('click', function(e) {
+                e.stopPropagation();
+                budgetDropdownOptions.style.display = budgetDropdownOptions.style.display === 'block' ? 'none' : 'block';
+                propertyDropdownOptions.style.display = 'none';
+                monthYearPicker.style.display = 'none';
+            });
+            
+            // Expected Delivery Dropdown
+            expectedDeliveryInput.addEventListener('click', function(e) {
+                e.stopPropagation();
+                monthYearPicker.style.display = monthYearPicker.style.display === 'block' ? 'none' : 'block';
+                propertyDropdownOptions.style.display = 'none';
+                budgetDropdownOptions.style.display = 'none';
+                updateMonthAvailability();
+            });
+            
+            function updateMonthAvailability() {
+                const monthOptions = monthsGrid.querySelectorAll('.month-option');
+                monthOptions.forEach(option => {
+                    const monthIndex = parseInt(option.getAttribute('data-month'));
+                    
+                    if (selectedYear < currentYear || (selectedYear === currentYear && monthIndex < currentMonth)) {
+                        option.style.opacity = '0.3';
+                        option.style.cursor = 'not-allowed';
+                        option.style.pointerEvents = 'none';
+                    } else {
+                        option.style.opacity = '1';
+                        option.style.cursor = 'pointer';
+                        option.style.pointerEvents = 'auto';
+                    }
+                });
+                
+                if (selectedYear <= currentYear) {
+                    prevYearBtn.style.opacity = '0.3';
+                    prevYearBtn.style.cursor = 'not-allowed';
+                    prevYearBtn.disabled = true;
+                } else {
+                    prevYearBtn.style.opacity = '1';
+                    prevYearBtn.style.cursor = 'pointer';
+                    prevYearBtn.disabled = false;
+                }
+            }
+            
+            prevYearBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                if (selectedYear > currentYear) {
+                    selectedYear--;
+                    pickerYearDisplay.textContent = selectedYear;
+                    updateMonthAvailability();
+                }
+            });
+            
+            nextYearBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                selectedYear++;
+                pickerYearDisplay.textContent = selectedYear;
+                updateMonthAvailability();
+            });
+            
+            monthsGrid.addEventListener('click', function(e) {
+                if (e.target.classList.contains('month-option')) {
+                    e.stopPropagation();
+                    
+                    const monthIndex = parseInt(e.target.getAttribute('data-month'));
+                    
+                    if (selectedYear < currentYear || (selectedYear === currentYear && monthIndex < currentMonth)) {
+                        return;
+                    }
+                    
+                    monthsGrid.querySelectorAll('.month-option').forEach(opt => opt.classList.remove('selected'));
+                    e.target.classList.add('selected');
+                    
+                    selectedMonth = monthIndex;
+                    const monthNames = ["January", "February", "March", "April", "May", "June", 
+                                       "July", "August", "September", "October", "November", "December"];
+                    
+                    expectedDeliveryInput.value = monthNames[selectedMonth] + ' ' + selectedYear;
+                    validateStep1();
+                    
+                    setTimeout(function() {
+                        monthYearPicker.style.display = 'none';
+                    }, 200);
+                }
+            });
+            
+            document.querySelectorAll('#contact-propertyOptions .dropdown-option').forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    propertyTypeInput.value = this.getAttribute('data-value');
+                    propertyDropdownOptions.style.display = 'none';
+                    validateStep1();
+                });
+                
+                option.addEventListener('mouseover', function() {
+                    this.style.background = '#f5f5f5';
+                });
+                
+                option.addEventListener('mouseout', function() {
+                    this.style.background = '#fff';
+                });
+            });
+            
+            document.querySelectorAll('#contact-budgetOptions .dropdown-option').forEach(option => {
+                option.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    budgetInput.value = this.getAttribute('data-value');
+                    budgetDropdownOptions.style.display = 'none';
+                    validateStep1();
+                });
+                
+                option.addEventListener('mouseover', function() {
+                    this.style.background = '#f5f5f5';
+                });
+                
+                option.addEventListener('mouseout', function() {
+                    this.style.background = '#fff';
+                });
+            });
+            
+            monthsGrid.querySelectorAll('.month-option').forEach(option => {
+                option.addEventListener('mouseover', function() {
+                    if (this.style.pointerEvents !== 'none') {
+                        this.style.background = '#1f3d3b';
+                        this.style.color = '#fff';
+                    }
+                });
+                
+                option.addEventListener('mouseout', function() {
+                    if (!this.classList.contains('selected')) {
+                        this.style.background = '#f8f8f8';
+                        this.style.color = '#333';
+                    }
+                });
+            });
+            
+            document.addEventListener('click', function() {
+                propertyDropdownOptions.style.display = 'none';
+                budgetDropdownOptions.style.display = 'none';
+                monthYearPicker.style.display = 'none';
+            });
+            
+            continueBtn.addEventListener('click', function() {
+                const propertyType = propertyTypeInput.value;
+                const budget = budgetInput.value;
+                const expectedDelivery = expectedDeliveryInput.value;
+                
+                if (!propertyType || !budget || !expectedDelivery) {
+                    alert('Please fill in all required fields');
+                    return;
+                }
+                
+                contactStep1.style.display = 'none';
+                contactStep2.style.display = 'block';
+                
+                dot1.classList.remove('active');
+                dot1.style.background = '#ddd';
+                dot1.style.width = '10px';
+                dot1.style.borderRadius = '50%';
+                
+                dot2.classList.add('active');
+                dot2.style.background = '#d29251';
+                dot2.style.width = '30px';
+                dot2.style.borderRadius = '5px';
+            });
+            
+            // Back to step 1
+            backBtn.addEventListener('click', function() {
+                contactStep2.style.display = 'none';
+                contactStep1.style.display = 'block';
+                
+                // Update progress dots - Step 1 active
+                dot2.classList.remove('active');
+                dot2.style.background = '#ddd';
+                dot2.style.width = '10px';
+                dot2.style.borderRadius = '50%';
+                
+                dot1.classList.add('active');
+                dot1.style.background = '#d29251';
+                dot1.style.width = '30px';
+                dot1.style.borderRadius = '5px';
+            });
+            
+            // Validate step 2 inputs
+            document.getElementById('contact-name').addEventListener('input', validateStep2);
+            document.getElementById('contact-phone').addEventListener('input', validateStep2);
+            
+            // Form submission
+            document.getElementById('contact-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                // Manually validate only required fields
+                const name = document.getElementById('contact-name').value;
+                const phone = document.getElementById('contact-phone').value;
+                
+                if (!name.trim()) {
+                    alert('Please enter your name');
+                    return false;
+                }
+                
+                if (!phone.match(/^[0-9]{10}$/)) {
+                    alert('Please enter a valid 10-digit phone number');
+                    return false;
+                }
+                
+                const expectedDeliveryValue = expectedDeliveryInput.value;
+                const deliveryParts = expectedDeliveryValue.split(' ');
+                const deliveryMonth = deliveryParts[0] || '';
+                const deliveryYear = deliveryParts[1] || '';
+                
+                const formData = {
+                    propertyType: propertyTypeInput.value,
+                    budget: budgetInput.value,
+                    deliveryMonth: deliveryMonth,
+                    deliveryYear: deliveryYear,
+                    name: name,
+                    phone: phone,
+                    email: document.getElementById('contact-email').value || '',
+                    message: document.getElementById('contact-message').value || ''
+                };
+                
+                const submitBtn = document.getElementById('contact-submitBtn');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Submitting...';
+                submitBtn.disabled = true;
+                
+                fetch('https://us-central1-vismaya-5d8da.cloudfunctions.net/bookConsultation', {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        return response.text().then(text => {
+                            throw new Error('Server returned ' + response.status + ': ' + text);
+                        });
+                    }
+                    
+                    return response.text().then(text => {
+                        try {
+                            return JSON.parse(text);
+                        } catch (e) {
+                            return { message: text };
+                        }
+                    });
+                })
+                .then(data => {
+                    alert('Thank you! Our team will contact you shortly.');
+                    
+                    // Reset form
+                    document.getElementById('contact-form').reset();
+                    contactStep2.style.display = 'none';
+                    contactStep1.style.display = 'block';
+                    dot2.classList.remove('active');
+                    dot2.style.background = '#ddd';
+                    dot2.style.width = '10px';
+                    dot2.style.borderRadius = '50%';
+                    dot1.classList.add('active');
+                    dot1.style.background = '#d29251';
+                    dot1.style.width = '30px';
+                    dot1.style.borderRadius = '5px';
+                    
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                    
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    
+                    const phoneNumber = formData.phone;
+                    const message = 'Hi, I would like to book a consultation.\n\nName: ' + formData.name + 
+                                  '\nProperty Type: ' + formData.propertyType + 
+                                  '\nBudget: ' + formData.budget + 
+                                  '\nExpected Delivery: ' + deliveryMonth + ' ' + deliveryYear + 
+                                  '\nPhone: ' + phoneNumber + 
+                                  '\nEmail: ' + formData.email +
+                                  (formData.message ? '\nMessage: ' + formData.message : '');
+                    const whatsappLink = 'https://wa.me/918281407838?text=' + encodeURIComponent(message);
+                    
+                    const userChoice = confirm(
+                        "We're experiencing technical difficulties with our booking system.\n\n" +
+                        "Would you like to send your request via WhatsApp instead?\n\n" +
+                        "Click OK to open WhatsApp, or Cancel to call us directly."
+                    );
+                    
+                    if (userChoice) {
+                        window.open(whatsappLink, '_blank');
+                    } else {
+                        alert("Please call us at:\n+91 8281407838\nor\n+91 8281934838\n\nWe'll be happy to assist you!");
+                    }
+                });
+                
+                return false;
+            });
+        });
     </script>
 
 </body><!-- End of .page_wrapper -->
