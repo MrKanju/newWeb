@@ -34,6 +34,9 @@
 <link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/css/responsive.css" rel="stylesheet">
 
+<!-- International Phone Input -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/css/intlTelInput.css">
+
 </head>
 
 
@@ -587,6 +590,9 @@
     <!-- main-js -->
     <script src="assets/js/script.js"></script>
 
+    <!-- International Phone Input JS -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
+
     <!-- Load Contact Widget -->
     <script>
         fetch('contact-widget.html')
@@ -1111,6 +1117,107 @@
   .btn-back:hover {
     background: #e0e0e0;
   }
+
+  /* International Phone Input Styling */
+  .lux-form .iti {
+    width: 100%;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lux-form .iti__flag-container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+
+  .lux-form .iti__selected-flag {
+    padding: 0 8px 0 0;
+    background: transparent !important;
+    border: none !important;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    outline: none !important;
+  }
+
+  .lux-form .iti__selected-flag:hover,
+  .lux-form .iti__selected-flag:focus {
+    background: transparent !important;
+    outline: none !important;
+  }
+
+  .lux-form .iti__arrow {
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 4px solid #666;
+    margin-left: 4px;
+  }
+
+  .lux-form .iti__country-list {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    margin-top: 2px;
+    max-height: 200px;
+    font-family: 'Jost', sans-serif;
+    background: white;
+    z-index: 99999 !important;
+    position: absolute !important;
+  }
+
+  .lux-form .iti__country {
+    padding: 8px 10px;
+  }
+
+  .lux-form .iti__country:hover {
+    background: #f5f5f5;
+  }
+
+  .lux-form .iti__country.iti__highlight {
+    background: #1f3d3b;
+  }
+
+  .lux-form .iti__dial-code {
+    color: #666;
+  }
+
+  .lux-form input[type="tel"] {
+    padding-left: 56px !important;
+  }
+
+  .lux-form .iti__selected-dial-code {
+    font-family: 'Jost', sans-serif;
+    font-size: 14px;
+    color: #333;
+  }
+
+  /* Make sure form doesn't hide dropdown */
+  .lux-form .form-step {
+    position: relative;
+    z-index: 1;
+  }
+
+  .lux-form .form-group {
+    position: relative;
+    z-index: auto;
+  }
+
+  @media (max-width: 768px) {
+    .lux-form .iti__country-list {
+      left: 0 !important;
+      right: 0 !important;
+      width: calc(100% - 20px) !important;
+      margin-left: 10px;
+      margin-right: 10px;
+      z-index: 99999 !important;
+    }
+  }
 </style>
 
 <div id="luxPopup" class="lux-modal">
@@ -1213,7 +1320,8 @@
 
           <div class="form-group">
             <label class="form-label">Phone Number <span class="required">*</span></label>
-            <input type="tel" id="phone" placeholder="Enter 10-digit mobile number" required pattern="[0-9]{10}">
+            <input type="tel" id="phone" placeholder="Enter your phone number" required>
+            <small id="phoneError" style="display: none; color: #e74c3c; font-size: 12px; margin-top: 5px;"></small>
           </div>
 
           <div class="form-group">
@@ -1242,6 +1350,8 @@
   const dot2 = document.getElementById("dot2");
 
   let currentStep = 1;
+  let iti; // International Telephone Input instance
+  let utilsScriptLoaded = false; // Track if utils script is loaded
 
   (function() {
     const popupSelect = document.querySelector('#propertyType');
@@ -1268,6 +1378,40 @@
     if (!localStorage.getItem("luxPopupSeen")) {
       setTimeout(() => {
         luxPopup.style.display = "block";
+        
+        // Initialize intl-tel-input when popup opens
+        const phoneInput = document.querySelector("#phone");
+        if (phoneInput && typeof window.intlTelInput !== 'undefined') {
+          iti = window.intlTelInput(phoneInput, {
+            initialCountry: "in",
+            preferredCountries: ["in", "us", "gb", "ae"],
+            separateDialCode: true,
+            strictMode: true,
+            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js"
+          });
+          
+          // Better check: Wait for utils to actually be ready
+          const checkUtilsLoaded = setInterval(() => {
+            if (window.intlTelInputUtils) {
+              utilsScriptLoaded = true;
+              clearInterval(checkUtilsLoaded);
+              console.log('Utils script loaded successfully');
+            }
+          }, 100);
+          
+          // Timeout after 5 seconds
+          setTimeout(() => {
+            if (!utilsScriptLoaded) {
+              console.warn('Utils script failed to load after 5 seconds');
+              clearInterval(checkUtilsLoaded);
+            }
+          }, 5000);
+          
+          // Add real-time validation on input
+          phoneInput.addEventListener('blur', validateStep2);
+          phoneInput.addEventListener('keyup', validateStep2);
+          phoneInput.addEventListener('countrychange', validateStep2);
+        }
         
         setTimeout(() => {
           const niceSelect = document.querySelector('.lux-form .nice-select');
@@ -1308,10 +1452,89 @@
 
   function validateStep2() {
     const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
+    const phoneInput = document.getElementById("phone");
+    const phoneError = document.getElementById("phoneError");
+    const emailInput = document.getElementById("email");
     const submitBtn = document.querySelector('#step2 .btn-continue[type="submit"]');
 
-    if (name.trim() && phone.match(/^[0-9]{10}$/)) {
+    // Check if utils script is loaded and use proper validation
+    let isPhoneValid = false;
+    let errorMessage = '';
+    
+    if (iti && typeof iti.isValidNumber === 'function' && utilsScriptLoaded) {
+      isPhoneValid = iti.isValidNumber();
+      
+      // Debug: Log what's being validated
+      console.log('Phone validation:', {
+        fullNumber: iti.getNumber(),
+        nationalNumber: iti.getNumber(window.intlTelInputUtils.numberFormat.NATIONAL),
+        isValid: isPhoneValid,
+        country: iti.getSelectedCountryData()
+      });
+      
+      // Get specific error code if invalid
+      if (!isPhoneValid && phoneInput.value) {
+        const errorCode = iti.getValidationError();
+        const countryData = iti.getSelectedCountryData();
+        const countryName = countryData.name || 'selected country';
+        
+        console.log('Validation error code:', errorCode);
+        
+        switch(errorCode) {
+          case 1:
+            errorMessage = `Invalid country code`;
+            break;
+          case 2:
+            errorMessage = `Phone number is too short for ${countryName}`;
+            break;
+          case 3:
+            errorMessage = `Phone number is too long for ${countryName}`;
+            break;
+          case 4:
+            errorMessage = `Invalid phone number for ${countryName}`;
+            break;
+          default:
+            errorMessage = `Please enter a valid phone number for ${countryName}`;
+        }
+      }
+    } else {
+      // Fallback: basic length check (at least 8 digits for most countries)
+      const phoneValue = phoneInput.value.replace(/\D/g, ''); // Remove non-digits
+      isPhoneValid = phoneValue.length >= 8;
+      if (!isPhoneValid && phoneInput.value) {
+        errorMessage = 'Phone number must be at least 8 digits';
+      }
+      console.log('Using fallback validation - utils not loaded yet');
+    }
+    
+    // Visual feedback for invalid phone
+    if (phoneInput.value && !isPhoneValid) {
+      phoneInput.style.borderBottomColor = '#e74c3c';
+      phoneError.style.display = 'block';
+      phoneError.textContent = errorMessage;
+    } else {
+      phoneInput.style.borderBottomColor = '#ddd';
+      phoneError.style.display = 'none';
+    }
+
+    // Email validation (optional field but must be valid if provided)
+    let isEmailValid = true;
+    const emailValue = emailInput.value.trim();
+    if (emailValue) {
+      // Basic email regex pattern
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      isEmailValid = emailRegex.test(emailValue);
+      
+      if (!isEmailValid) {
+        emailInput.style.borderBottomColor = '#e74c3c';
+      } else {
+        emailInput.style.borderBottomColor = '#ddd';
+      }
+    } else {
+      emailInput.style.borderBottomColor = '#ddd';
+    }
+    
+    if (name.trim() && isPhoneValid && isEmailValid) {
       submitBtn.classList.add("enabled");
     } else {
       submitBtn.classList.remove("enabled");
@@ -1471,11 +1694,20 @@
   document.getElementById("luxForm").addEventListener("submit", (e) => {
     e.preventDefault();
     
+    // Validate phone number before submission
+    if (!iti || !iti.isValidNumber()) {
+      alert("Please enter a valid phone number for the selected country");
+      return;
+    }
+    
     // Get expected delivery and split into month and year
     const expectedDeliveryValue = document.getElementById("expectedDelivery").value;
     const deliveryParts = expectedDeliveryValue.split(' ');
     const deliveryMonth = deliveryParts[0] || '';
     const deliveryYear = deliveryParts[1] || '';
+    
+    // Get full international phone number with country code
+    const fullPhoneNumber = iti.getNumber(); // Returns +974xxxxxxxx format
     
     // Prepare form data in required format
     const formData = {
@@ -1484,7 +1716,7 @@
       deliveryMonth: deliveryMonth,
       deliveryYear: deliveryYear,
       name: document.getElementById("name").value,
-      phone: document.getElementById("phone").value,
+      phone: fullPhoneNumber, // Send full international number
       email: document.getElementById("email").value || ''
     };
 
@@ -1496,6 +1728,10 @@
     submitBtn.textContent = 'Submitting...';
     submitBtn.disabled = true;
     
+    // Add timeout to fetch request
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
+    
     fetch('https://us-central1-vismaya-5d8da.cloudfunctions.net/bookConsultation', {
       method: 'POST',
       mode: 'cors',
@@ -1503,9 +1739,11 @@
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       },
-      body: JSON.stringify(formData)
+      body: JSON.stringify(formData),
+      signal: controller.signal
     })
     .then(response => {
+      clearTimeout(timeoutId);
       console.log('Response status:', response.status);
       
       if (!response.ok) {
@@ -1554,6 +1792,7 @@
       submitBtn.disabled = false;
     })
     .catch(error => {
+      clearTimeout(timeoutId);
       console.error('Fetch error:', error);
       console.error('Error details:', error.message);
       
@@ -1571,13 +1810,18 @@
       submitBtn.disabled = false;
       
       // Show friendly message with WhatsApp option
-      const phoneNumber = formData.phone;
-      const message = `Hi, I would like to book a consultation.\n\nName: ${formData.name}\nProperty Type: ${formData.propertyType}\nBudget: ${formData.budget}\nExpected Delivery: ${deliveryMonth} ${deliveryYear}\nPhone: ${phoneNumber}\nEmail: ${formData.email}`;
+      const message = `Hi, I would like to book a consultation.\n\nName: ${formData.name}\nProperty Type: ${formData.propertyType}\nBudget: ${formData.budget}\nExpected Delivery: ${deliveryMonth} ${deliveryYear}\nPhone: ${fullPhoneNumber}\nEmail: ${formData.email}`;
       const whatsappLink = `https://wa.me/918281407838?text=${encodeURIComponent(message)}`;
+      
+      // Determine error message based on error type
+      let errorMsg = "We're experiencing technical difficulties with our booking system.\n\n";
+      if (error.name === 'AbortError') {
+        errorMsg = "The request is taking too long. This might be a connection issue.\n\n";
+      }
       
       // Create custom alert with options
       const userChoice = confirm(
-        "We're experiencing technical difficulties with our booking system.\n\n" +
+        errorMsg +
         "Would you like to send your consultation request via WhatsApp instead?\n\n" +
         "Click OK to open WhatsApp, or Cancel to call us directly."
       );
