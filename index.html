@@ -1474,29 +1474,127 @@
   document.getElementById("luxForm").addEventListener("submit", (e) => {
     e.preventDefault();
     
-    // Get all form data
+    // Get expected delivery and split into month and year
+    const expectedDeliveryValue = document.getElementById("expectedDelivery").value;
+    const deliveryParts = expectedDeliveryValue.split(' ');
+    const deliveryMonth = deliveryParts[0] || '';
+    const deliveryYear = deliveryParts[1] || '';
+    
+    // Prepare form data in required format
     const formData = {
       propertyType: document.getElementById("propertyType").value,
       budget: document.getElementById("budget").value,
-      expectedDelivery: document.getElementById("expectedDelivery").value,
+      deliveryMonth: deliveryMonth,
+      deliveryYear: deliveryYear,
       name: document.getElementById("name").value,
       phone: document.getElementById("phone").value,
-      email: document.getElementById("email").value
+      email: document.getElementById("email").value || ''
     };
 
-    console.log("Form submitted:", formData);
+    console.log("Form submitted with data:", formData);
     
-    localStorage.setItem("luxPopupSeen", "true");
-    luxPopup.style.display = "none";
-    alert("Thank you! Our team will contact you shortly.");
+    // Disable submit button during submission
+    const submitBtn = document.querySelector('#step2 .btn-continue[type="submit"]');
+    const originalText = submitBtn.textContent;
+    submitBtn.textContent = 'Submitting...';
+    submitBtn.disabled = true;
     
-    // Reset form and go back to step 1
-    document.getElementById("luxForm").reset();
-    currentStep = 1;
-    step2.classList.remove("active");
-    step1.classList.add("active");
-    dot2.classList.remove("active");
-    dot1.classList.add("active");
+    fetch('https://us-central1-vismaya-5d8da.cloudfunctions.net/bookConsultation', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    })
+    .then(response => {
+      console.log('Response status:', response.status);
+      
+      if (!response.ok) {
+        return response.text().then(text => {
+          console.error('Error response:', text);
+          throw new Error(`Server returned ${response.status}: ${text}`);
+        });
+      }
+      
+      // Try to parse as JSON, fallback to text
+      return response.text().then(text => {
+        try {
+          return JSON.parse(text);
+        } catch (e) {
+          console.log('Response is not JSON:', text);
+          return { message: text };
+        }
+      });
+    })
+    .then(data => {
+      console.log('Success response:', data);
+      
+      // Store submission locally as backup
+      const submissions = JSON.parse(localStorage.getItem('consultationSubmissions') || '[]');
+      submissions.push({
+        ...formData,
+        timestamp: new Date().toISOString(),
+        submitted: true
+      });
+      localStorage.setItem('consultationSubmissions', JSON.stringify(submissions));
+      
+      localStorage.setItem("luxPopupSeen", "true");
+      luxPopup.style.display = "none";
+      alert("Thank you! Our team will contact you shortly.");
+      
+      // Reset form and go back to step 1
+      document.getElementById("luxForm").reset();
+      currentStep = 1;
+      step2.classList.remove("active");
+      step1.classList.add("active");
+      dot2.classList.remove("active");
+      dot1.classList.add("active");
+      
+      // Re-enable button
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+      console.error('Error details:', error.message);
+      
+      // Store failed submission locally for later retry
+      const failedSubmissions = JSON.parse(localStorage.getItem('failedConsultations') || '[]');
+      failedSubmissions.push({
+        ...formData,
+        timestamp: new Date().toISOString(),
+        error: error.message
+      });
+      localStorage.setItem('failedConsultations', JSON.stringify(failedSubmissions));
+      
+      // Re-enable button
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+      
+      // Show friendly message with WhatsApp option
+      const phoneNumber = formData.phone;
+      const message = `Hi, I would like to book a consultation.\n\nName: ${formData.name}\nProperty Type: ${formData.propertyType}\nBudget: ${formData.budget}\nExpected Delivery: ${deliveryMonth} ${deliveryYear}\nPhone: ${phoneNumber}\nEmail: ${formData.email}`;
+      const whatsappLink = `https://wa.me/918281407838?text=${encodeURIComponent(message)}`;
+      
+      // Create custom alert with options
+      const userChoice = confirm(
+        "We're experiencing technical difficulties with our booking system.\n\n" +
+        "Would you like to send your consultation request via WhatsApp instead?\n\n" +
+        "Click OK to open WhatsApp, or Cancel to call us directly."
+      );
+      
+      if (userChoice) {
+        // User chose WhatsApp
+        window.open(whatsappLink, '_blank');
+        localStorage.setItem("luxPopupSeen", "true");
+        luxPopup.style.display = "none";
+      } else {
+        // User chose to call
+        alert("Please call us at:\n+91 8281407838\nor\n+91 8281934838\n\nWe'll be happy to assist you!");
+      }
+    });
   });
 
   // Close on outside click
