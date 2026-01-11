@@ -3525,14 +3525,16 @@ html.lenis {
 }
 
 .about-style-two .content-box .text-box p:first-child{
-  font-size: 26px;
-  line-height: 32px;
-  color: #fff;
+  font-size: 20px;
+  line-height: 28px;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 400;
   margin-bottom: 30px;
 }
 
 .about-style-two .content-box .text-box p{
-  color: #b7b9bb;
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 400;
 }
 
 .about-style-two .content-box .btn-box .theme-btn{
@@ -6183,6 +6185,10 @@ appointment-checkbox label span:before {
   border-color: var(--theme-color);
 }
 
+.faq-page-section .form-control:focus{
+  box-shadow: none !important;
+}
+
 .faq-page-section .sec-title{
   margin-bottom: 49px;
 }
@@ -6856,7 +6862,7 @@ appointment-checkbox label span:before {
 }
 
 .blog-details-content .comments-form-area .form-inner .form-group input[type='text'],
-.blog-details-content .comments-form-area .form-inner .form-group input[type='email'],
+.blog-details-content .comments-form-area .form-group input[type='email'],
 .blog-details-content .form-group textarea{
   position: relative;
   display: block;
