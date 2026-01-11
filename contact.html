@@ -34,6 +34,9 @@
 <link href="assets/css/style.css" rel="stylesheet">
 <link href="assets/css/responsive.css" rel="stylesheet">
 
+<!-- International Phone Input -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/css/intlTelInput.css">
+
 <!-- Contact Form Styling -->
 <style>
     /* Fix for phone input and all form inputs to have visible borders */
@@ -153,6 +156,83 @@
         font-family: var(--jost);
         text-transform: uppercase;
         letter-spacing: 0.7px;
+    }
+
+    /* International Phone Input Styling - Fix overlapping */
+    .contact-style-three .form-inner .form-group .iti {
+        width: 100%;
+        display: block;
+    }
+
+    .contact-style-three .form-inner .form-group .iti__flag-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        padding-left: 15px;
+        display: flex;
+        align-items: center;
+    }
+
+    .contact-style-three .form-inner .form-group .iti__selected-flag {
+        padding: 0 8px 0 0;
+        background: transparent !important;
+        border: none !important;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        outline: none !important;
+    }
+
+    .contact-style-three .form-inner .form-group .iti__selected-flag:hover,
+    .contact-style-three .form-inner .form-group .iti__selected-flag:focus {
+        background: transparent !important;
+        outline: none !important;
+    }
+
+    .contact-style-three .form-inner .form-group input[type='tel'] {
+        padding-left: 70px !important;
+    }
+
+    .contact-style-three .form-inner .form-group .iti__arrow {
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+        border-top: 4px solid #666;
+        margin-left: 4px;
+    }
+
+    .contact-style-three .form-inner .form-group .iti__country-list {
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        margin-top: 2px;
+        max-height: 200px;
+        font-family: 'Jost', sans-serif;
+        background: white;
+        z-index: 99999 !important;
+    }
+
+    .contact-style-three .form-inner .form-group .iti__country {
+        padding: 8px 10px;
+    }
+
+    .contact-style-three .form-inner .form-group .iti__country:hover {
+        background: #f5f5f5;
+    }
+
+    .contact-style-three .form-inner .form-group .iti__country.iti__highlight {
+        background: #d29251;
+    }
+
+    .contact-style-three .form-inner .form-group .iti__dial-code {
+        color: #666;
+    }
+
+    .contact-style-three .form-inner .form-group .iti__selected-dial-code {
+        font-family: 'Jost', sans-serif;
+        font-size: 14px;
+        color: #333;
+        margin-left: 6px;
     }
 </style>
 
@@ -668,6 +748,9 @@
     <!-- main-js -->
     <script src="assets/js/script.js"></script>
 
+    <!-- International Phone Input JS -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/intlTelInput.min.js"></script>
+
     <!-- Load Contact Widget -->
     <script>
         fetch('contact-widget.html')
@@ -680,6 +763,10 @@
     <!-- Contact Form Two-Step Functionality -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // International Phone Input instance
+            let iti;
+            let utilsScriptLoaded = false;
+            
             if (typeof jQuery !== 'undefined' && jQuery.validator) {
                 jQuery('#contact-email').rules('remove');
                 jQuery('#contact-message').rules('remove');
@@ -746,13 +833,23 @@
                 }
             }
             
-            // Validate Step 2
+            // Validate Step 2 with international phone validation
             function validateStep2() {
                 const name = document.getElementById('contact-name').value;
-                const phone = document.getElementById('contact-phone').value;
+                const phoneInput = document.getElementById('contact-phone');
                 const submitBtn = document.getElementById('contact-submitBtn');
                 
-                if (name.trim() && phone.match(/^[0-9]{10}$/)) {
+                let isPhoneValid = false;
+                
+                if (iti && typeof iti.isValidNumber === 'function' && utilsScriptLoaded) {
+                    isPhoneValid = iti.isValidNumber();
+                } else {
+                    // Fallback: basic length check
+                    const phoneValue = phoneInput.value.replace(/\D/g, '');
+                    isPhoneValid = phoneValue.length >= 8;
+                }
+                
+                if (name.trim() && isPhoneValid) {
                     submitBtn.classList.add('enabled');
                     submitBtn.style.background = '#d29251';
                     submitBtn.style.color = '#fff';
@@ -939,6 +1036,38 @@
                 dot2.style.background = '#d29251';
                 dot2.style.width = '30px';
                 dot2.style.borderRadius = '5px';
+                
+                // Initialize intl-tel-input when step 2 is shown
+                if (!iti) {
+                    const phoneInput = document.querySelector("#contact-phone");
+                    if (phoneInput && typeof window.intlTelInput !== 'undefined') {
+                        iti = window.intlTelInput(phoneInput, {
+                            initialCountry: "in",
+                            preferredCountries: ["in", "us", "gb", "ae"],
+                            separateDialCode: true,
+                            strictMode: true,
+                            utilsScript: "https://cdn.jsdelivr.net/npm/intl-tel-input@19.5.6/build/js/utils.js"
+                        });
+                        
+                        // Check if utils script loaded
+                        const checkUtilsLoaded = setInterval(() => {
+                            if (window.intlTelInputUtils) {
+                                utilsScriptLoaded = true;
+                                clearInterval(checkUtilsLoaded);
+                            }
+                        }, 100);
+                        
+                        setTimeout(() => {
+                            if (!utilsScriptLoaded) {
+                                clearInterval(checkUtilsLoaded);
+                            }
+                        }, 5000);
+                        
+                        phoneInput.addEventListener('blur', validateStep2);
+                        phoneInput.addEventListener('keyup', validateStep2);
+                        phoneInput.addEventListener('countrychange', validateStep2);
+                    }
+                }
             });
             
             // Back to step 1
@@ -960,24 +1089,22 @@
             
             // Validate step 2 inputs
             document.getElementById('contact-name').addEventListener('input', validateStep2);
-            document.getElementById('contact-phone').addEventListener('input', validateStep2);
             
             // Form submission
             document.getElementById('contact-form').addEventListener('submit', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
                 
-                // Manually validate only required fields
-                const name = document.getElementById('contact-name').value;
-                const phone = document.getElementById('contact-phone').value;
-                
-                if (!name.trim()) {
-                    alert('Please enter your name');
+                // Validate phone number before submission
+                if (iti && !iti.isValidNumber()) {
+                    alert('Please enter a valid phone number for the selected country');
                     return false;
                 }
                 
-                if (!phone.match(/^[0-9]{10}$/)) {
-                    alert('Please enter a valid 10-digit phone number');
+                const name = document.getElementById('contact-name').value;
+                
+                if (!name.trim()) {
+                    alert('Please enter your name');
                     return false;
                 }
                 
@@ -986,13 +1113,16 @@
                 const deliveryMonth = deliveryParts[0] || '';
                 const deliveryYear = deliveryParts[1] || '';
                 
+                // Get full international phone number
+                const fullPhoneNumber = iti ? iti.getNumber() : document.getElementById('contact-phone').value;
+                
                 const formData = {
                     propertyType: propertyTypeInput.value,
                     budget: budgetInput.value,
                     deliveryMonth: deliveryMonth,
                     deliveryYear: deliveryYear,
                     name: name,
-                    phone: phone,
+                    phone: fullPhoneNumber,
                     email: document.getElementById('contact-email').value || '',
                     message: document.getElementById('contact-message').value || ''
                 };
@@ -1002,6 +1132,9 @@
                 submitBtn.textContent = 'Submitting...';
                 submitBtn.disabled = true;
                 
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 10000);
+                
                 fetch('https://us-central1-vismaya-5d8da.cloudfunctions.net/bookConsultation', {
                     method: 'POST',
                     mode: 'cors',
@@ -1009,9 +1142,12 @@
                         'Content-Type': 'application/json',
                         'Accept': 'application/json',
                     },
-                    body: JSON.stringify(formData)
+                    body: JSON.stringify(formData),
+                    signal: controller.signal
                 })
                 .then(response => {
+                    clearTimeout(timeoutId);
+                    
                     if (!response.ok) {
                         return response.text().then(text => {
                             throw new Error('Server returned ' + response.status + ': ' + text);
@@ -1031,6 +1167,9 @@
                     
                     // Reset form
                     document.getElementById('contact-form').reset();
+                    if (iti) {
+                        iti.setNumber('');
+                    }
                     contactStep2.style.display = 'none';
                     contactStep1.style.display = 'block';
                     dot2.classList.remove('active');
@@ -1046,23 +1185,28 @@
                     submitBtn.disabled = false;
                 })
                 .catch(error => {
+                    clearTimeout(timeoutId);
                     console.error('Fetch error:', error);
                     
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
                     
-                    const phoneNumber = formData.phone;
                     const message = 'Hi, I would like to book a consultation.\n\nName: ' + formData.name + 
                                   '\nProperty Type: ' + formData.propertyType + 
                                   '\nBudget: ' + formData.budget + 
                                   '\nExpected Delivery: ' + deliveryMonth + ' ' + deliveryYear + 
-                                  '\nPhone: ' + phoneNumber + 
+                                  '\nPhone: ' + fullPhoneNumber + 
                                   '\nEmail: ' + formData.email +
                                   (formData.message ? '\nMessage: ' + formData.message : '');
                     const whatsappLink = 'https://wa.me/918281407838?text=' + encodeURIComponent(message);
                     
+                    let errorMsg = "We're experiencing technical difficulties with our booking system.\n\n";
+                    if (error.name === 'AbortError') {
+                        errorMsg = "The request is taking too long. This might be a connection issue.\n\n";
+                    }
+                    
                     const userChoice = confirm(
-                        "We're experiencing technical difficulties with our booking system.\n\n" +
+                        errorMsg +
                         "Would you like to send your request via WhatsApp instead?\n\n" +
                         "Click OK to open WhatsApp, or Cancel to call us directly."
                     );
