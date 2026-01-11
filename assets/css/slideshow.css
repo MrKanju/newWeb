@@ -1,8 +1,11 @@
-/* Banner Carousel Styles */
+/* Banner Carousel Styles - FULL WIDTH ON ALL SCREENS */
 .banner-carousel-wrapper {
   position: relative;
   width: 100%;
+  max-width: 100%;
   overflow: hidden;
+  margin: 0;
+  padding: 0;
 }
 
 .banner-carousel-wrapper .owl-stage-outer {
@@ -15,7 +18,9 @@
 
 .banner-carousel-wrapper .banner-slide img {
   width: 100%;
+  height: auto;
   display: block;
+  object-fit: cover;
 }
 
 /* Navigation Arrows */

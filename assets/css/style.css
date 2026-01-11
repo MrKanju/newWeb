@@ -3393,9 +3393,12 @@ html.lenis {
   padding-top: 210px;
 }
 
-.banner-style-two .outer-container{
-  position: relative;
-  padding: 0px 150px;
+/* FULL WIDTH BANNER CAROUSEL - Remove all padding/margins */
+.banner-style-two .outer-container {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 .banner-style-two h2{
@@ -3412,6 +3415,7 @@ html.lenis {
 
 .banner-style-two .image-box img{
   width: 100%;
+  display: block;
 }
 
 .banner-style-two .link{
@@ -6903,7 +6907,7 @@ appointment-checkbox label span:before {
 
 .blog-details-content .comments-form-area .form-inner .form-group input[type='text'],
 .blog-details-content .comments-form-area .form-inner .form-group input[type='email'],
-.blog-details-content .comments-form-area .form-inner .form-group textarea{
+.blog-details-content .comments-form-area .form-group textarea{
   position: relative;
   display: block;
   width: 100%;
