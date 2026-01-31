@@ -173,7 +173,7 @@
         <section class="service-style-two bg-color-2 pt_100 pb_110">
             <div class="auto-container">
                 <div class="sec-title mb_60">
-                    <span class="sub-title mb_11">OUr services</span>
+                    <span class="sub-title mb_11">Our services</span>
                     <h2>What We Do</h2>
                     <div class="row clearfix mb_40">
                         <div class="col-lg-6 col-md-12 col-sm-12">
@@ -227,6 +227,178 @@
                         </div>
                     </div>
                 </div>
+                </div>
+                
+                <!-- Process Flow Section -->
+                <div class="row clearfix mt_70 mb_50">
+                    <div class="col-lg-12">
+                        <div class="process-flow-section">
+                            <h3 class="process-title">Project completion in 45 days*</h3>
+                            <div class="process-flow-container">
+                                <div class="process-step">
+                                    <div class="step-icon">
+                                        <img src="assets/images/icons/meeting.svg" alt="">
+                                    </div>
+                                    <h4>Personalized Design Consultation</h4>
+                                </div>
+                                <div class="process-arrow">→</div>
+                                
+                                <div class="process-step">
+                                    <div class="step-icon">
+                                        <img src="assets/images/icons/approved.svg" alt="">
+                                    </div>
+                                    <h4>Design & 3D Visualisation</h4>
+                                </div>
+                                <div class="process-arrow">→</div>
+                                
+                                <div class="process-step">
+                                    <div class="step-icon">
+                                        <img src="assets/images/icons/production.svg" alt="">
+                                    </div>
+                                    <h4>Material & Finish Selection</h4>
+                                </div>
+                                <div class="process-arrow">→</div>
+                                
+                                <div class="process-step">
+                                    <div class="step-icon">
+                                        <img src="assets/images/icons/truck.svg" alt="">
+                                    </div>
+                                    <h4>Execution & Installation</h4>
+                                </div>
+                                <div class="process-arrow">→</div>
+                                
+                                <div class="process-step">
+                                    <div class="step-icon">
+                                        <img src="assets/images/icons/deal.svg" alt="">
+                                    </div>
+                                    <h4>Handover + After-Sales Support</h4>
+                                </div>
+                            </div>
+                            <p class="process-timeline">* post design finalisation</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <style>
+                    .process-flow-section {
+                        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                        padding: 40px 30px;
+                        border-radius: 12px;
+                        box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+                    }
+                    
+                    .process-title {
+                        text-align: center;
+                        font-size: 28px;
+                        font-weight: 600;
+                        color: #222;
+                        margin-bottom: 40px;
+                    }
+                    
+                    .process-flow-container {
+                        justify-content: flex-start !important;
+  scroll-padding-left: 0;
+                        display: flex;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        gap: 15px;
+                    }
+                    
+                    .process-step {
+                        text-align: center;
+                        min-width: 180px;
+                        transition: all 0.3s ease;
+                        position: relative;
+                    }
+                    
+                    
+                    .step-number {
+                        width: 40px;
+                        height: 40px;
+                        background: linear-gradient(135deg, #c19d5a 0%, #a68948 100%);
+                        color: #fff;
+                        border-radius: 50%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 18px;
+                        font-weight: 700;
+                        margin: 0 auto 15px;
+                    }
+                    
+                    .step-content h4 {
+                        font-size: 14px;
+                        font-weight: 600;
+                        color: #333;
+                        margin: 0;
+                        line-height: 1.4;
+                    }
+                    
+                    .process-arrow {
+                        font-size: 28px;
+                        color: #c19d5a;
+                        font-weight: 700;
+                        flex-shrink: 0;
+                    }
+                    
+                    .process-timeline {
+                        text-align: center;
+                        margin-top: 30px;
+                        font-size: 16px;
+                        color: #555;
+                        font-weight: 500;
+                        font-style: italic;
+                    }
+                    
+                    /* Mobile Responsive */
+                    @media only screen and (max-width: 991px) {
+                        .process-flow-container {
+                            flex-direction: column;
+                            gap: 20px;
+                        }
+                        
+                        .process-arrow {
+                            transform: rotate(90deg);
+                            font-size: 24px;
+                        }
+                        
+                        .process-step {
+                            width: 100%;
+                            max-width: 300px;
+                        }
+                        
+                        .process-title {
+                            font-size: 24px;
+                            margin-bottom: 30px;
+                        }
+                    }
+                    
+                    @media only screen and (max-width: 767px) {
+                        .process-flow-section {
+                            padding: 30px 20px;
+                        }
+                        
+                        .step-content h4 {
+                            font-size: 13px;
+                        }
+                        
+                        .process-timeline {
+                            font-size: 14px;
+                        }
+                        .process-flow-container {
+                            overflow-x: hidden; /* we’ll control movement */
+                        }
+
+                        .process-step {
+                            min-width: calc(50vw - 30px); /* 2 items visible */
+                        }
+
+                        .process-arrow {
+                            display: none; /* arrows don’t make sense in carousel */
+                        }
+                    }
+                </style>
+                
                 <div class="row clearfix mt_50">
                     <div class="col-lg-12">
                         <div class="contact-info-box" style="background: #fff; padding: 20px 30px; border-radius: 8px; box-shadow: 0 0 15px rgba(0,0,0,0.06); max-width: 800px; margin: 0 auto; text-align: center;">
@@ -470,6 +642,36 @@
     <!-- main-js -->
     <script src="assets/js/script.js"></script>
 
+    <script>
+        const container = document.querySelector('.process-flow-container');
+        let index = 0;
+      
+        function autoSlide() {
+          if (!container) return;
+      
+          const steps = container.querySelectorAll('.process-step');
+          const stepWidth = steps[0].offsetWidth + 30; // 30 = gap
+          const visibleCount = 2;
+      
+          index++;
+      
+          if (index > steps.length - visibleCount) {
+            index = 0;
+          }
+      
+          container.scrollTo({
+            left: index * stepWidth,
+            behavior: 'smooth'
+          });
+        }
+      
+        setInterval(() => {
+          if (window.innerWidth <= 767) {
+            autoSlide();
+          }
+        }, 5000);
+      </script>
+      
     <!-- Load Contact Widget -->
     <script>
         fetch('contact-widget.html')
