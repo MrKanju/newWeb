@@ -3340,7 +3340,7 @@ html.lenis {
 .banner-style-two{
   position: relative;
   background: #24292f;
-  padding-top: 150px;
+  padding-top: 100px
 }
 
 /* FULL WIDTH BANNER CAROUSEL - Remove all padding/margins */
@@ -6330,7 +6330,7 @@ appointment-checkbox label span:before {
 
 .testimonial-page-section{
   position: relative;
-  background: #f7f3ee;
+  /* background: #f7f3ee; */
 }
 
 .testimonial-page-section .testimonial-block-one .inner-box{

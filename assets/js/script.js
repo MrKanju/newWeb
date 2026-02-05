@@ -608,6 +608,7 @@
 		handlePreloader();
 		enableMasonry();
 		truncateTestimonials();
+		loadServicePageProjects();
 	});
 
 	// Truncate long testimonials and add "Read More" link
@@ -628,9 +629,66 @@
 					$paragraph.addClass('truncated');
 					
 					// Add "Read More" link
-					var readMoreLink = '<a href="testimonial.html" class="read-more-link">Read Full Review <i class="fas fa-arrow-right"></i></a>';
+					var readMoreLink = '<a href="about.html#testimonials" class="read-more-link">Read Full Review <i class="fas fa-arrow-right"></i></a>';
 					$paragraph.after(readMoreLink);
 				}
+			});
+		}
+	}
+
+	// Load projects for service page showcase (show 3 initially)
+	function loadServicePageProjects() {
+		if ($('#projectShowcase').length) {
+			$.getJSON('assets/data/projects.json', function(data) {
+				const showcase = $('#projectShowcase');
+				let allProjects = [];
+				
+				// Create project items from JSON data
+				data.projects.forEach(function(project, index) {
+					const projectHTML = `
+						<div class="col-lg-4 col-md-6 col-sm-12 project-item" data-index="${index}" style="display: ${index < 3 ? 'block' : 'none'}; margin-bottom: 30px;">
+							<div class="project-block-two">
+								<div class="inner-box">
+									<figure class="image-box"><img src="${project.image}" alt="${project.title}"></figure>
+									<div class="text-box">
+										<h3><a href="${project.link}">${project.title}</a></h3>
+										<span>${project.category} • ${project.date}</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					`;
+					showcase.append(projectHTML);
+					allProjects.push(index);
+				});
+				
+				// See All Projects button functionality
+				$('#seeAllProjectsBtn').on('click', function() {
+					$('.project-item').fadeIn(400);
+					$(this).hide();
+					$('#showLessProjectsBtn').show();
+					
+					// Smooth scroll to projects section
+					$('html, body').animate({
+						scrollTop: $('#projectShowcase').offset().top - 100
+					}, 500);
+				});
+				
+				// Show Less button functionality
+				$('#showLessProjectsBtn').on('click', function() {
+					$('.project-item').each(function(index) {
+						if (index >= 3) {
+							$(this).fadeOut(400);
+						}
+					});
+					$(this).hide();
+					$('#seeAllProjectsBtn').show();
+					
+					// Smooth scroll back to top of projects section
+					$('html, body').animate({
+						scrollTop: $('.project-showcase-section').offset().top - 100
+					}, 500);
+				});
 			});
 		}
 	}
