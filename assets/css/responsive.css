@@ -519,15 +519,26 @@
   }
 
   .funfact-block-one .inner-box .count-outer{
-    font-size: 60px;
-    line-height: 60px;
-    height: 60px;
+    font-size: 50px !important;
+    line-height: 50px !important;
+    height: 50px !important;
     margin-bottom: 10px;
+    white-space: nowrap !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  .funfact-block-one .inner-box .count-outer .symble{
+    position: relative !important;
+    display: inline-block !important;
+    top: 0 !important;
+    margin-left: 2px !important;
   }
 
   .funfact-block-one .inner-box p{
-    font-size: 14px;
-    line-height: 20px;
+    font-size: 13px;
+    line-height: 18px;
   }
 
   .testimonial-section .owl-nav,
