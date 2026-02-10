@@ -19,7 +19,7 @@
 
 .banner-carousel-wrapper .banner-slide img {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
   object-fit: cover;
   transition: transform 0.6s ease-in-out;
