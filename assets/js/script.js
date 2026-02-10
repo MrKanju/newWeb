@@ -21,11 +21,15 @@
 			var windowpos = $(window).scrollTop();
 			var siteHeader = $('.main-header');
 			var scrollLink = $('.scroll-top');
-			if (windowpos >= 110) {
+			
+			// Add scrolled class to header-style-two when scrolling
+			if (windowpos >= 50) {
 				siteHeader.addClass('fixed-header');
+				$('.header-style-two').addClass('scrolled');
 				scrollLink.addClass('open');
 			} else {
 				siteHeader.removeClass('fixed-header');
+				$('.header-style-two').removeClass('scrolled');
 				scrollLink.removeClass('open');
 			}
 		}
@@ -287,17 +291,13 @@
 		$.getJSON('assets/data/projects.json', function(data) {
 			const carousel = $('#projectCarousel');
 			
-			// Create project items from JSON data
+			// Create project items from JSON data - no text box
 			data.projects.forEach(function(project) {
 				const projectHTML = `
 					<div class="project-block">
 						<div class="project-block-two">
 							<div class="inner-box">
-								<figure class="image-box"><img src="${project.image}" alt="${project.title}"></figure>
-								<div class="text-box">
-									<h3><a href="${project.link}">${project.title}</a></h3>
-									<span>${project.category} • ${project.date}</span>
-								</div>
+								<figure class="image-box"><img src="${project.image}" alt="${project.category}"></figure>
 							</div>
 						</div>
 					</div>
@@ -643,17 +643,13 @@
 				const showcase = $('#projectShowcase');
 				let allProjects = [];
 				
-				// Create project items from JSON data
+				// Create project items from JSON data - no text box
 				data.projects.forEach(function(project, index) {
 					const projectHTML = `
 						<div class="col-lg-4 col-md-6 col-sm-12 project-item" data-index="${index}" style="display: ${index < 3 ? 'block' : 'none'}; margin-bottom: 30px;">
 							<div class="project-block-two">
 								<div class="inner-box">
-									<figure class="image-box"><img src="${project.image}" alt="${project.title}"></figure>
-									<div class="text-box">
-										<h3><a href="${project.link}">${project.title}</a></h3>
-										<span>${project.category} • ${project.date}</span>
-									</div>
+									<figure class="image-box"><img src="${project.image}" alt="${project.category}"></figure>
 								</div>
 							</div>
 						</div>

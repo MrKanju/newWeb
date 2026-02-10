@@ -2,115 +2,108 @@
     "projects": [
       {
         "id": 1,
-        "title": "KITCHEN WITH WOODEN AND CERAMIC",
-        "category": "Interior",
-        "image": "assets/images/project/project-1.jpg",
-        "date": "07 NOV 2018"        
+        "category": "Kitchen",
+        "image": "assets/images/project/SR (1).jpg"
       },
       {
         "id": 2,
-        "title": "KITCHEN WITH WOODEN AND CERAMIC",
         "category": "Interior",
-        "image": "assets/images/project/project-2.jpg",
-        "date": "15 Nov 2018"        
+        "image": "assets/images/project/SR (2).jpg"
       },
       {
         "id": 3,
-        "title": "KITCHEN WITH WOODEN AND CERAMIC",
         "category": "Kitchen",
-        "image": "assets/images/project/project-3.jpg",
-        "date": "25 NOV 2018"        
+        "image": "assets/images/project/SR (3).jpg"
       },
       {
         "id": 4,
-        "title": "KITCHEN WITH WOODEN AND CERAMIC",
         "category": "Interior",
-        "image": "assets/images/project/project-4.jpg",
-        "date": "07 NOV 2018"        
+        "image": "assets/images/project/SR (10).jpg"
       },
       {
         "id": 5,
-        "title": "Welcome to Al Bin Nasser| Home",
         "category": "Kitchen",
-        "image": "assets/images/project/project-5.jpg",
-        "date": "15 Nov 2018"        
+        "image": "assets/images/project/SR (11).jpg"
       },
       {
         "id": 6,
-        "title": "KITCHEN WITH WOODEN AND CERAMIC",
-        "category": "Interior",
-        "image": "assets/images/project/project-6.jpg",
-        "date": "16 Nov 2018"        
+        "category": "Wardrobe",
+        "image": "assets/images/project/SR (14).jpg"
       },
       {
         "id": 7,
-        "title": "Dr. Anil Kumbanadu",
-        "category": "Kitchen",
-        "image": "assets/images/project/project-7.jpg",
-        "date": "25 Dec 2018"        
+        "category": "Interior",
+        "image": "assets/images/project/SR (15).jpg"
       },
       {
         "id": 8,
-        "title": "Dr. Anil Kumbanadu",
-        "category": "Wardrobe",
-        "image": "assets/images/project/project-8.jpg",
-        "date": "25 Dec 2018"        
+        "category": "Kitchen",
+        "image": "assets/images/project/SR (16).jpg"
       },
       {
         "id": 9,
-        "title": "Dr. Anil Kumbanadu",
-        "category": "Kitchen",
-        "image": "assets/images/project/project-9.jpg",
-        "date": "25 Dec 2018"        
+        "category": "Interior",
+        "image": "assets/images/project/SR (17).jpg"
       },
       {
         "id": 10,
-        "title": "Dr. Anil Kumbanadu",
-        "category": "Interior",
-        "image": "assets/images/project/project-10.jpg",
-        "date": "25 Dec 2018"        
+        "category": "Kitchen",
+        "image": "assets/images/project/SR (18).jpg"
       },
       {
         "id": 11,
-        "title": "Dr. Anil Kumbanadu",
-        "category": "Kitchen",
-        "image": "assets/images/project/project-11.jpg",
-        "date": "25 Dec 2018"        
+        "category": "Interior",
+        "image": "assets/images/project/SR (19).jpg"
       },
       {
         "id": 12,
-        "title": "Dr. Anil Kumbanadu",
-        "category": "Interior",
-        "image": "assets/images/project/project-12.jpg",
-        "date": "25 Dec 2018"        
+        "category": "Kitchen",
+        "image": "assets/images/project/SR (20).jpg"
       },
       {
         "id": 13,
-        "title": "Dr. Anil Kumbanadu",
-        "category": "Kitchen",
-        "image": "assets/images/project/project-13.jpg",
-        "date": "25 Dec 2018"        
+        "category": "Wardrobe",
+        "image": "assets/images/project/SR (21).jpg"
       },
       {
         "id": 14,
-        "title": "Dr. Anil Kumbanadu",
         "category": "Interior",
-        "image": "assets/images/project/project-14.jpg",
-        "date": "25 Dec 2018"        
+        "image": "assets/images/project/SR (22).jpg"
       },
       {
         "id": 15,
-        "title": "Dr. Anil Kumbanadu",
         "category": "Kitchen",
-        "image": "assets/images/project/project-15.jpg",
-        "date": "25 Dec 2018"        
+        "image": "assets/images/project/SR (23).jpg"
       },
       {
         "id": 16,
-        "title": "Dr. Anil Kumbanadu",
         "category": "Interior",
-        "image": "assets/images/project/project-16.jpg",
-        "date": "25 Dec 2018"        
+        "image": "assets/images/project/SR (25).jpg"
+      },
+      {
+        "id": 17,
+        "category": "Kitchen",
+        "image": "assets/images/project/SR (27).jpg"
+      },
+      {
+        "id": 18,
+        "category": "Interior",
+        "image": "assets/images/project/SR (28).jpg"
+      },
+      {
+        "id": 19,
+        "category": "Kitchen",
+        "image": "assets/images/project/SR (29).jpg"
+      },
+      {
+        "id": 20,
+        "category": "Wardrobe",
+        "image": "assets/images/project/SR (30).jpg"
+      },
+      {
+        "id": 21,
+        "category": "Interior",
+        "image": "assets/images/project/SR (32).jpg"
       }
     ]
   }
