@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 
 <!-- Mirrored from azim.hostlin.com/Kitchnox/service.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2025 15:39:47 GMT -->
@@ -843,7 +842,14 @@ $(document).ready(function(){
 
 });
 </script>
-    
+    <script>
+fetch('contact-widget.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('contact-widget-container').innerHTML = data;
+    })
+    .catch(error => console.error('Widget load error:', error));
+</script>
 </body><!-- End of .page_wrapper -->
 
 <!-- Mirrored from azim.hostlin.com/Kitchnox/service.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2025 15:39:47 GMT -->
