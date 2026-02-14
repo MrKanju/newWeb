@@ -7854,10 +7854,118 @@ body {
 .project-gallery-section .project-block:hover .image-box {
     transform: scale(1.08);
 }
+.banner-style-two,
+.banner-carousel-wrapper,
+.banner-slide {
+    background: #000; /* or match your image dominant color */
+}
+.banner-carousel-wrapper .owl-stage-outer {
+    background: #000;
+}
+.banner-carousel-wrapper .owl-stage-outer {
+	background: #000;
+}
 
+.banner-carousel-wrapper .owl-item {
+	overflow: hidden;
+}
+.banner-slide img {
+	transform: scale(1);
+	transition: transform 6s ease-in-out;
+}
 
+.owl-item.active .banner-slide img {
+	transform: scale(1.08);
+}
+.banner-slide img {
+    filter: blur(6px);
+    transition: filter 1.5s ease;
+}
 
+.owl-item.active .banner-slide img {
+    filter: blur(0);
+}
+.banner-slide img {
+    transform: scale(1);
+    transition: transform 10s ease-in-out;
+}
 
+.owl-item.active .banner-slide img {
+    transform: scale(1.08);
+}
+
+.banner-content {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.2s ease;
+}
+
+.owl-item.active .banner-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Improved Counter Style */
+.funfact-section .count-outer {
+    font-size: 72px;   /* slightly bigger */
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: 2px;
+}
+
+.funfact-section .odometer {
+    font-size: 72px;
+}
+
+.funfact-section .symble {
+    font-size: 48px;
+    margin-left: 8px;
+}
+
+.funfact-section p {
+    font-size: 16px;
+    margin-top: 18px;
+    letter-spacing: 1px;
+}
+.project-carousel .project-block {
+    transition: all 0.6s ease;
+}
+
+.project-carousel .owl-item {
+    opacity: 0.5;
+    transform: scale(0.85);
+    transition: all 0.6s ease;
+}
+
+.project-carousel .owl-item.center {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.project-carousel .image-box img {
+    border-radius: 20px;
+}
+.funfact-section .odometer {
+    display: inline-block;
+    letter-spacing: 0;
+}
+
+.funfact-section .count-outer {
+    white-space: nowrap;
+}
+
+.funfact-section .symble {
+    margin-left: 5px;   /* control spacing manually */
+}
+.odometer-digit {
+    padding: 0;
+}
+
+.odometer-digit-inner {
+    padding: 0;
+}
+.image-showcase-section .auto-container {
+    max-width: 1300px;
+}
 
 
 

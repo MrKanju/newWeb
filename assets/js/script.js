@@ -195,48 +195,52 @@
         });
     }
 
-	// banner-carousel-wrapper (for index.html banner)
-	if ($('.banner-carousel-wrapper').length) {
-		$('.banner-carousel-wrapper').owlCarousel({
-			loop: true,
-			margin: 0,
-			nav: false,
-			dots: true,
-			items: 1,
-			autoplay: true,
-			autoplayTimeout: 5000,
-			autoplayHoverPause: false,
-			smartSpeed: 1000,
-			navText: ['<span class="icon-6"></span>', '<span class="icon-7"></span>'],
-			onInitialized: function() {
-				// Force full height on init
-				$('.banner-carousel-wrapper, .banner-slide').css({
-					'height': '100vh',
-					'min-height': '100vh'
-				});
-				$('.banner-slide img').css({
-					'height': '100vh',
-					'width': '100%',
-					'object-fit': 'cover',
-					'object-position': 'center'
-				});
-			},
-			onResized: function() {
-				// Maintain full height on resize
-				$('.banner-carousel-wrapper, .banner-slide').css({
-					'height': '100vh',
-					'min-height': '100vh'
-				});
-				$('.banner-slide img').css({
-					'height': '100vh',
-					'width': '100%',
-					'object-fit': 'cover',
-					'object-position': 'center'
-				});
-			}
-		});
-	}
+// banner-carousel-wrapper (for index.html banner)
+if ($('.banner-carousel-wrapper').length) {
+	$('.banner-carousel-wrapper').owlCarousel({
+		loop: true,
+		margin: 0,
+		nav: false,
+		dots: true,
+		items: 1,
+		autoplay: true,
+		autoplayTimeout: 5000,
+		autoplayHoverPause: false,
+		smartSpeed: 3000,
 
+		// 🔥 ADD THIS
+		animateOut: 'fadeOut',
+		animateIn: 'fadeIn',
+
+		navText: ['<span class="icon-6"></span>', '<span class="icon-7"></span>'],
+
+		onInitialized: function() {
+			$('.banner-carousel-wrapper, .banner-slide').css({
+				'height': '100vh',
+				'min-height': '100vh'
+			});
+			$('.banner-slide img').css({
+				'height': '100vh',
+				'width': '100%',
+				'object-fit': 'cover',
+				'object-position': 'center'
+			});
+		},
+
+		onResized: function() {
+			$('.banner-carousel-wrapper, .banner-slide').css({
+				'height': '100vh',
+				'min-height': '100vh'
+			});
+			$('.banner-slide img').css({
+				'height': '100vh',
+				'width': '100%',
+				'object-fit': 'cover',
+				'object-position': 'center'
+			});
+		}
+	});
+}
 
     // single-item-carousel
 	if ($('.single-item-carousel').length) {
@@ -321,33 +325,36 @@
 			
 			// Initialize Owl Carousel after loading data
 			carousel.owlCarousel({
-				loop:true,
-				margin:30,
-				nav:true,
-				dots:false,
-				smartSpeed: 700,
-				autoplay: 4000,
-				autoplayTimeout: 4000,
-				autoplayHoverPause: true,
-				navText: [ '<span class="icon-6"></span>', '<span class="icon-7"></span>' ],
-				responsive:{
-					0:{
-						items:1
-					},
-					480:{
-						items:1
-					},
-					600:{
-						items:2
-					},
-					800:{
-						items:2
-					},			
-					1200:{
-						items:2
-					}
-				}
-			});
+    loop: true,
+    margin: 40,
+    nav: true,
+    dots: false,
+    center: true,
+    items: 1,                // ⭐ only 1 main item
+    stagePadding: 250,       // shows half images
+    smartSpeed: 900,
+    autoplay: true,
+    autoplayTimeout: 4000,
+    autoplayHoverPause: true,
+    navText: [
+        '<span class="icon-6"></span>',
+        '<span class="icon-7"></span>'
+    ],
+    responsive:{
+        0:{
+            items:1,
+            stagePadding: 40
+        },
+        768:{
+            items:1,
+            stagePadding: 120
+        },
+        1200:{
+            items:1,
+            stagePadding: 250
+        }
+    }
+});
 		});
 	}
 
@@ -562,14 +569,14 @@
 
 
 	if ($(".odometer").length) {
-	    var odo = $(".odometer");
-	    odo.each(function () {
-	      $(this).appear(function () {
-	        var countNumber = $(this).attr("data-count");
-	        $(this).html(countNumber);
-	      });
-	    });
-	  }
+    var odo = $(".odometer");
+    odo.each(function () {
+        $(this).appear(function () {
+            var countNumber = $(this).attr("data-count");
+            $(this).html(countNumber);
+        });
+    });
+}
 
 
 	  // Date picker
