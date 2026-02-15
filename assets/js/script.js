@@ -2,6 +2,26 @@
 	
 	"use strict";
 	
+	function loadProgressiveImages() {
+		const images = document.querySelectorAll('.progressive-image');
+		
+		images.forEach(img => {
+			const lowQualitySrc = img.src;
+			const highQualitySrc = img.dataset.src;
+			
+			if (highQualitySrc) {
+				const highQualityImg = new Image();
+				
+				highQualityImg.onload = function() {
+					img.src = highQualitySrc;
+					img.classList.remove('blur');
+					img.classList.add('loaded');
+				};
+				
+				highQualityImg.src = highQualitySrc;
+			}
+		});
+	}
 	//Hide Loading Box (Preloader)
 	function handlePreloader() {
 		// if($('.loader-wrap').length){
@@ -12,6 +32,7 @@
 		// }
 	}
 	$(document).ready(function() {
+		loadProgressiveImages();
 		if($('.loader-wrap').length){
 			$('.loader-wrap').delay(200).fadeOut(300);
 		}
