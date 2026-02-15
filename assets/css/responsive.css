@@ -23,9 +23,63 @@
     display: none !important;
   }
 
+  /* Hide desktop navigation completely on mobile */
+  .header-style-two .main-menu,
+  .header-style-two .menu-area .main-menu,
+  .header-style-two .navbar-collapse{
+    display: none !important;
+  }
+
+  /* Mobile header layout */
+  .header-style-two .outer-box{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 0;
+  }
+
+  .header-style-two .logo-box{
+    order: 1;
+    margin: 0;
+    padding: 0;
+  }
+
+  .header-style-two .menu-area{
+    order: 2;
+    margin-left: auto;
+  }
+
+  /* Hamburger positioning */
   .menu-area .mobile-nav-toggler {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    margin: 0;
+  }
+
+  .menu-area .mobile-nav-toggler .icon-bar{
     display: block;
-    padding: 10px;
+    width: 28px;
+    height: 2px;
+    background-color: var(--secondary-color);
+    margin-bottom: 6px;
+    transition: all 300ms ease;
+  }
+
+  .menu-area .mobile-nav-toggler .icon-bar:last-child{
+    margin-bottom: 0;
+  }
+
+  /* When header is scrolled, change hamburger color to white */
+  .header-style-two.scrolled .menu-area .mobile-nav-toggler .icon-bar{
+    background-color: #fff;
   }
 
   .main-header .shape{
