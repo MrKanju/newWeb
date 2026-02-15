@@ -1,0 +1,34 @@
+{
+    "projects": [
+            {
+          "id": 3,
+          "category": "Kitchen",
+          "image": "assets/images/project/SR (3).jpg"
+        },
+        {
+          "id": 5,
+          "category": "Kitchen",
+          "image": "assets/images/project/SR (11).jpg"
+        },
+        {
+          "id": 6,
+          "category": "Wardrobe",
+          "image": "assets/images/project/SR (14).jpg"
+        },
+      {
+        "id": 8,
+        "category": "Kitchen",
+        "image": "assets/images/project/SR (16).jpg"
+      },
+      {
+        "id": 10,
+        "category": "Kitchen",
+        "image": "assets/images/project/SR (18).jpg"
+      },
+      {
+        "id": 11,
+        "category": "Interior",
+        "image": "assets/images/project/SR (19).jpg"
+      }
+    ]
+  }

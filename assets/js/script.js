@@ -306,7 +306,7 @@ if ($('.banner-carousel-wrapper').length) {
 	// project-carousel (2 items at a time)
 	if ($('.project-carousel').length) {
 		// Load projects from JSON and initialize carousel
-		$.getJSON('assets/data/projects.json', function(data) {
+		$.getJSON('assets/data/project_carousel.json', function(data) {
 			const carousel = $('#projectCarousel');
 			
 			// Create project items from JSON data - no text box
@@ -315,7 +315,7 @@ if ($('.banner-carousel-wrapper').length) {
 					<div class="project-block">
 						<div class="project-block-two">
 							<div class="inner-box">
-								<figure class="image-box"><img src="${project.image}" alt="${project.category}"></figure>
+								<figure class="image-box"><img src="${project.image}" alt="${project.category}" loading="lazy"></figure>
 							</div>
 						</div>
 					</div>
