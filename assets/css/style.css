@@ -7565,7 +7565,7 @@ body {
 }
 
 /* Kitchen - Full Width Top (spans all 4 columns) */
-.kitchen-card {
+.living-card {
   grid-column: 1 / 3;
   grid-row: 1 / 2;
 }
@@ -7577,7 +7577,7 @@ body {
 }
 
 /* Living - Bottom Center Left */
-.living-card {
+.kitchen-card {
   grid-column: 2 / 3;
   grid-row: 2 / 3;
 }
@@ -7697,7 +7697,7 @@ body {
   }
 
   /* Kitchen - Full width top */
-  .kitchen-card {
+  .living-card {
     grid-column: 1 / 3;
     grid-row: 1 / 2;
   }
@@ -7709,7 +7709,7 @@ body {
   }
 
   /* Living - Row 2, Right */
-  .living-card {
+  .kitchen-card {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
   }
