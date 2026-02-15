@@ -1,6 +1,8 @@
 {
-    "projects": [
-      {
+  "projects": [
+    
+
+    {
         "id": 1,
         "category": "Kitchen",
         "image": "assets/images/project/SR (1).jpg"
@@ -25,85 +27,173 @@
         "category": "Kitchen",
         "image": "assets/images/project/SR (11).jpg"
       },
-      {
-        "id": 6,
-        "category": "Wardrobe",
-        "image": "assets/images/project/SR (14).jpg"
-      },
-      {
-        "id": 7,
-        "category": "Interior",
-        "image": "assets/images/project/SR (15).jpg"
-      },
-      {
-        "id": 8,
-        "category": "Kitchen",
-        "image": "assets/images/project/SR (16).jpg"
-      },
-      {
-        "id": 9,
-        "category": "Interior",
-        "image": "assets/images/project/SR (17).jpg"
-      },
-      {
-        "id": 10,
-        "category": "Kitchen",
-        "image": "assets/images/project/SR (18).jpg"
-      },
-      {
-        "id": 11,
-        "category": "Interior",
-        "image": "assets/images/project/SR (19).jpg"
-      },
-      {
-        "id": 12,
-        "category": "Kitchen",
-        "image": "assets/images/project/SR (20).jpg"
-      },
-      {
-        "id": 13,
-        "category": "Wardrobe",
-        "image": "assets/images/project/SR (21).jpg"
-      },
-      {
-        "id": 14,
-        "category": "Interior",
-        "image": "assets/images/project/SR (22).jpg"
-      },
-      {
-        "id": 15,
-        "category": "Kitchen",
-        "image": "assets/images/project/SR (23).jpg"
-      },
-      {
-        "id": 16,
-        "category": "Interior",
-        "image": "assets/images/project/SR (25).jpg"
-      },
-      {
-        "id": 17,
-        "category": "Kitchen",
-        "image": "assets/images/project/SR (27).jpg"
-      },
-      {
-        "id": 18,
-        "category": "Interior",
-        "image": "assets/images/project/SR (28).jpg"
-      },
-      {
-        "id": 19,
-        "category": "Kitchen",
-        "image": "assets/images/project/SR (29).jpg"
-      },
-      {
-        "id": 20,
-        "category": "Wardrobe",
-        "image": "assets/images/project/SR (30).jpg"
-      },
-      {
-        "id": 21,
-        "category": "Interior",
-        "image": "assets/images/project/SR (32).jpg"
-      }
-    ]
-  }
+    
+    {
+      "id": 6,
+      "category": "Wardrobe",
+      "image": "assets/images/project/SR (14).jpg"
+    },
+    {
+      "id": 7,
+      "category": "Interior",
+      "image": "assets/images/project/SR (15).jpg"
+    },
+    {
+      "id": 8,
+      "category": "Kitchen",
+      "image": "assets/images/project/SR (16).jpg"
+    },
+    {
+      "id": 9,
+      "category": "Interior",
+      "image": "assets/images/project/SR (17).jpg"
+    },
+    {
+      "id": 10,
+      "category": "Kitchen",
+      "image": "assets/images/project/SR (18).jpg"
+    },
+    {
+      "id": 11,
+      "category": "Interior",
+      "image": "assets/images/project/SR (19).jpg"
+    },
+    {
+      "id": 12,
+      "category": "Kitchen",
+      "image": "assets/images/project/SR (20).jpg"
+    },
+    {
+      "id": 13,
+      "category": "Wardrobe",
+      "image": "assets/images/project/SR (21).jpg"
+    },
+    {
+      "id": 14,
+      "category": "Interior",
+      "image": "assets/images/project/SR (22).jpg"
+    },
+    {
+      "id": 15,
+      "category": "Kitchen",
+      "image": "assets/images/project/SR (23).jpg"
+    },
+    {
+      "id": 16,
+      "category": "Interior",
+      "image": "assets/images/project/SR (25).jpg"
+    },
+    {
+      "id": 17,
+      "category": "Kitchen",
+      "image": "assets/images/project/SR (27).jpg"
+    },
+    {
+      "id": 18,
+      "category": "Interior",
+      "image": "assets/images/project/SR (28).jpg"
+    },
+    {
+      "id": 19,
+      "category": "Kitchen",
+      "image": "assets/images/project/SR (29).jpg"
+    },
+    {
+      "id": 20,
+      "category": "Wardrobe",
+      "image": "assets/images/project/SR (30).jpg"
+    },
+    {
+      "id": 21,
+      "category": "Interior",
+      "image": "assets/images/project/SR (32).jpg"
+    },
+
+
+    { "id": 22, "category": "Bedroom", "image": "assets/images/project/bedroom-1.jpg" },
+    { "id": 23, "category": "Bedroom", "image": "assets/images/project/bedroom-2.jpg" },
+    { "id": 24, "category": "Bedroom", "image": "assets/images/project/bedroom-3.jpg" },
+    { "id": 25, "category": "Bedroom", "image": "assets/images/project/bedroom-4.jpg" },
+    { "id": 26, "category": "Bedroom", "image": "assets/images/project/bedroom-5.jpg" },
+    { "id": 27, "category": "Bedroom", "image": "assets/images/project/bedroom-6.jpg" },
+    { "id": 28, "category": "Bedroom", "image": "assets/images/project/bedroom-7.jpg" },
+    { "id": 29, "category": "Bedroom", "image": "assets/images/project/bedroom-8.jpg" },
+    { "id": 30, "category": "Bedroom", "image": "assets/images/project/bedroom-9.jpg" },
+    { "id": 31, "category": "Bedroom", "image": "assets/images/project/bedroom-10.jpg" },
+    { "id": 32, "category": "Bedroom", "image": "assets/images/project/bedroom-11.jpg" },
+    { "id": 33, "category": "Bedroom", "image": "assets/images/project/bedroom-12.jpg" },
+    { "id": 93, "category": "Bedroom", "image": "assets/images/project/bedroom-13.jpg" },
+
+
+
+
+
+    { "id": 34, "category": "Dining", "image": "assets/images/project/dining-1.jpg" },
+    { "id": 35, "category": "Dining", "image": "assets/images/project/dining-2.jpg" },
+    { "id": 36, "category": "Dining", "image": "assets/images/project/dining-3.jpg" },
+    { "id": 37, "category": "Dining", "image": "assets/images/project/dining-4.jpg" },
+    { "id": 38, "category": "Dining", "image": "assets/images/project/dining-5.jpg" },
+    { "id": 39, "category": "Dining", "image": "assets/images/project/dining-6.jpg" },
+    { "id": 40, "category": "Dining", "image": "assets/images/project/dining-7.jpg" },
+    { "id": 41, "category": "Dining", "image": "assets/images/project/dining-8.jpg" },
+    { "id": 42, "category": "Dining", "image": "assets/images/project/dining-9.jpg" },
+    { "id": 43, "category": "Dining", "image": "assets/images/project/dining-10.jpg" },
+
+
+    { "id": 44, "category": "Kitchen", "image": "assets/images/project/kitchen-1.jpg" },
+    { "id": 45, "category": "Kitchen", "image": "assets/images/project/kitchen-2.jpg" },
+    { "id": 46, "category": "Kitchen", "image": "assets/images/project/kitchen-3.jpg" },
+    { "id": 47, "category": "Kitchen", "image": "assets/images/project/kitchen-4.jpg" },
+    { "id": 48, "category": "Kitchen", "image": "assets/images/project/kitchen-5.jpg" },
+    { "id": 49, "category": "Kitchen", "image": "assets/images/project/kitchen-6.jpg" },
+    { "id": 50, "category": "Kitchen", "image": "assets/images/project/kitchen-7.jpg" },
+    { "id": 51, "category": "Kitchen", "image": "assets/images/project/kitchen-8.jpg" },
+    { "id": 52, "category": "Kitchen", "image": "assets/images/project/kitchen-9.jpg" },
+    { "id": 53, "category": "Kitchen", "image": "assets/images/project/kitchen-10.jpg" },
+    { "id": 54, "category": "Kitchen", "image": "assets/images/project/kitchen-11.jpg" },
+    { "id": 55, "category": "Kitchen", "image": "assets/images/project/kitchen-12.jpg" },
+    { "id": 56, "category": "Kitchen", "image": "assets/images/project/kitchen-13.jpg" },
+    { "id": 57, "category": "Kitchen", "image": "assets/images/project/kitchen-14.jpg" },
+    { "id": 58, "category": "Kitchen", "image": "assets/images/project/kitchen-15.jpg" },
+    { "id": 59, "category": "Kitchen", "image": "assets/images/project/kitchen-16.jpg" },
+    { "id": 60, "category": "Kitchen", "image": "assets/images/project/kitchen-17.jpg" },
+    { "id": 61, "category": "Kitchen", "image": "assets/images/project/kitchen-18.jpg" },
+    { "id": 62, "category": "Kitchen", "image": "assets/images/project/kitchen-19.jpg" },
+    { "id": 63, "category": "Kitchen", "image": "assets/images/project/kitchen-20.jpg" },
+    { "id": 64, "category": "Kitchen", "image": "assets/images/project/kitchen-21.jpg" },
+    { "id": 65, "category": "Kitchen", "image": "assets/images/project/kitchen-22.jpg" },
+    { "id": 66, "category": "Kitchen", "image": "assets/images/project/kitchen-23.jpg" },
+    { "id": 67, "category": "Kitchen", "image": "assets/images/project/kitchen-24.jpg" },
+    { "id": 68, "category": "Kitchen", "image": "assets/images/project/kitchen-25.jpg" },
+
+
+    { "id": 69, "category": "Living", "image": "assets/images/project/living-1.jpg" },
+    { "id": 70, "category": "Living", "image": "assets/images/project/living-2.jpg" },
+    { "id": 71, "category": "Living", "image": "assets/images/project/living-3.jpg" },
+    { "id": 72, "category": "Living", "image": "assets/images/project/living-4.jpg" },
+    { "id": 73, "category": "Living", "image": "assets/images/project/living-5.jpg" },
+    { "id": 74, "category": "Living", "image": "assets/images/project/living-6.jpg" },
+    { "id": 75, "category": "Living", "image": "assets/images/project/living-7.jpg" },
+    { "id": 76, "category": "Living", "image": "assets/images/project/living-8.jpg" },
+    { "id": 77, "category": "Living", "image": "assets/images/project/living-9.jpg" },
+    { "id": 78, "category": "Living", "image": "assets/images/project/living-10.jpg" },
+    { "id": 79, "category": "Living", "image": "assets/images/project/living-11.jpg" },
+    { "id": 80, "category": "Living", "image": "assets/images/project/living-12.jpg" },
+    { "id": 81, "category": "Living", "image": "assets/images/project/living-13.jpg" },
+    { "id": 82, "category": "Living", "image": "assets/images/project/living-14.jpg" },
+    { "id": 83, "category": "Living", "image": "assets/images/project/living-15.jpg" },
+    { "id": 84, "category": "Living", "image": "assets/images/project/living-16.jpg" },
+    { "id": 85, "category": "Living", "image": "assets/images/project/living-17.jpg" },
+    { "id": 86, "category": "Living", "image": "assets/images/project/living-18.jpg" },
+    { "id": 87, "category": "Living", "image": "assets/images/project/living-19.jpg" },
+    { "id": 88, "category": "Living", "image": "assets/images/project/living-20.jpg" },
+    { "id": 89, "category": "Living", "image": "assets/images/project/living-21.jpg" },
+
+
+
+    { "id": 90, "category": "Office", "image": "assets/images/project/office-1.jpg" },
+    { "id": 91, "category": "Office", "image": "assets/images/project/office-2.jpg" },
+    { "id": 92, "category": "Office", "image": "assets/images/project/office-3.jpg" }
+
+  ]
+}
