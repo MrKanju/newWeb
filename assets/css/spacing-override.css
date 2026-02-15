@@ -1,0 +1,200 @@
+/* ========== AGGRESSIVE SPACING REDUCTION - OVERRIDE ALL DEFAULTS ========== */
+
+/* FUNFACT SECTION - Reduce top padding drastically */
+section.funfact-section.pt_120 {
+    padding-top: 40px !important;
+}
+
+.funfact-section .outer-container {
+    padding: 50px 95px !important;
+}
+
+.funfact-section .auto-container {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* ABOUT SECTION - Reduce all padding */
+section.about-style-two {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+}
+
+/* OFFER SECTION - Tighten spacing */
+section.offer-section {
+    padding: 0px 0px 50px 0px !important;
+}
+
+section.offer-section .sec-title.light.mb_55 {
+    margin-bottom: 30px !important;
+}
+
+/* SERVICE SECTION "Why Choose Us" - Major reduction */
+section.service-section.pt_100.pb_110 {
+    padding-top: 50px !important;
+    padding-bottom: 50px !important;
+}
+
+.service-section .sec-title.mb_65 {
+    margin-bottom: 35px !important;
+}
+
+.service-section .service-block-one .inner-box {
+    padding: 30px 25px !important;
+    min-height: 300px !important;
+}
+
+.service-section .service-block-one .inner-box .icon-box {
+    margin-bottom: 15px !important;
+}
+
+.service-section .service-block-one .inner-box h3 {
+    margin-bottom: 12px !important;
+}
+
+.service-section .service-block-one .inner-box p {
+    margin-bottom: 15px !important;
+}
+
+/* PROJECT SECTION - Reduce spacing */
+section.project-style-two.pt_95 {
+    padding-top: 50px !important;
+}
+
+.project-style-two .title-box.mb_70 {
+    margin-bottom: 40px !important;
+}
+
+.project-style-two .bg-color {
+    height: 80px !important;
+}
+
+/* TESTIMONIAL SECTION - Tighten up */
+section.testimonial-section.centred {
+    padding: 50px 0px !important;
+}
+
+.testimonial-section .sec-title.mb_55 {
+    margin-bottom: 30px !important;
+}
+
+.testimonial-section .testimonial-block .image-box {
+    margin-bottom: 25px !important;
+}
+
+.testimonial-section .testimonial-block .text-box {
+    min-height: 140px !important;
+}
+
+.testimonial-section .testimonial-block .text-box p {
+    margin-bottom: 20px !important;
+    font-size: 16px !important;
+    line-height: 26px !important;
+}
+
+.testimonial-section .testimonial-block .text-box .name {
+    font-size: 20px !important;
+    line-height: 26px !important;
+}
+
+/* CLIENTS SECTION - Reduce spacing */
+section.clients-section.centred {
+    padding: 50px 0px !important;
+}
+
+.clients-section .sec-title.mb_55 {
+    margin-bottom: 30px !important;
+}
+
+.clients-section .inner-container.pt_80.pb_80 {
+    padding-top: 35px !important;
+    padding-bottom: 35px !important;
+}
+
+/* FOOTER - Reduce top padding */
+footer.main-footer {
+    padding: 70px 0px 60px 0px !important;
+}
+
+/* Additional row spacing reduction */
+.service-section .row.clearfix {
+    row-gap: 10px !important;
+}
+
+.service-section .service-block {
+    margin-bottom: 0px !important;
+}
+
+/* Mobile adjustments */
+@media (max-width: 991px) {
+    section.funfact-section.pt_120 {
+        padding-top: 30px !important;
+    }
+    
+    .funfact-section .outer-container {
+        padding: 40px 30px !important;
+    }
+    
+    section.about-style-two {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    section.service-section.pt_100.pb_110 {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+    
+    section.project-style-two.pt_95 {
+        padding-top: 40px !important;
+    }
+    
+    section.testimonial-section.centred {
+        padding: 40px 0px !important;
+    }
+    
+    section.clients-section.centred {
+        padding: 40px 0px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    section.funfact-section.pt_120 {
+        padding-top: 25px !important;
+    }
+    
+    .funfact-section .outer-container {
+        padding: 30px 20px !important;
+    }
+    
+    section.about-style-two {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    section.service-section.pt_100.pb_110 {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    .service-section .sec-title.mb_65 {
+        margin-bottom: 25px !important;
+    }
+    
+    section.project-style-two.pt_95 {
+        padding-top: 30px !important;
+    }
+    
+    section.testimonial-section.centred {
+        padding: 30px 0px !important;
+    }
+    
+    section.clients-section.centred {
+        padding: 30px 0px !important;
+    }
+    
+    .clients-section .inner-container.pt_80.pb_80 {
+        padding-top: 25px !important;
+        padding-bottom: 25px !important;
+    }
+}

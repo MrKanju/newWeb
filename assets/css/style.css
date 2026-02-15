@@ -8185,6 +8185,188 @@ body {
     max-width: 1300px;
 }
 
+/* ========== REDUCED SECTION SPACING - CUSTOM ADJUSTMENTS ========== */
+
+/* Reduce internal spacing in "Why Choose Us" service cards */
+.service-section .service-block-one .inner-box {
+    padding: 25px 20px !important;
+    min-height: 280px !important;
+}
+
+.service-section .service-block-one .inner-box .icon-box {
+    margin-bottom: 15px !important;
+}
+
+.service-section .service-block-one .inner-box h3 {
+    margin-bottom: 10px !important;
+    font-size: 20px !important;
+    line-height: 26px !important;
+}
+
+.service-section .service-block-one .inner-box p {
+    margin-bottom: 15px !important;
+    font-size: 16px !important;
+    line-height: 24px !important;
+}
+
+/* Reduce top/bottom padding of service section (Why Choose Us) */
+.service-section {
+    padding: 60px 0px 50px 0px !important;
+}
+
+.service-section .sec-title {
+    margin-bottom: 40px !important;
+}
+
+/* Reduce spacing in project section (Our Projects) */
+.project-style-two {
+    padding-top: 50px !important;
+    padding-bottom: 0px !important;
+}
+
+.project-style-two .title-box {
+    margin-bottom: 40px !important;
+}
+
+.project-style-two .bg-color {
+    height: 100px !important;
+}
+
+/* Reduce testimonial section spacing */
+.testimonial-section {
+    padding: 60px 0px 50px 0px !important;
+}
+
+.testimonial-section .sec-title {
+    margin-bottom: 35px !important;
+}
+
+.testimonial-section .testimonial-block .image-box {
+    margin-bottom: 30px !important;
+}
+
+.testimonial-section .testimonial-block .text-box {
+    min-height: 160px !important;
+}
+
+.testimonial-section .testimonial-block .text-box p,
+.testimonial-section .testimonial-block .text-box .testimonial-text .text-content {
+    margin-bottom: 20px !important;
+    font-size: 16px !important;
+    line-height: 26px !important;
+}
+
+.testimonial-section .testimonial-block .text-box .name {
+    font-size: 20px !important;
+    line-height: 26px !important;
+}
+
+/* Reduce clients section (Trusted Brands) spacing */
+.clients-section {
+    padding: 50px 0px 40px 0px !important;
+}
+
+.clients-section .sec-title {
+    margin-bottom: 35px !important;
+}
+
+.clients-section .inner-container {
+    padding-top: 40px !important;
+    padding-bottom: 40px !important;
+}
+
+/* Reduce funfact section spacing (stats section) */
+.funfact-section {
+    padding-top: 60px !important;
+}
+
+.funfact-section .outer-container {
+    padding: 60px 95px !important;
+}
+
+/* Reduce about section spacing */
+.about-style-two {
+    padding-top: 60px !important;
+    padding-bottom: 60px !important;
+}
+
+/* Reduce offer section spacing */
+.offer-section {
+    padding: 0px 0px 60px 0px !important;
+}
+
+/* Tighten up gaps between rows in Why Choose Us */
+.service-section .row {
+    row-gap: 20px !important;
+}
+
+.service-section .service-block {
+    margin-bottom: 0px !important;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 991px) {
+    .service-section {
+        padding: 50px 0px 40px 0px !important;
+    }
+    
+    .project-style-two {
+        padding-top: 40px !important;
+    }
+    
+    .testimonial-section {
+        padding: 50px 0px 40px 0px !important;
+    }
+    
+    .clients-section {
+        padding: 40px 0px 30px 0px !important;
+    }
+    
+    .funfact-section {
+        padding-top: 50px !important;
+    }
+    
+    .funfact-section .outer-container {
+        padding: 50px 30px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .service-section {
+        padding: 40px 0px 30px 0px !important;
+    }
+    
+    .service-section .sec-title {
+        margin-bottom: 30px !important;
+    }
+    
+    .project-style-two {
+        padding-top: 30px !important;
+    }
+    
+    .testimonial-section {
+        padding: 40px 0px 30px 0px !important;
+    }
+    
+    .clients-section {
+        padding: 30px 0px 25px 0px !important;
+    }
+    
+    .clients-section .inner-container {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
+    }
+    
+    .funfact-section .outer-container {
+        padding: 40px 20px !important;
+    }
+    
+    .service-section .service-block-one .inner-box {
+        min-height: auto !important;
+        padding: 20px 15px !important;
+    }
+}
+
 
 
 
