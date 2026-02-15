@@ -214,7 +214,7 @@ if ($('.banner-carousel-wrapper').length) {
 		autoplayTimeout: 5000,
 		autoplayHoverPause: false,
 		smartSpeed: 3000,
-
+		lazyLoad: true,
 		// 🔥 ADD THIS
 		animateOut: 'fadeOut',
 		animateIn: 'fadeIn',
