@@ -8005,6 +8005,124 @@ body {
   margin-right: 0px !important;
 }
 
+/* ========== BANNER CAROUSEL ENHANCEMENTS ========== */
+
+/* Dark background for smooth transitions */
+.banner-style-two,
+.banner-carousel-wrapper,
+.banner-slide {
+    background: #000;
+}
+
+.banner-carousel-wrapper .owl-stage-outer {
+    background: #000;
+}
+
+.banner-carousel-wrapper .owl-item {
+    overflow: hidden;
+}
+
+/* Ken Burns zoom effect on active slide */
+.banner-slide img {
+    transform: scale(1);
+    transition: transform 10s ease-in-out;
+}
+
+.owl-item.active .banner-slide img {
+    transform: scale(1.08);
+}
+
+/* Blur to focus transition */
+.banner-slide img {
+    filter: blur(6px);
+    transition: filter 1.5s ease;
+}
+
+.owl-item.active .banner-slide img {
+    filter: blur(0);
+}
+
+/* Banner content fade in animation */
+.banner-content {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1.2s ease;
+}
+
+.owl-item.active .banner-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ========== IMPROVED FUNFACT COUNTER STYLING ========== */
+
+.funfact-section .count-outer {
+    font-size: 72px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+    letter-spacing: 2px !important;
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.funfact-section .odometer {
+    font-size: 72px !important;
+    display: inline-block !important;
+    letter-spacing: 0 !important;
+}
+
+.funfact-section .symble {
+    font-size: 48px !important;
+    margin-left: 5px !important;
+    position: relative !important;
+    display: inline-block !important;
+    top: 0 !important;
+}
+
+.funfact-section p {
+    font-size: 16px !important;
+    margin-top: 18px !important;
+    letter-spacing: 1px !important;
+}
+
+/* Remove extra padding from odometer digits */
+.odometer-digit {
+    padding: 0 !important;
+}
+
+.odometer-digit-inner {
+    padding: 0 !important;
+}
+
+/* ========== PROJECT CAROUSEL CENTER FOCUS EFFECT ========== */
+
+.project-carousel .project-block {
+    transition: all 0.6s ease;
+}
+
+.project-carousel .owl-item {
+    opacity: 0.5;
+    transform: scale(0.85);
+    transition: all 0.6s ease;
+}
+
+.project-carousel .owl-item.center {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.project-carousel .image-box img {
+    border-radius: 20px;
+}
+
+/* ========== IMAGE SHOWCASE SECTION CONTAINER ========== */
+
+.image-showcase-section .auto-container {
+    max-width: 1300px;
+}
+
 
 
 
