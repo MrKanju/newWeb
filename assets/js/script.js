@@ -4,14 +4,21 @@
 	
 	//Hide Loading Box (Preloader)
 	function handlePreloader() {
+		// if($('.loader-wrap').length){
+		// 	$('.loader-wrap').delay(200).fadeOut(300);  // Much faster: 200ms delay + 300ms fadeout = 0.5 seconds total
+		// }
+		// if($('.handle-preloader').length){
+		// 	$('.handle-preloader').delay(200).fadeOut(300);
+		// }
+	}
+	$(document).ready(function() {
 		if($('.loader-wrap').length){
-			$('.loader-wrap').delay(200).fadeOut(300);  // Much faster: 200ms delay + 300ms fadeout = 0.5 seconds total
+			$('.loader-wrap').delay(200).fadeOut(300);
 		}
 		if($('.handle-preloader').length){
 			$('.handle-preloader').delay(200).fadeOut(300);
 		}
-	}
-
+	});
 	if ($(".preloader-close").length) {
         $(".preloader-close").on("click", function(){
             $('.loader-wrap').delay(200).fadeOut(500);
@@ -626,7 +633,7 @@ if ($('.banner-carousel-wrapper').length) {
    ========================================================================== */
 	
 	$(window).on('load', function() {
-		handlePreloader();
+		// handlePreloader();
 		enableMasonry();
 		setupTestimonialReadMore();
 		loadServicePageProjects();
