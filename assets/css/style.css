@@ -2640,9 +2640,13 @@ faq-section .accordion-box{
 }
 
 .funfact-block-one .inner-box p{
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 28px;
+  font-weight: 800;
   color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  margin-top: 5px;
 }
 
 
