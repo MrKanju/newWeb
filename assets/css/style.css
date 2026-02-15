@@ -3585,23 +3585,30 @@ transforming-section .image-box img{
 }
 
 .banner-quote-overlay h2:before {
-  content: '"';
+  content: '';
   position: absolute;
-  left: -10px;
-  top: -15px;
-  font-size: 80px;
-  font-family: Georgia, serif;
-  line-height: 1;
+  left: -5px;
+  top: -10px;
+  width: 40px;
+  height: 40px;
+  background-image: url('../images/icons/icon-62.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .banner-quote-overlay h2:after {
-  content: '"';
+  content: '';
   position: absolute;
-  right: -10px;
-  bottom: -35px;
-  font-size: 80px;
-  font-family: Georgia, serif;
-  line-height: 1;
+  right: -5px;
+  bottom: -10px;
+  width: 40px;
+  height: 40px;
+  background-image: url('../images/icons/icon-62.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: rotate(180deg);
 }
 
 @keyframes slideInLeft {
