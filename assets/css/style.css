@@ -7603,12 +7603,9 @@ body {
   transition: background 0.3s ease;
 }
 
-.showcase-card-compact:hover .showcase-overlay-compact {
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.4) 0%,
-    rgba(0, 0, 0, 0.6) 100%
-  );
+.showcase-card-compact:hover .showcase-overlay-compact,
+.showcase-card-compact:hover .showcase-overlay-compact.light {
+  background: linear-gradient(135deg, rgba(210, 146, 81, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%);
 }
 
 /* Light overlay for accent cards */
@@ -7620,13 +7617,6 @@ body {
   );
 }
 
-.showcase-card-compact:hover .showcase-overlay-compact.light {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(0, 0, 0, 0.35) 100%
-  );
-}
 
 /* Label Text */
 .showcase-label-compact {
@@ -7641,7 +7631,6 @@ body {
 }
 
 .showcase-card-compact:hover .showcase-label-compact {
-  color: var(--theme-color);
   transform: scale(1.03);
   text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
 }
