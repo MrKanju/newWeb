@@ -2703,54 +2703,71 @@ faq-section .accordion-box{
 
 .testimonial-section .testimonial-block .text-box{
   position: relative;
-  display: block;
+  display: flex;
+  flex-direction: column;
   max-width: 1100px;
   width: 100%;
   margin: 0 auto;
+  min-height: 200px; /* UNIFORM HEIGHT - all cards same minimum height */
 }
 
+/* Regular testimonial text - simple paragraphs */
 .testimonial-section .testimonial-block .text-box p{
-  font-size: 20px;
-  line-height: 30px;
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
   margin-bottom: 32px;
 }
 
-/* Testimonial text truncation for long reviews */
-.testimonial-section .testimonial-block .text-box p.testimonial-text {
+/* Testimonial Read More/Read Less styling */
+.testimonial-section .testimonial-block .text-box .testimonial-text {
   position: relative;
-  max-height: 150px;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
+  display: block;
+  margin-bottom: 32px;
+  flex: 1; /* Take available space */
 }
 
-.testimonial-section .testimonial-block .text-box p.testimonial-text.truncated {
+.testimonial-section .testimonial-block .text-box .testimonial-text .text-content {
+  font-size: 18px;
+  line-height: 28px;
+  color: #444444;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3; /* TRUNCATE to 3 lines */
   -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.3s ease;
 }
 
-.testimonial-section .testimonial-block .text-box .read-more-link {
+/* When expanded, show full text */
+.testimonial-section .testimonial-block .text-box .testimonial-text.expanded .text-content {
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
+}
+
+.testimonial-section .testimonial-block .text-box .testimonial-text .read-more-btn {
   display: inline-block;
   margin-top: 10px;
   color: #d9b256;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   font-family: var(--jost);
-  text-decoration: none;
+  cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
   border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  background: none;
+  border: none;
+  padding: 0;
+  text-decoration: none;
 }
 
-.testimonial-section .testimonial-block .text-box .read-more-link:hover {
+.testimonial-section .testimonial-block .text-box .testimonial-text .read-more-btn:hover {
   color: #c19156;
   border-bottom-color: #c19156;
-}
-
-.testimonial-section .testimonial-block .text-box .read-more-link i {
-  margin-left: 5px;
-  font-size: 14px;
 }
 
 .testimonial-section .testimonial-block .text-box .name{
@@ -2761,10 +2778,7 @@ faq-section .accordion-box{
   font-family: var(--jost);
   color: #d9b256;
   font-weight: 500;
-}
-
-.testimonial-section .owl-nav{
-  display: none !important;
+  margin-top: auto; /* Push to bottom for uniform layout */
 }
 
 

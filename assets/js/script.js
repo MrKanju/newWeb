@@ -364,10 +364,10 @@ if ($('.banner-carousel-wrapper').length) {
 		$('.three-item-carousel').owlCarousel({
 			loop:true,
 			margin:30,
-			nav:true,
+			nav:false,
 			smartSpeed: 500,
 			autoplay: 1000,
-			navText: [ '<span class="icon-6"></span>', '<span class="icon-7"></span>' ],
+			navText: [],
 			responsive:{
 				0:{
 					items:1
@@ -628,33 +628,59 @@ if ($('.banner-carousel-wrapper').length) {
 	$(window).on('load', function() {
 		handlePreloader();
 		enableMasonry();
-		truncateTestimonials();
+		setupTestimonialReadMore();
 		loadServicePageProjects();
 	});
 
-	// Truncate long testimonials and add "Read More" link
-	function truncateTestimonials() {
+	// Setup Read More/Read Less functionality for testimonials
+	function setupTestimonialReadMore() {
 		if ($('.testimonial-section .testimonial-block').length) {
 			$('.testimonial-section .testimonial-block').each(function() {
 				var $block = $(this);
 				var $textBox = $block.find('.text-box');
-				var $paragraph = $textBox.find('p').first();
+				var $testimonialText = $textBox.find('.testimonial-text');
 				
-				// Add class to paragraph for styling
-				$paragraph.addClass('testimonial-text');
-				
-				// Check if text is too long (more than 200 characters)
-				var text = $paragraph.text();
-				if (text.length > 200) {
-					// Add truncated class
-					$paragraph.addClass('truncated');
+				// Only add functionality if data-full attribute exists
+				if ($testimonialText.attr('data-full')) {
+					var fullText = $testimonialText.attr('data-full');
+					var $textContent = $testimonialText.find('.text-content');
+					var $readMoreBtn = $testimonialText.find('.read-more-btn');
 					
-					// Add "Read More" link
-					var readMoreLink = '<a href="about.html#testimonials" class="read-more-link">Read Full Review <i class="fas fa-arrow-right"></i></a>';
-					$paragraph.after(readMoreLink);
+					// Handle Read More button click
+					$readMoreBtn.on('click', function(e) {
+						e.preventDefault();
+						
+						if ($testimonialText.hasClass('expanded')) {
+							// Collapse - show truncated text
+							$textContent.fadeOut(200, function() {
+								$textContent.html($textContent.attr('data-short'));
+								$textContent.fadeIn(200);
+							});
+							$testimonialText.removeClass('expanded');
+							$readMoreBtn.text('Read More');
+						} else {
+							// Expand - show full text
+							// Store the short text first
+							if (!$textContent.attr('data-short')) {
+								$textContent.attr('data-short', $textContent.html());
+							}
+							
+							$textContent.fadeOut(200, function() {
+								$textContent.html(fullText);
+								$textContent.fadeIn(200);
+							});
+							$testimonialText.addClass('expanded');
+							$readMoreBtn.text('Read Less');
+						}
+					});
 				}
 			});
 		}
+	}
+
+	// Truncate long testimonials and add "Read More" link
+	function truncateTestimonials() {
+		// This function is no longer needed - keeping for backwards compatibility
 	}
 
 	// Load projects for service page showcase (show 3 initially)
