@@ -245,6 +245,65 @@
         </section>
         <!-- chooseus-section end -->
 
+        <!-- project-gallery-section -->
+        <section class="project-gallery-section pt_120 pb_120">
+            <div class="auto-container">
+
+                <div class="sec-title text-center mb_50">
+                    <span class="sub-title mb_11">Our Portfolio</span>
+                    <h2>Recent Projects</h2>
+                    <p>Explore our latest kitchen and interior transformations</p>
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="filters text-center mb_50">
+                    <ul class="filter-tabs filter-btns clearfix">
+                        <li class="active filter" data-filter="*">All</li>
+                        <li class="filter" data-filter=".kitchen">Kitchen</li>
+                        <li class="filter" data-filter=".dining">Dining</li>
+                        <li class="filter" data-filter=".living">Living</li>
+                        <li class="filter" data-filter=".office">Office</li>
+                        <li class="filter instagram-filter" data-filter="instagram">Instagram</li>
+                    </ul>
+                </div>
+
+                <!-- Gallery Container -->
+                <div class="row clearfix grid" id="projectGrid"></div>
+
+                <!-- Instagram Feed Container -->
+                <div id="instagramFeedContainer" style="display: none; margin-top: 40px;">
+                    <div class="embedsocial-hashtag" data-ref="73db9dbf15de13143099cf23d63c9a2163a6e5b9">
+                        <a class="feed-powered-by-es feed-powered-by-es-feed-img es-widget-branding" 
+                           href="https://embedsocial.com/" 
+                           target="_blank" 
+                           title="Widget by EmbedSocial">
+                            <img src="https://embedsocial.com/cdn/icon/embedsocial-logo.webp" alt="EmbedSocial">
+                            <div class="es-widget-branding-text">Widget by EmbedSocial</div>
+                        </a>
+                    </div>
+                </div>
+
+                <script>
+                (function(d, s, id) {
+                    var js;
+                    if (d.getElementById(id)) {return;}
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "https://embedsocial.com/cdn/ht.js";
+                    d.getElementsByTagName("head")[0].appendChild(js);
+                }(document, "script", "EmbedSocialHashtagScript"));
+                </script>
+
+                <div class="text-center mt_50">
+                    <button id="viewMoreBtn" class="theme-btn">
+                        View More <i class="fas fa-arrow-down" style="margin-left: 8px;"></i>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+        <!-- project-gallery-section end -->
+
         <!-- main-footer -->
         <footer class="main-footer">
             <div class="auto-container">
@@ -346,6 +405,85 @@
             .then(data => {
                 document.getElementById('contact-widget-container').innerHTML = data;
             });
+    </script>
+
+    <!-- Project Gallery Script -->
+    <script>
+    $(document).ready(function(){
+
+        const categories = ['kitchen', 'dining', 'living', 'office'];
+        const totalImages = 16;
+        const initialVisible = 6; // 2 rows (3 per row)
+
+        const grid = $('#projectGrid');
+
+        for(let i = 1; i <= totalImages; i++) {
+
+            const category = categories[(i - 1) % categories.length];
+            const hiddenClass = i > initialVisible ? 'hidden-item' : '';
+
+            const item = `
+                <div class="col-lg-4 col-md-6 col-sm-12 grid-item ${category} ${hiddenClass}">
+                    <div class="project-block">
+                        <div class="inner-box">
+                            <div class="image-box" style="background-image: url('assets/images/project/project-${i}.jpg');"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            grid.append(item);
+        }
+
+        var $grid = $('.grid').isotope({
+            itemSelector: '.grid-item',
+            layoutMode: 'fitRows'
+        });
+
+        // Filter click
+        $('.filter-tabs').on('click', 'li', function(){
+
+            var filterValue = $(this).attr('data-filter');
+
+            $('.filter-tabs li').removeClass('active');
+            $(this).addClass('active');
+
+            if(filterValue === "instagram") {
+
+                $('.grid').hide();
+                $('#instagramFeedContainer').show();
+                $('#viewMoreBtn').hide();
+
+            } else {
+
+                $('.grid').show();
+                $('#instagramFeedContainer').hide();
+                $('#viewMoreBtn').show();
+                $grid.isotope({ filter: filterValue });
+            }
+
+        });
+
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // View More simple toggle
+        $('#viewMoreBtn').click(function(){
+
+            if($(this).hasClass('expanded')) {
+                $('.hidden-item').hide();
+                $(this).removeClass('expanded').text('View More');
+            } else {
+                $('.hidden-item').show();
+                $(this).addClass('expanded').text('Show Less');
+            }
+
+            $grid.isotope('layout'); // refresh layout
+
+        });
+
+    });
     </script>
 
 </body><!-- End of .page_wrapper -->
