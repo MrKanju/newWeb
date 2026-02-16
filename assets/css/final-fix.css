@@ -591,3 +591,19 @@
 .showcase-card-compact {
     cursor: pointer;
 }
+.video-section,
+.service-section {
+    padding-bottom: 10px !important;
+}
+/* FORCE FAQ QUESTION SIZE */
+.faq-page-section .accordion-box .accordion .acc-btn h3 {
+    font-size: 25px !important;
+    font-weight: 600 !important;
+}
+
+/* FORCE FAQ ANSWER SIZE */
+.faq-page-section .accordion-box .accordion .acc-content .text p,
+.faq-page-section .accordion-box .accordion .acc-content .text li {
+    font-size: 20px !important;
+    line-height: 1.8 !important;
+}
