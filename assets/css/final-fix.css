@@ -579,3 +579,15 @@
     align-items: center;
     justify-content: center;
 }
+.showcase-link {
+    display: block;
+    text-decoration: none;
+}
+
+.showcase-link:hover {
+    text-decoration: none;
+}
+
+.showcase-card-compact {
+    cursor: pointer;
+}

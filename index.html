@@ -297,46 +297,48 @@
                 </div>
                 <div class="auto-container">
                   <div class="showcase-grid-compact">
-                      <!-- Kitchen - Full Width Top -->
-                      <div class="showcase-card-compact kitchen-card">
-                          <img src="assets/images/project/SR (29).jpg" alt="Kitchen">
-                          <div class="showcase-overlay-compact">
-                              <h2 class="showcase-label-compact">KITCHEN</h2>
-                          </div>
-                      </div>
-                      
-                      <!-- Bedroom - Bottom Left -->
-                      <div class="showcase-card-compact bedroom-card">
-                          <img src="assets/images/project/project-1.jpg" alt="Bedroom">
-                          <div class="showcase-overlay-compact">
-                              <h2 class="showcase-label-compact">BEDROOM</h2>
-                          </div>
-                      </div>
-                      
-                      <!-- Living - Bottom Center -->
-                      <div class="showcase-card-compact living-card">
-                          <img src="assets/images/project/SR (3).jpg" alt="Living">
-                          <div class="showcase-overlay-compact">
-                              <h2 class="showcase-label-compact">LIVING</h2>
-                          </div>
-                      </div>
-                      
-                      <!-- Dining - Right Top (Tall) -->
-                      <div class="showcase-card-compact dining-card tall-card">
-                          <img src="assets/images/project/SR (10).jpg" alt="Dining">
-                          <div class="showcase-overlay-compact light">
-                              <h2 class="showcase-label-compact accent-text">DINING</h2>
-                          </div>
-                      </div>
-                      
-                      <!-- Office - Right Bottom (Tall) -->
-                      <div class="showcase-card-compact office-card tall-card">
-                          <img src="assets/images/service/service-3.jpg" alt="Office">
-                          <div class="showcase-overlay-compact light">
-                              <h2 class="showcase-label-compact accent-text">OFFICE</h2>
-                          </div>
-                      </div>
-                  </div>
+
+    <div class="showcase-card-compact kitchen-card"
+         onclick="goToGallery('kitchen')">
+        <img src="assets/images/project/SR (29).jpg" alt="Kitchen">
+        <div class="showcase-overlay-compact">
+            <h2 class="showcase-label-compact">KITCHEN</h2>
+        </div>
+    </div>
+
+    <div class="showcase-card-compact bedroom-card"
+         onclick="goToGallery('bedroom')">
+        <img src="assets/images/project/project-1.jpg" alt="Bedroom">
+        <div class="showcase-overlay-compact">
+            <h2 class="showcase-label-compact">BEDROOM</h2>
+        </div>
+    </div>
+
+    <div class="showcase-card-compact living-card"
+         onclick="goToGallery('living')">
+        <img src="assets/images/project/SR (3).jpg" alt="Living">
+        <div class="showcase-overlay-compact">
+            <h2 class="showcase-label-compact">LIVING</h2>
+        </div>
+    </div>
+
+    <div class="showcase-card-compact dining-card tall-card"
+         onclick="goToGallery('dining')">
+        <img src="assets/images/project/SR (10).jpg" alt="Dining">
+        <div class="showcase-overlay-compact light">
+            <h2 class="showcase-label-compact accent-text">DINING</h2>
+        </div>
+    </div>
+
+    <div class="showcase-card-compact office-card tall-card"
+         onclick="goToGallery('office')">
+        <img src="assets/images/service/service-3.jpg" alt="Office">
+        <div class="showcase-overlay-compact light">
+            <h2 class="showcase-label-compact accent-text">OFFICE</h2>
+        </div>
+    </div>
+
+</div>
               </div>
             </div>
         </section>
@@ -1989,6 +1991,11 @@ window.odometerOptions = {
     luxPopup.style.display = "none";
     localStorage.setItem("luxPopupSeen", "true");
   };
+</script>
+<script>
+function goToGallery(category) {
+    window.location.href = "about.html?category=" + category + "#recent-projects";
+}
 </script>
 <!-- ================= END POPUP ================= -->
 <!-- Mirrored from azim.hostlin.com/Kitchnox/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2025 15:38:49 GMT -->

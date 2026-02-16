@@ -247,7 +247,7 @@
 
         
         <!-- project-gallery-section -->
-        <section class="project-gallery-section pt_120 pb_120">
+        <section class="project-gallery-section pt_120 pb_120" id="recent-projects">
             <div class="container">
 
                 <div class="sec-title text-center mb_50">
@@ -503,6 +503,28 @@
 
     });
     </script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const params = new URLSearchParams(window.location.search);
+    const category = params.get("category");
+
+    if (category) {
+        const filterBtn = document.querySelector('[data-filter=".' + category + '"]');
+
+        if (filterBtn) {
+            filterBtn.click();
+
+            // Optional smooth scroll
+            const section = document.getElementById("recent-projects");
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }
+
+});
+</script>
 
 </body><!-- End of .page_wrapper -->
 
