@@ -368,3 +368,100 @@ footer.main-footer {
 .new-footer {
     padding: 60px 0 0;  /* slightly reduce top padding */
 }
+/* Reduce bottom spacing of funfact section */
+.funfact-section {
+    padding-bottom: 50px !important;
+}
+
+/* Reduce top spacing of about section */
+.about-style-two {
+    padding-top: 60px !important;
+}
+
+/* Make funfact content vertically centered better */
+.funfact-block-one .inner-box {
+    padding-bottom: 10px;
+}
+
+/* ===== Enlarge Why Choose Us Section ===== */
+
+.service-section .sec-title h2 {
+    font-size: 48px;
+}
+
+.service-section .sec-title p {
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.service-section .service-block-one .icon-box img {
+    width: 90px !important;
+    height: 90px !important;
+}
+
+.service-section .service-block-one h3 {
+    font-size: 22px;
+}
+
+.service-section .service-block-one p {
+    font-size: 16px;
+    line-height: 1.7;
+}
+/* ===== Footer Font Match (Safe Version) ===== */
+
+.new-footer {
+    font-family: 'Jost', sans-serif;
+}
+
+.new-footer h4 {
+    font-weight: 600;
+}
+
+.new-footer p,
+.new-footer ul li,
+.new-footer ul li a {
+    font-weight: 400;
+}
+/* ===== Fix Social Icons ===== */
+
+.footer-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    margin-right: 15px;
+    color: #fff;
+    font-size: 18px;
+    transition: 0.3s ease;
+}
+
+.footer-socials a:hover {
+    background: #d29251;
+    border-color: #d29251;
+    color: #fff;
+}
+/* ===== Make Footer Text Uniform ===== */
+
+.new-footer h4 {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.new-footer p,
+.new-footer li,
+.new-footer a {
+    color: rgba(255,255,255,0.75);
+    font-weight: 400;
+}
+
+.new-footer a {
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.new-footer a:hover {
+    color: #d29251;
+}
