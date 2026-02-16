@@ -478,20 +478,9 @@ footer.main-footer {
     margin-right: -10px;
 }
 
-/* Remove large bootstrap padding */
-.project-gallery-section .grid-item {
-    padding-left: 30px !important;
-    padding-right: 30px !important;
-    margin-bottom: 30px !important;
-}
 
-/* Make images BIG and uniform */
-.project-gallery-section .image-box {
-    height: 380px;              /* Bigger image */
-    background-size: cover;
-    background-position: center;
-    border-radius: 10px;
-}
+
+
 /* ===== Smooth Gallery Animation ===== */
 
 .project-gallery-section .project-block {
@@ -509,11 +498,6 @@ footer.main-footer {
     padding: 0 15px;     /* balanced side padding */
 }
 
-/* Reduce row side spacing */
-.project-gallery-section .row {
-    margin-left: -10px;
-    margin-right: -10px;
-}
 
 .project-gallery-section .grid-item {
     padding-left: 10px;
@@ -541,4 +525,72 @@ footer.main-footer {
 .about-style-six.pt_120 {
     padding-top: 0px !important;   /* was 120 */
     padding-bottom: 80px !important; /* optional adjust */
+}
+/* ===== Clean 3 Column Gallery ===== */
+
+.project-gallery-section {
+    padding: 80px 0 !important;
+}
+
+.project-gallery-section .container-fluid {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.project-gallery-section .grid-item {
+    padding: 0 12px;
+    margin-bottom: 24px;
+}
+
+.project-gallery-section .image-box {
+    height: 330px;     /* 🔥 This controls size */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+/* ===== FORCE 3 COLUMNS WITH ISOTOPE ===== */
+
+.project-gallery-section .grid-item {
+    width: 33.3333% !important;
+}
+
+@media (max-width: 991px) {
+    .project-gallery-section .grid-item {
+        width: 50% !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-gallery-section .grid-item {
+        width: 100% !important;
+    }
+}
+.project-gallery-section .grid-item {
+    width: 33.3333%;
+    padding: 0 12px;
+    margin-bottom: 24px;
+    float: left;
+}
+
+@media (max-width: 991px) {
+    .project-gallery-section .grid-item {
+        width: 50%;
+    }
+}
+
+@media (max-width: 576px) {
+    .project-gallery-section .grid-item {
+        width: 100%;
+    }
+}
+.project-gallery-section .row {
+    margin-left: -12px;
+    margin-right: -12px;
+}
+
+.project-gallery-section .grid-item {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    margin-bottom: 24px !important;
 }

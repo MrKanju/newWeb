@@ -167,7 +167,7 @@
         </section>
         <!-- page-title end -->
 
-      <!-- chooseus-section -->
+        <!-- chooseus-section -->
         <section class="chooseus-section about-page">
             <div class="auto-container">
                 <div class="inner-container">
@@ -204,6 +204,7 @@
             </div>
         </section>
         <!-- chooseus-section end -->
+
         <!-- about-style-six -->
         <section class="about-style-six pt_120 pb_130">
             <div class="auto-container">
@@ -244,10 +245,10 @@
         <!-- about-style-six end -->
 
 
-
+        
         <!-- project-gallery-section -->
         <section class="project-gallery-section pt_120 pb_120">
-            <div class="container-fluid px-4">
+            <div class="container">
 
                 <div class="sec-title text-center mb_50">
                     <span class="sub-title mb_11">Our Portfolio</span>
@@ -452,9 +453,10 @@
         }
 
         var $grid = $('.grid').isotope({
-            itemSelector: '.grid-item',
-            layoutMode: 'fitRows'
-        });
+    itemSelector: '.grid-item',
+    layoutMode: 'fitRows',
+
+});
 
         // Filter click
         $('.filter-tabs').on('click', 'li', function(){
@@ -500,21 +502,6 @@
         });
 
     });
-
-const galleryObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add("show");
-        }
-    });
-}, {
-    threshold: 0.15
-});
-
-document.querySelectorAll('.project-block').forEach(block => {
-    galleryObserver.observe(block);
-});
-
     </script>
 
 </body><!-- End of .page_wrapper -->
