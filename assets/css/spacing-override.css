@@ -465,3 +465,80 @@ footer.main-footer {
 .new-footer a:hover {
     color: #d29251;
 }
+/* ===== About Page Gallery Fix ===== */
+
+.project-gallery-section {
+    padding-top: 5px !important;
+    padding-bottom: 40px !important;
+}
+
+/* Reduce row spacing */
+.project-gallery-section .row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+/* Remove large bootstrap padding */
+.project-gallery-section .grid-item {
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+    margin-bottom: 30px !important;
+}
+
+/* Make images BIG and uniform */
+.project-gallery-section .image-box {
+    height: 380px;              /* Bigger image */
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+/* ===== Smooth Gallery Animation ===== */
+
+.project-gallery-section .project-block {
+    transition: transform 0.8s ease, box-shadow 0.8s ease;
+}
+
+.project-gallery-section .project-block:hover {
+    transform: translateY(-8px);
+}
+/* ===== Fix Gallery Width ===== */
+
+.project-gallery-section .auto-container {
+    max-width: 1200px;   /* standard clean width */
+    margin: 0 auto;
+    padding: 0 15px;     /* balanced side padding */
+}
+
+/* Reduce row side spacing */
+.project-gallery-section .row {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.project-gallery-section .grid-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 20px;
+}
+/* ===== Bigger About Icons ===== */
+
+.chooseus-block-one .icon-box img {
+    width: 80px !important;
+    height: auto;
+}
+
+.chooseus-block-one h4 {
+    font-size: 22px !important;
+    margin-bottom: 10px;
+}
+
+.chooseus-block-one p {
+    font-size: 17px !important;
+    line-height: 1.7;
+}
+/* Reduce top spacing of Mission & Vision section */
+
+.about-style-six.pt_120 {
+    padding-top: 0px !important;   /* was 120 */
+    padding-bottom: 80px !important; /* optional adjust */
+}

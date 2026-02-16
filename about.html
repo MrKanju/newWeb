@@ -167,7 +167,43 @@
         </section>
         <!-- page-title end -->
 
-
+      <!-- chooseus-section -->
+        <section class="chooseus-section about-page">
+            <div class="auto-container">
+                <div class="inner-container">
+                    <div class="row clearfix">
+                        <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
+                            <div class="chooseus-block-one">
+                                <div class="inner-box">
+                                    <div class="icon-box"><img src="assets/images/icons/icon-31.png" alt=""></div>
+                                    <h4>Reasonable Prices</h4>
+                                    <p>We produce furniture to fulfill needs of all people and offer it at affordable and fair prices</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
+                            <div class="chooseus-block-one">
+                                <div class="inner-box">
+                                    <div class="icon-box"><img src="assets/images/icons/icon-32.png" alt=""></div>
+                                    <h4>Professional Team</h4>
+                                    <p>we are porud of ouramicable, professional and always developing team</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
+                            <div class="chooseus-block-one">
+                                <div class="inner-box">
+                                    <div class="icon-box"><img src="assets/images/icons/icon-33.png" alt=""></div>
+                                    <h4>Exclusive Design</h4>
+                                    <p>Mixture of imagination, expeience and professionalism the secret of our design</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- chooseus-section end -->
         <!-- about-style-six -->
         <section class="about-style-six pt_120 pb_130">
             <div class="auto-container">
@@ -208,47 +244,10 @@
         <!-- about-style-six end -->
 
 
-        <!-- chooseus-section -->
-        <section class="chooseus-section about-page">
-            <div class="auto-container">
-                <div class="inner-container">
-                    <div class="row clearfix">
-                        <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
-                            <div class="chooseus-block-one">
-                                <div class="inner-box">
-                                    <div class="icon-box"><img src="assets/images/icons/icon-31.png" alt=""></div>
-                                    <h4>Reasonable Prices</h4>
-                                    <p>We produce furniture to fulfill needs of all people and offer it at affordable and fair prices</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
-                            <div class="chooseus-block-one">
-                                <div class="inner-box">
-                                    <div class="icon-box"><img src="assets/images/icons/icon-32.png" alt=""></div>
-                                    <h4>Professional Team</h4>
-                                    <p>we are porud of ouramicable, professional and always developing team</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-12 chooseus-block">
-                            <div class="chooseus-block-one">
-                                <div class="inner-box">
-                                    <div class="icon-box"><img src="assets/images/icons/icon-33.png" alt=""></div>
-                                    <h4>Exclusive Design</h4>
-                                    <p>Mixture of imagination, expeience and professionalism the secret of our design</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- chooseus-section end -->
 
         <!-- project-gallery-section -->
         <section class="project-gallery-section pt_120 pb_120">
-            <div class="auto-container">
+            <div class="container-fluid px-4">
 
                 <div class="sec-title text-center mb_50">
                     <span class="sub-title mb_11">Our Portfolio</span>
@@ -501,6 +500,21 @@
         });
 
     });
+
+const galleryObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+        }
+    });
+}, {
+    threshold: 0.15
+});
+
+document.querySelectorAll('.project-block').forEach(block => {
+    galleryObserver.observe(block);
+});
+
     </script>
 
 </body><!-- End of .page_wrapper -->
