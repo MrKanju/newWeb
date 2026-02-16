@@ -1,0 +1,316 @@
+.funfact-section .count-outer {
+    font-size: 85px;
+    color: #d4a762;
+    transition: transform 0.4s ease;
+}
+
+.funfact-block-one:hover .count-outer {
+    transform: scale(1.1);
+}
+/* Section */
+
+/* Grid */
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+/* Card */
+.counter-card {
+  padding: 60px 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(210,146,81,0.35);
+  background: rgba(255,255,255,0.02);
+  transition: 0.3s ease;
+}
+
+.counter-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(210,146,81,0.15);
+}
+
+/* Number wrapper */
+.counter-number {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* OLD OUTLINE STYLE */
+/* FIXED Number Style */
+.counter-number .odometer,
+.counter-number .plus {
+  font-size: 80px;
+  font-weight: 700;
+  color: #1f232b; /* same as background */
+
+  text-shadow:
+    -1px -1px 0 #d29251,
+     1px -1px 0 #d29251,
+    -1px  1px 0 #d29251,
+     1px  1px 0 #d29251;
+
+  letter-spacing: 3px;
+}
+
+/* Label */
+.counter-card p {
+  font-size: 16px;
+  color: #ffffff;
+  letter-spacing: 3px;
+  font-weight: 500;
+}
+@media (max-width: 992px) {
+  .counter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .counter-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .counter-number .odometer,
+  .counter-number .plus {
+    font-size: 60px;
+  }
+}
+.counter-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.counter-section {
+  padding: 60px 0;
+  background: linear-gradient(180deg, #1f2630, #232a34);
+}
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.counter-card {
+  padding: 25px 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(210,146,81,0.25);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.counter-card:hover {
+  border-color: #d29251;
+  box-shadow: 0 0 25px rgba(210,146,81,0.2);
+}
+
+.counter-number {
+  display: inline-flex;      /* inline avoids forced full width */
+  align-items: baseline;
+  justify-content: center;
+  white-space: nowrap;       /* VERY IMPORTANT */
+  gap: 6px;
+}
+
+/* IMPORTANT: solid color instead of stroke */
+.counter-number .odometer {
+  font-size: 70px;
+  font-weight: 700;
+  color: #d29251;
+  line-height: 1;
+}
+
+.plus {
+  font-size: 50px;
+  font-weight: 600;
+  color: #d29251;
+  line-height: 1;
+}
+
+.counter-label {
+  margin-top: 10px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ccc;
+}
+/* ===== COUNTER SECTION ===== */
+
+
+
+.counter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Card */
+.counter-card {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(210,162,94,0.25);
+  border-radius: 18px;
+  padding: 40px 20px;
+  text-align: center;
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Soft glow effect */
+.counter-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(210,162,94,0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.counter-card:hover {
+  transform: translateY(-8px);
+  border-color: #d2a25e;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+}
+
+.counter-card:hover::before {
+  opacity: 1;
+}
+
+/* Number */
+.counter-number {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  white-space: nowrap;
+  gap: 6px;
+  margin-bottom: 15px;
+}
+
+.counter-number .odometer {
+  font-size: 64px;
+  font-weight: 700;
+  color: #d2a25e;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.plus {
+  font-size: 40px;
+  color: #d2a25e;
+  font-weight: 600;
+}
+
+/* Label */
+.counter-label {
+  font-size: 14px;
+  letter-spacing: 2px;
+  color: #dcdcdc;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+/* ===== FORCE COUNTER BACKGROUND SAME AS FOOTER ===== */
+
+.funfact-section {
+    background: #2a2f36 !important;
+}
+
+.funfact-section::before,
+.funfact-section::after {
+    display: none !important;
+}/* ===== FINAL COUNTER BACKGROUND FIX ===== */
+
+.counter-section {
+    background: #242930 !important;  /* SAME AS FOOTER */
+    padding: 70px 0;
+}
+
+.counter-section::before,
+.counter-section::after {
+    display: none !important;
+}
+/* ===== OLD GOLD OUTLINE STYLE ===== */
+
+.counter-number {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  white-space: nowrap;
+  gap: 8px;
+  margin-bottom: 15px;
+}
+
+/* Main number */
+.counter-number .odometer {
+  font-size: 80px;
+  font-weight: 700;
+
+  /* Dark fill */
+  color: #2a2f36;
+
+  /* Gold outline effect */
+  text-shadow:
+    -1.5px -1.5px 0 #d29251,
+     1.5px -1.5px 0 #d29251,
+    -1.5px  1.5px 0 #d29251,
+     1.5px  1.5px 0 #d29251;
+
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+/* Plus sign */
+.counter-number .plus {
+  font-size: 55px;
+  font-weight: 600;
+
+  color: #2a2f36;
+
+  text-shadow:
+    -1.5px -1.5px 0 #d29251,
+     1.5px -1.5px 0 #d29251,
+    -1.5px  1.5px 0 #d29251,
+     1.5px  1.5px 0 #d29251;
+
+  line-height: 1;
+}
+/* ===== Elegant Thin Gold Outline ===== */
+
+.counter-number .odometer {
+  font-size: 80px;
+  font-weight: 600; /* reduced from 700 */
+
+  color: #2a2f36; /* inner fill */
+
+  text-shadow:
+    -1px -1px 0 #d29251,
+     1px -1px 0 #d29251,
+    -1px  1px 0 #d29251,
+     1px  1px 0 #d29251;
+
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.counter-number .plus {
+  font-size: 50px;
+  font-weight: 500; /* slightly lighter */
+
+  color: #2a2f36;
+
+  text-shadow:
+    -1px -1px 0 #d29251,
+     1px -1px 0 #d29251,
+    -1px  1px 0 #d29251,
+     1px  1px 0 #d29251;
+
+  line-height: 1;
+}

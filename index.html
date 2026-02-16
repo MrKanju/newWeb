@@ -23,6 +23,7 @@
 <link rel="stylesheet" href="assets/css/bootstrap.css">
 
 <!-- Non-critical CSS (non-blocking) -->
+ 
 <link rel="preload" href="assets/css/style.css" as="style" onload="this.rel='stylesheet'">
 <link rel="preload" href="assets/css/responsive.css" as="style" onload="this.rel='stylesheet'">
 
@@ -39,11 +40,13 @@
 
 <!-- Spacing Override - MUST load last to override all other spacing -->
 <link rel="stylesheet" href="assets/css/spacing-override.css?v=2">
-
+<link href="assets/css/final-fix.css" rel="stylesheet">
 <noscript>
 <link rel="stylesheet" href="assets/css/style.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
 <link rel="stylesheet" href="assets/css/spacing-override.css">
+<link href="assets/css/final-fix.css" rel="stylesheet">
+
 </noscript>
 
 <!-- LCP image preload -->
@@ -217,62 +220,39 @@
       </section>
       <!-- banner-style-two end -->
         
-        <!-- funfact-section -->
-      <section class="funfact-section pt_120">
-          <div class="auto-container">
-              <div class="row clearfix">
+<section class="counter-section">
+  <div class="counter-grid">
 
-                  <div class="col-lg-3 col-md-6 col-sm-12 funfact-block">
-                      <div class="funfact-block-one mr_60">
-                          <div class="inner-box">
-                              <div class="count-outer">
-                                  <span class="odometer" data-count="1000">0</span>
-                                  <span class="symble">+</span>
-                              </div>
-                              <p>Customers</p>
-                          </div>
-                      </div>
-                  </div>
+    <div class="counter-card">
+      <div class="counter-number">
+        <span class="odometer" data-count="1000">0</span><span class="plus">+</span>
+      </div>
+      <div class="counter-label">Customers</div>
+    </div>
 
-                  <div class="col-lg-3 col-md-6 col-sm-12 funfact-block">
-                      <div class="funfact-block-one mr_30">
-                          <div class="inner-box">
-                              <div class="count-outer">
-                                  <span class="odometer" data-count="700">0</span>
-                                  <span class="symble">+</span>
-                              </div>
-                              <p>Houses</p>
-                          </div>
-                      </div>
-                  </div>
+    <div class="counter-card">
+      <div class="counter-number">
+        <span class="odometer" data-count="700">0</span><span class="plus">+</span>
+      </div>
+      <div class="counter-label">Houses</div>
+    </div>
 
-                  <div class="col-lg-3 col-md-6 col-sm-12 funfact-block">
-                      <div class="funfact-block-one mr_30">
-                          <div class="inner-box">
-                              <div class="count-outer">
-                                  <span class="odometer" data-count="98">0</span>
-                                  <span class="symble">+</span>
-                              </div>
-                              <p>Flats</p>
-                          </div>
-                      </div>
-                  </div>
+    <div class="counter-card">
+      <div class="counter-number">
+        <span class="odometer" data-count="98">0</span><span class="plus">+</span>
+      </div>
+      <div class="counter-label">Flats</div>
+    </div>
 
-                  <div class="col-lg-3 col-md-6 col-sm-12 funfact-block">
-                      <div class="funfact-block-one">
-                          <div class="inner-box">
-                              <div class="count-outer">
-                                  <span class="odometer" data-count="55">0</span>
-                                  <span class="symble">+</span>
-                              </div>
-                              <p>Commercial Spaces</p>
-                          </div>
-                      </div>
-                  </div>
+    <div class="counter-card">
+      <div class="counter-number">
+        <span class="odometer" data-count="55">0</span><span class="plus">+</span>
+      </div>
+      <div class="counter-label">Commercial Spaces</div>
+    </div>
 
-              </div>
-          </div>
-      </section>
+  </div>
+</section>
         <!-- about-style-two -->
         <section class="about-style-two">
             <div class="auto-container">
