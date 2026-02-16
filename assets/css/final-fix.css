@@ -314,3 +314,177 @@
 
   line-height: 1;
 }
+/* ===== ABOUT PAGE CHOOSE US FIX ===== */
+
+.chooseus-section.about-page {
+    background: #ffffff !important;
+    padding: 80px 0 !important;
+}
+
+/* Remove template background layer if any */
+.chooseus-section.about-page::before,
+.chooseus-section.about-page::after {
+    display: none !important;
+}
+
+.chooseus-section.about-page .inner-container {
+    background: transparent !important;
+}
+
+/* Card style */
+.chooseus-section.about-page .chooseus-block-one .inner-box {
+    background: #ffffff !important;
+    padding: 40px 35px !important;
+    border-radius: 18px !important;
+    border: 1px solid rgba(210,162,94,0.25) !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05) !important;
+    transition: all 0.4s ease !important;
+}
+
+/* Hover effect like counter */
+.chooseus-section.about-page .chooseus-block-one .inner-box:hover {
+    transform: translateY(-8px) !important;
+    border-color: #d2a25e !important;
+    box-shadow: 0 20px 40px rgba(210,162,94,0.2) !important;
+}
+
+/* Improve text alignment */
+.chooseus-section.about-page h4 {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+.chooseus-section.about-page p {
+    color: #666;
+    margin-top: 10px;
+}
+/* ===== FIX ABOUT PAGE CHOOSEUS SPACING ===== */
+
+.chooseus-section.about-page {
+    padding: 60px 0 40px 0 !important;
+    background: #ffffff !important;
+}
+
+/* Remove extra inner container padding */
+.chooseus-section.about-page .inner-container {
+    padding: 0 !important;
+}
+
+/* Remove extra row spacing */
+.chooseus-section.about-page .row {
+    margin-bottom: 0 !important;
+}
+
+/* Reduce column spacing */
+.chooseus-section.about-page .chooseus-block {
+    margin-bottom: 0 !important;
+}
+
+/* Clean card spacing */
+.chooseus-section.about-page .chooseus-block-one .inner-box {
+    padding: 35px 30px !important;
+    margin: 0 !important;
+}
+
+/* Optional: tighter spacing between icon & title */
+.chooseus-section.about-page .icon-box {
+    margin-bottom: 15px !important;
+}
+
+.chooseus-section.about-page h4 {
+    margin-bottom: 10px !important;
+}
+/* ===== ABOUT PAGE - CHOOSE US UNIFORM FIX ===== */
+
+.chooseus-section.about-page {
+    padding: 70px 0 50px 0 !important;
+    background: #ffffff !important;
+}
+
+/* Make all 3 cards equal height */
+.chooseus-section.about-page .chooseus-block-one {
+    height: 100%;
+}
+
+.chooseus-section.about-page .chooseus-block-one .inner-box {
+    height: 100%;
+    background: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 18px;
+    padding: 40px 30px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+
+    transition: 0.3s ease;
+}
+
+/* Hover effect (luxury subtle) */
+.chooseus-section.about-page .chooseus-block-one .inner-box:hover {
+    border-color: #d2a25e;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+    transform: translateY(-6px);
+}
+
+/* Icon styling */
+.chooseus-section.about-page .icon-box {
+    margin-bottom: 20px;
+}
+
+.chooseus-section.about-page .icon-box img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+/* Title */
+.chooseus-section.about-page h4 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Description */
+.chooseus-section.about-page p {
+    font-size: 15px;
+    line-height: 1.7;
+    color: #666;
+    max-width: 260px;
+}
+/* Remove unwanted top divider line */
+.chooseus-section.about-page .inner-container {
+    border-top: none !important;
+}
+
+.chooseus-section.about-page hr {
+    display: none !important;
+}
+
+.chooseus-section.about-page::before,
+.chooseus-section.about-page::after {
+    display: none !important;
+}
+/* ===== Section Background Fix ===== */
+
+.chooseus-section.about-page {
+    padding: 80px 0;
+    background: linear-gradient(to bottom, #f8f8f8, #ffffff);
+}
+.chooseus-section.about-page .chooseus-block-one .inner-box {
+    background: #ffffff;
+    border: 1px solid rgba(210,162,94,0.15);
+    border-radius: 20px;
+    padding: 45px 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+}
+.chooseus-section.about-page h4::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    background: #d2a25e;
+    margin: 12px auto 0;
+}
