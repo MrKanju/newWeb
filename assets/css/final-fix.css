@@ -488,3 +488,94 @@
     background: #d2a25e;
     margin: 12px auto 0;
 }
+.address-link a {
+    color: #444;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.address-link a:hover {
+    color: #d29251;
+    text-decoration: underline;
+}
+.new-footer {
+    font-family: 'Jost', sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+.new-footer h4 {
+    font-weight: 600;
+    font-size: 16px;
+}
+/* Make logo smaller */
+.footer-logo {
+    width: 190px;   /* reduce if needed (try 120px if still big) */
+    height: auto;
+    margin-bottom: 15px;
+}
+
+/* Make all footer text slightly bigger */
+.new-footer {
+    font-size: 25px;   /* increase from default */
+    line-height: 1.8;
+}
+
+/* Headings slightly bigger */
+.new-footer h4 {
+    font-size: 25px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+/* Links bigger */
+.new-footer ul li {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+/* Footer paragraph text */
+.new-footer p {
+    font-size: 18px !important;
+}
+
+/* Footer list items */
+.new-footer ul li {
+    font-size: 18px !important;
+}
+
+/* Footer links */
+.new-footer a {
+    font-size: 18px !important;
+}
+
+/* Footer headings */
+.new-footer h4 {
+    font-size: 20px !important;
+}
+/* ===== FORCE BIGGER FOOTER SOCIAL ICONS ===== */
+
+.new-footer .footer-socials a {
+    width: 70px !important;
+    height: 70px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.new-footer .footer-socials a i {
+    font-size: 26px !important;
+}
+/* ===== Make footer social icons horizontal ===== */
+
+.new-footer .footer-socials {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 15px !important;
+    margin-top: 20px;
+}
+
+.new-footer .footer-socials a {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
