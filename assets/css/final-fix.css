@@ -643,3 +643,32 @@
         min-height: 200px !important;
     }
 }
+/* Force same font everywhere */
+body,
+.main-header,
+.navigation li a,
+.banner-quote-overlay h2,
+h1, h2, h3, h4, h5, h6 {
+font-family: 'Poppins', sans-serif !important;}
+
+/* Fix header vertical alignment */
+.header-style-two .header-lower {
+    padding: 18px 0;
+}
+
+.main-header .logo-box img {
+    max-height: 60px;
+}
+
+.main-header .navigation > li > a {
+    padding: 28px 0;
+    line-height: 1;
+}
+.job-roles span {
+  display: inline-block;
+}
+
+.job-roles .sep {
+  margin: 0 12px;   /* 👈 controls spacing */
+  opacity: 0.7;
+}
