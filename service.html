@@ -441,141 +441,214 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Zigzag Section -->
+                <div class="row clearfix mt_100">
+                    <div class="col-lg-12">
+                        <div class="zigzag-section">
+                            
+                            <!-- Row 1: Video Left, Text Right -->
+                            <div class="zigzag-row row-1">
+                                <div class="zigzag-video">
+                                    <div class="video-wrapper">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/dHOsb-GqbHg" 
+                                            title="Vismaya Interiors" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                            referrerpolicy="strict-origin-when-cross-origin" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                                <div class="zigzag-text">
+                                    <h3>Premium Kitchen Solutions</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                                </div>
+                            </div>
+
+                            <!-- Row 2: Video Right, Text Left (but HTML order is video first for mobile) -->
+                            <div class="zigzag-row row-2">
+                                <div class="zigzag-video">
+                                    <div class="video-wrapper">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/dHOsb-GqbHg" 
+                                            title="Vismaya Interiors" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                            referrerpolicy="strict-origin-when-cross-origin" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                                <div class="zigzag-text">
+                                    <h3>Elegant Interior Designs</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                                </div>
+                            </div>
+
+                            <!-- Row 3: Video Left, Text Right -->
+                            <div class="zigzag-row row-3">
+                                <div class="zigzag-video">
+                                    <div class="video-wrapper">
+                                        <iframe 
+                                            src="https://www.youtube.com/embed/dHOsb-GqbHg" 
+                                            title="Vismaya Interiors" 
+                                            frameborder="0" 
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                            referrerpolicy="strict-origin-when-cross-origin" 
+                                            allowfullscreen>
+                                        </iframe>
+                                    </div>
+                                </div>
+                                <div class="zigzag-text">
+                                    <h3>Modern Modular Solutions</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .zigzag-section {
+                        margin-top: 50px;
+                        padding: 0 15px;
+                    }
+                    
+                    .zigzag-row {
+                        display: flex;
+                        align-items: center;
+                        gap: 60px;
+                        margin-bottom: 100px;
+                    }
+                    
+                    .zigzag-row:last-child {
+                        margin-bottom: 0;
+                    }
+                    
+                    /* Row 2 - Reverse order on desktop for zigzag effect */
+                    .zigzag-row.row-2 {
+                        flex-direction: row-reverse;
+                    }
+                    
+                    .zigzag-video {
+                        flex: 1;
+                        max-width: 50%;
+                    }
+                    
+                    .video-wrapper {
+                        position: relative;
+                        padding-bottom: 56.25%;
+                        height: 0;
+                        overflow: hidden;
+                        border-radius: 12px;
+                        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+                        background: #000;
+                    }
+                    
+                    .video-wrapper iframe {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 12px;
+                    }
+                    
+                    .zigzag-text {
+                        flex: 1;
+                        max-width: 50%;
+                        padding: 20px;
+                    }
+                    
+                    .zigzag-text h3 {
+                        font-size: 32px;
+                        font-weight: 600;
+                        color: #222;
+                        margin-bottom: 20px;
+                        line-height: 1.3;
+                    }
+                    
+                    .zigzag-text p {
+                        font-size: 16px;
+                        line-height: 1.8;
+                        color: #555;
+                        margin-bottom: 15px;
+                    }
+                    
+                    /* Tablet and Mobile */
+                    @media only screen and (max-width: 991px) {
+                        .zigzag-row,
+                        .zigzag-row.row-2 {
+                            flex-direction: column;
+                            gap: 40px;
+                            margin-bottom: 70px;
+                        }
+                        
+                        .zigzag-video,
+                        .zigzag-text {
+                            max-width: 100%;
+                        }
+                        
+                        .zigzag-text {
+                            padding: 0 10px;
+                        }
+                        
+                        .zigzag-text h3 {
+                            font-size: 28px;
+                        }
+                        
+                        .zigzag-text p {
+                            font-size: 15px;
+                        }
+                    }
+                    
+                    /* Mobile */
+                    @media only screen and (max-width: 767px) {
+                        .zigzag-section {
+                            margin-top: 30px;
+                            padding: 0 10px;
+                        }
+                        
+                        .zigzag-row {
+                            gap: 30px;
+                            margin-bottom: 60px;
+                        }
+                        
+                        .zigzag-text {
+                            padding: 0;
+                        }
+                        
+                        .zigzag-text h3 {
+                            font-size: 24px;
+                            margin-bottom: 15px;
+                        }
+                        
+                        .zigzag-text p {
+                            font-size: 14px;
+                            line-height: 1.6;
+                        }
+                        
+                        .video-wrapper {
+                            border-radius: 8px;
+                        }
+                        
+                        .video-wrapper iframe {
+                            border-radius: 8px;
+                        }
+                    }
+                </style>
             </div>
         </section>
         <!-- service-style-two end -->
 
-
-        <!-- video-section -->
-        <section class="video-section pt_120 pb_120">
-            <div class="auto-container">
-                <div class="sec-title text-center mb_50">
-                    <span class="sub-title mb_11">Our Videos</span>
-                    <h2>Watch Our Work</h2>
-                    <p>Check out our latest kitchen and interior design projects</p>
-                </div>
-                <div class="video-scroll-wrapper">
-                    <div class="video-container">
-                        <div class="video-item">
-                            <div class="video-box">
-                                <iframe 
-                                    src="https://www.youtube.com/embed/dHOsb-GqbHg" 
-                                    title="വിസ്മയിപ്പിക്കുന്ന Interior|Home Interior|Modular kitchen|Bedroom|Modern Interior|Dr. Interior" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                    referrerpolicy="strict-origin-when-cross-origin" 
-                                    allowfullscreen>
-                                </iframe>
-                            </div>
-                        </div>
-                        <div class="video-item">
-                            <div class="video-box">
-                                <iframe 
-                                    src="https://www.youtube.com/embed/dHOsb-GqbHg" 
-                                    title="വിസ്മയിപ്പിക്കുന്ന Interior|Home Interior|Modular kitchen|Bedroom|Modern Interior|Dr. Interior" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                                    referrerpolicy="strict-origin-when-cross-origin" 
-                                    allowfullscreen>
-                                </iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="scroll-hint">
-                        <span><i class="fas fa-chevron-right"></i> Swipe to see more</span>
-                    </div>
-                </div>
-            </div>
-            <style>
-                .video-scroll-wrapper {
-                    position: relative;
-                    overflow: hidden;
-                }
-                .video-container {
-                    display: flex;
-                    gap: 30px;
-                    overflow-x: auto;
-                    overflow-y: hidden;
-                    scroll-snap-type: x mandatory;
-                    -webkit-overflow-scrolling: touch;
-                    scrollbar-width: thin;
-                    scrollbar-color: #c19d5a #f0f0f0;
-                }
-                .video-container::-webkit-scrollbar {
-                    height: 8px;
-                }
-                .video-container::-webkit-scrollbar-track {
-                    background: #f0f0f0;
-                    border-radius: 4px;
-                }
-                .video-container::-webkit-scrollbar-thumb {
-                    background: #c19d5a;
-                    border-radius: 4px;
-                }
-                .video-container::-webkit-scrollbar-thumb:hover {
-                    background: #a68948;
-                }
-                .video-item {
-                    flex: 0 0 auto;
-                    width: 100%;
-                    scroll-snap-align: start;
-                }
-                .video-box {
-                    position: relative;
-                    padding-bottom: 56.25%;
-                    height: 0;
-                    overflow: hidden;
-                    border-radius: 8px;
-                    box-shadow: 0 0 20px rgba(0,0,0,0.1);
-                }
-                .video-box iframe {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                }
-                .scroll-hint {
-                    text-align: center;
-                    margin-top: 20px;
-                    display: block;
-                }
-                .scroll-hint span {
-                    display: inline-block;
-                    color: #c19d5a;
-                    font-size: 14px;
-                    font-weight: 500;
-                    animation: pulse 2s infinite;
-                }
-                .scroll-hint i {
-                    margin-right: 5px;
-                    animation: slideRight 1.5s infinite;
-                }
-                @keyframes pulse {
-                    0%, 100% { opacity: 1; }
-                    50% { opacity: 0.6; }
-                }
-                @keyframes slideRight {
-                    0%, 100% { transform: translateX(0); }
-                    50% { transform: translateX(5px); }
-                }
-                @media only screen and (min-width: 768px) {
-                    .video-container {
-                        overflow-x: visible;
-                        scroll-snap-type: none;
-                    }
-                    .video-item {
-                        width: calc(50% - 15px);
-                    }
-                    .scroll-hint {
-                        display: none;
-                    }
-                }
-            </style>
-        </section>
-        <!-- video-section end -->
-         <!-- faq-page-section -->
-         <section class="faq-page-section pt_100 pb_100">
+        <!-- faq-page-section -->
+        <section class="faq-page-section pt_100 pb_100">
     <div class="auto-container">
 
         <div class="sec-title mb_50">

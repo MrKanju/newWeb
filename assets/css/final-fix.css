@@ -591,19 +591,55 @@
 .showcase-card-compact {
     cursor: pointer;
 }
-.video-section,
-.service-section {
-    padding-bottom: 10px !important;
-}
-/* FORCE FAQ QUESTION SIZE */
-.faq-page-section .accordion-box .accordion .acc-btn h3 {
-    font-size: 25px !important;
-    font-weight: 600 !important;
+
+/* ===== FIX VIDEO DISPLAY ON MOBILE ===== */
+
+.zigzag-video {
+    width: 100% !important;
+    display: block !important;
+    visibility: visible !important;
 }
 
-/* FORCE FAQ ANSWER SIZE */
-.faq-page-section .accordion-box .accordion .acc-content .text p,
-.faq-page-section .accordion-box .accordion .acc-content .text li {
-    font-size: 20px !important;
-    line-height: 1.8 !important;
+.video-wrapper {
+    width: 100% !important;
+    display: block !important;
+    visibility: visible !important;
+    position: relative !important;
+    padding-bottom: 56.25% !important;
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+.video-wrapper iframe {
+    display: block !important;
+    visibility: visible !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+@media only screen and (max-width: 991px) {
+    .zigzag-video,
+    .video-wrapper,
+    .video-wrapper iframe {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .zigzag-video,
+    .video-wrapper,
+    .video-wrapper iframe {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .video-wrapper {
+        min-height: 200px !important;
+    }
 }
