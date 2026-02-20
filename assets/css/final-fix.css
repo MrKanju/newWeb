@@ -672,3 +672,66 @@ font-family: 'Poppins', sans-serif !important;}
   margin: 0 12px;   /* 👈 controls spacing */
   opacity: 0.7;
 }
+/* About buttons layout */
+.about-buttons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Visit button style */
+.visit-us-btn {
+  background: transparent !important;
+  border: 2px solid #d29251 !important;
+  color: #d29251 !important;
+  padding: 12px 28px !important;
+  border-radius: 40px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.visit-us-btn:hover {
+  background: #d29251 !important;
+  color: #fff !important;
+}
+.footer-career-btn {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 10px 22px;
+  background: #d29251;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.footer-career-btn:hover {
+  background: #b67a3f;
+  color: #fff;
+  transform: translateY(-2px);
+}
+.footer-career-match {
+  margin-top: 12px;
+  display: inline-block;
+  font-size: 14px;
+  padding: 10px 26px;
+}
+/* Career resume button — balanced size */
+.career-resume-btn {
+  padding: 12px 26px !important;
+  font-size: 14px !important;
+  border-radius: 6px !important;
+}
+
+/* icon spacing */
+.career-resume-btn i {
+  margin-right: 6px;
+}
+.career-resume-btn {
+  padding: 11px 24px !important;
+  font-size: 13.5px !important;
+  letter-spacing: 0.5px;
+}
