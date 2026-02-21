@@ -597,3 +597,878 @@ footer.main-footer {
 .project-gallery-section.pt_120 {
     padding-top: 0px !important;   /* reduce from 120 */
 }
+
+/* ========== MOBILE RESPONSIVE FIXES (INDEX.HTML) ========== */
+/* 1. BANNER QUOTE OVERLAY - Smaller size for all screens */
+.banner-quote-overlay {
+    padding: 30px 35px !important;
+    max-width: 550px !important;
+  }
+  
+  .banner-quote-overlay h2 {
+    font-size: 28px !important;
+    line-height: 1.4 !important;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    margin-bottom: 12px !important;
+  }
+  
+  .banner-quote-overlay h2:before,
+  .banner-quote-overlay h2:after {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  
+  .banner-quote-overlay p {
+    font-size: 16px !important;
+    line-height: 1.5 !important;
+  }
+  
+  @media (max-width: 991px) {
+    .banner-quote-overlay {
+      left: 5% !important;
+      right: 5% !important;
+      max-width: calc(100% - 10%) !important;
+      padding: 20px 18px !important;
+    }
+    
+    .banner-quote-overlay h2 {
+      font-size: 24px !important;
+      line-height: 1.3 !important;
+      padding-left: 18px !important;
+      padding-right: 18px !important;
+    }
+    
+    .banner-quote-overlay h2:before,
+    .banner-quote-overlay h2:after {
+      width: 24px !important;
+      height: 24px !important;
+    }
+    
+    .banner-quote-overlay p {
+      font-size: 15px !important;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .banner-quote-overlay {
+      left: 15px !important;
+      right: 15px !important;
+      max-width: calc(100% - 30px) !important;
+      padding: 18px 15px !important;
+      border-radius: 8px !important;
+    }
+    
+    .banner-quote-overlay h2 {
+      font-size: 20px !important;
+      line-height: 1.3 !important;
+      margin-bottom: 8px !important;
+      padding-left: 12px !important;
+      padding-right: 12px !important;
+    }
+    
+    .banner-quote-overlay h2:before,
+    .banner-quote-overlay h2:after {
+      width: 20px !important;
+      height: 20px !important;
+      left: -3px !important;
+      top: -6px !important;
+    }
+    
+    .banner-quote-overlay h2:after {
+      right: -3px !important;
+      bottom: -6px !important;
+    }
+    
+    .banner-quote-overlay p {
+      font-size: 14px !important;
+      line-height: 1.4 !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .banner-quote-overlay {
+      padding: 15px 12px !important;
+    }
+    
+    .banner-quote-overlay h2 {
+      font-size: 18px !important;
+      padding-left: 10px !important;
+      padding-right: 10px !important;
+    }
+    
+    .banner-quote-overlay h2:before,
+    .banner-quote-overlay h2:after {
+      width: 18px !important;
+      height: 18px !important;
+    }
+    
+    .banner-quote-overlay p {
+      font-size: 13px !important;
+    }
+  }
+  
+/* 2. COUNTER SECTION - 1 row on desktop, 2x2 on mobile */
+.counter-section {
+    padding: 60px 0 !important;
+    background: #242930 !important;
+  }
+  
+  .counter-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 30px !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 15px !important;
+  }
+  
+  .counter-card {
+    background: rgba(255,255,255,0.02) !important;
+    border: 1px solid rgba(210,162,94,0.25) !important;
+    border-radius: 18px !important;
+    padding: 50px 30px !important;
+    text-align: center !important;
+    transition: all 0.4s ease !important;
+  }
+  
+  .counter-card:hover {
+    transform: translateY(-8px) !important;
+    border-color: #d2a25e !important;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4) !important;
+  }
+  
+  .counter-number {
+    display: inline-flex !important;
+    align-items: baseline !important;
+    justify-content: center !important;
+    white-space: nowrap !important;
+    gap: 4px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .counter-number .odometer {
+    font-size: 52px !important;
+    font-weight: 700 !important;
+    color: #d2a25e !important;
+    line-height: 1 !important;
+    letter-spacing: 0px !important;
+    display: inline-block !important;
+  }
+  
+  .counter-number .plus {
+    font-size: 32px !important;
+    color: #d2a25e !important;
+    font-weight: 600 !important;
+    display: inline-block !important;
+    line-height: 1 !important;
+  }
+  
+  .counter-label {
+    font-size: 14px !important;
+    letter-spacing: 2px !important;
+    color: #dcdcdc !important;
+    text-transform: uppercase !important;
+    opacity: 0.85 !important;
+  }
+  
+  /* Mobile: 2x2 grid */
+  @media (max-width: 768px) {
+    .counter-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      max-width: 600px !important;
+      gap: 20px !important;
+    }
+    
+    .counter-card {
+      padding: 35px 20px !important;
+    }
+    
+    .counter-number .odometer {
+      font-size: 44px !important;
+    }
+    
+    .counter-number .plus {
+      font-size: 28px !important;
+    }
+  }
+  
+  /* Small mobile: Keep 2x2 but smaller */
+  @media (max-width: 576px) {
+    .counter-section {
+      padding: 50px 0 !important;
+    }
+    
+    .counter-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 15px !important;
+      padding: 0 20px !important;
+      max-width: 500px !important;
+    }
+    
+    .counter-card {
+      padding: 30px 15px !important;
+    }
+    
+    .counter-number {
+      gap: 3px !important;
+    }
+    
+    .counter-number .odometer {
+      font-size: 38px !important;
+    }
+    
+    .counter-number .plus {
+      font-size: 24px !important;
+    }
+    
+    .counter-label {
+      font-size: 12px !important;
+    }
+  }
+
+  .offer-section .row {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 15px !important;
+    overflow-x: visible !important;
+    flex-wrap: wrap !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .offer-section .offer-block {
+    flex: none !important;
+    max-width: 100% !important;
+    margin-right: 0 !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Grid Layout - Match your showcase design */
+  .showcase-grid-compact {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-template-rows: repeat(2, 250px) !important;
+    gap: 15px !important;
+    max-height: 515px !important;
+  }
+  
+  /* Kitchen - Full Width Top (spans all 4 columns) */
+  .living-card {
+    grid-column: 1 / 3 !important;
+    grid-row: 1 / 2 !important;
+  }
+  
+  /* Bedroom - Bottom Left */
+  .bedroom-card {
+    grid-column: 1 / 2 !important;
+    grid-row: 2 / 3 !important;
+  }
+  
+  /* Living - Bottom Center Left */
+  .kitchen-card {
+    grid-column: 2 / 3 !important;
+    grid-row: 2 / 3 !important;
+  }
+  
+  /* Dining - Right Top (Tall - spans 2 rows) */
+  .dining-card.tall-card {
+    grid-column: 3 / 4 !important;
+    grid-row: 1 / 3 !important;
+  }
+  
+  /* Office - Right Bottom (Tall - spans 2 rows) */
+  .office-card.tall-card {
+    grid-column: 4 / 5 !important;
+    grid-row: 1 / 3 !important;
+  }
+  
+  /* Individual Card Styling */
+  .showcase-card-compact {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 8px !important;
+    cursor: pointer !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    background: #f5f5f5 !important;
+  }
+  
+  .showcase-card-compact:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  /* Image */
+  .showcase-card-compact img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+    transition: transform 0.3s ease !important;
+  }
+  
+  .showcase-card-compact:hover img {
+    transform: scale(1.05) !important;
+  }
+  
+  /* Overlay */
+  .showcase-overlay-compact {
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: background 0.3s ease !important;
+  }
+  
+  .showcase-card-compact:hover .showcase-overlay-compact,
+  .showcase-card-compact:hover .showcase-overlay-compact.light {
+    background: linear-gradient(135deg, rgba(210, 146, 81, 0.8) 0%, rgba(0, 0, 0, 0.6) 100%) !important;
+  }
+  
+  /* Light overlay for accent cards */
+  .showcase-overlay-compact.light {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0.25) 100%) !important;
+  }
+  
+  /* Label Text */
+  .showcase-label-compact {
+    font-size: 28px !important;
+    font-weight: 700 !important;
+    color: #fff !important;
+    letter-spacing: 2px !important;
+    text-transform: uppercase !important;
+    font-family: var(--jost) !important;
+    text-shadow: 2px 3px 6px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .showcase-card-compact:hover .showcase-label-compact {
+    transform: scale(1.03) !important;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5) !important;
+  }
+  
+  /* Remove "Swipe to see more" text */
+  .offer-section .auto-container::after {
+    display: none !important;
+  }
+  
+  /* Tablet - Adjust sizing */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .showcase-grid-compact {
+      grid-template-rows: repeat(2, 220px) !important;
+      max-height: 455px !important;
+    }
+  
+    .showcase-label-compact {
+      font-size: 24px !important;
+    }
+  }
+  
+  /* Mobile - Kitchen full width, then 2x2 grid */
+  @media (max-width: 767px) {
+    .showcase-grid-compact {
+      grid-template-columns: repeat(2, 1fr) !important;
+      grid-template-rows: repeat(3, 180px) !important;
+      gap: 10px !important;
+      max-height: 550px !important;
+    }
+  
+    /* Kitchen - Full width top */
+    .living-card {
+      grid-column: 1 / 3 !important;
+      grid-row: 1 / 2 !important;
+    }
+  
+    /* Bedroom - Row 2, Left */
+    .bedroom-card {
+      grid-column: 1 / 2 !important;
+      grid-row: 2 / 3 !important;
+    }
+  
+    /* Living - Row 2, Right */
+    .kitchen-card {
+      grid-column: 2 / 3 !important;
+      grid-row: 2 / 3 !important;
+    }
+  
+    /* Dining - Row 3, Left */
+    .dining-card.tall-card {
+      grid-column: 1 / 2 !important;
+      grid-row: 3 / 4 !important;
+    }
+  
+    /* Office - Row 3, Right */
+    .office-card.tall-card {
+      grid-column: 2 / 3 !important;
+      grid-row: 3 / 4 !important;
+    }
+  
+    .showcase-label-compact {
+      font-size: 20px !important;
+      letter-spacing: 1.5px !important;
+    }
+  }
+  
+  /* Extra small mobile - further adjustments */
+  @media (max-width: 480px) {
+    .showcase-grid-compact {
+      grid-template-rows: repeat(3, 150px) !important;
+      max-height: 460px !important;
+    }
+  
+    .showcase-label-compact {
+      font-size: 18px !important;
+      letter-spacing: 1px !important;
+    }
+  }
+/* 4. WHY CHOOSE US SECTION - Better text sizing and mobile scroll */
+.service-section .sec-title h2 {
+  font-size: 45px !important;
+  line-height: 54px !important;
+  font-weight: 600 !important;
+  margin-bottom: 15px !important;
+}
+
+.service-section .sec-title p {
+  font-size: 18px !important;
+  line-height: 28px !important;
+  margin-top: 12px !important;
+}
+
+@media (max-width: 991px) {
+  .service-section .sec-title h2 {
+    font-size: 36px !important;
+    line-height: 44px !important;
+  }
+  
+  .service-section .sec-title p {
+    font-size: 16px !important;
+    line-height: 26px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .service-section .sec-title h2 {
+    font-size: 28px !important;
+    line-height: 36px !important;
+  }
+  
+  .service-section .sec-title p {
+    font-size: 15px !important;
+    line-height: 24px !important;
+  }
+  
+  .service-section .row {
+    display: flex !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scroll-snap-type: x mandatory !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 15px !important;
+    padding-bottom: 15px !important;
+    flex-wrap: nowrap !important;
+  }
+  
+  .service-section .row::-webkit-scrollbar {
+    height: 6px !important;
+  }
+  
+  .service-section .row::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.05) !important;
+    border-radius: 3px !important;
+  }
+  
+  .service-section .row::-webkit-scrollbar-thumb {
+    background: #d29251 !important;
+    border-radius: 3px !important;
+  }
+  
+  .service-section .service-block {
+    flex: 0 0 85% !important;
+    max-width: 85% !important;
+    scroll-snap-align: center !important;
+  }
+  
+  .service-block-one .inner-box {
+    min-height: 300px !important;
+  }
+}
+.service-section .col-lg-4,
+.service-section .col-md-6,
+.service-section .col-sm-12 {
+  padding-left: 15px !important;
+  padding-right: 15px !important;
+  padding-bottom: 0 !important;
+  margin-bottom: 30px !important; /* This is the extra space you're seeing */
+}
+
+/* Remove margin from service-block itself */
+.service-section .service-block {
+  margin-bottom: 0 !important;
+}
+
+/* Remove any extra padding/margin from inner-box */
+.service-section .service-block-one {
+  margin-bottom: 0 !important;
+}
+
+.service-section .service-block-one .inner-box {
+  margin-bottom: 0 !important;
+  height: 100% !important;
+}
+
+/* Adjust the row to remove negative margins */
+.service-section .row {
+  margin-bottom: -30px !important; /* Negative margin to offset column margins */
+}
+
+/* Reduce overall section bottom padding */
+.service-section.pt_100.pb_110 {
+  padding-bottom: 80px !important;
+}
+
+/* Mobile - reduce spacing further */
+@media (max-width: 991px) {
+  .service-section .col-lg-4,
+  .service-section .col-md-6 {
+    margin-bottom: 25px !important;
+  }
+  
+  .service-section.pt_100.pb_110 {
+    padding-bottom: 60px !important;
+  }
+  
+  .service-section .row {
+    margin-bottom: -25px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .service-section .col-lg-4,
+  .service-section .col-md-6,
+  .service-section .col-sm-12 {
+    margin-bottom: 20px !important;
+  }
+  
+  .service-section.pt_100.pb_110 {
+    padding-bottom: 50px !important;
+  }
+  
+  .service-section .row {
+    margin-bottom: -20px !important;
+  }
+  
+  /* Remove margin from last item in mobile */
+  .service-section .service-block:last-child,
+  .service-section .col-lg-4:last-child,
+  .service-section .col-md-6:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+
+
+/* 5. PROJECTS SECTION - Large fixed size images (90% screen width) */
+.project-style-two .title-box .sec-title h2 {
+    font-size: 45px !important;
+    line-height: 54px !important;
+    font-weight: 600 !important;
+  }
+  
+  .project-style-two .title-box .text-box p {
+    font-size: 18px !important;
+    line-height: 28px !important;
+  }
+  
+  /* Make container wider to allow 90% width images */
+  .project-style-two .auto-container {
+    max-width: 100% !important;
+    padding-left: 5% !important;
+    padding-right: 5% !important;
+  }
+  
+  /* Fix project carousel to show full width */
+  .project-block-two .inner-box {
+    margin-bottom: 30px !important;
+    width: 100% !important;
+  }
+  
+  /* FIXED SIZE IMAGE BOX - 90% width, fixed height */
+  .project-block-two .inner-box .image-box {
+    position: relative !important;
+    width: 100% !important;
+    height: 500px !important; /* Fixed height for consistency */
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    background: #f5f5f5 !important;
+  }
+  
+  .project-block-two .inner-box .image-box img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Crop and fit */
+    object-position: center !important;
+    border-radius: 20px !important;
+    display: block !important;
+  }
+  
+  /* Minimal carousel spacing for maximum width */
+  .project-style-two .project-carousel .owl-item {
+    padding: 0 5px !important;
+  }
+  
+  .project-style-two .owl-carousel {
+    margin: 0 -5px !important;
+  }
+  
+  /* Ensure carousel stage doesn't constrain width */
+  .project-style-two .owl-carousel .owl-stage-outer {
+    overflow: visible !important;
+  }
+  
+  @media (max-width: 991px) {
+    .project-style-two .title-box .sec-title h2 {
+      font-size: 36px !important;
+      line-height: 44px !important;
+    }
+    
+    .project-style-two .title-box .text-box p {
+      font-size: 16px !important;
+      line-height: 26px !important;
+    }
+    
+    .project-block-two .inner-box .image-box {
+      height: 400px !important;
+    }
+    
+    .project-style-two .project-carousel .owl-item {
+      padding: 0 4px !important;
+    }
+    
+    .project-style-two .owl-carousel {
+      margin: 0 -4px !important;
+    }
+  }
+  
+  @media (max-width: 767px) {
+    .project-style-two .title-box .sec-title h2 {
+      font-size: 28px !important;
+      line-height: 36px !important;
+    }
+    
+    .project-style-two .title-box .text-box p {
+      font-size: 15px !important;
+      line-height: 24px !important;
+    }
+    
+    /* Keep 90% width on mobile with smaller height */
+    .project-style-two .auto-container {
+      padding-left: 5% !important;
+      padding-right: 5% !important;
+    }
+    
+    .project-block-two .inner-box .image-box {
+      height: 320px !important;
+    }
+    
+    .project-style-two .project-carousel .owl-item {
+      padding: 0 3px !important;
+    }
+    
+    .project-style-two .owl-carousel {
+      margin: 0 -3px !important;
+    }
+    
+    .project-block-two .inner-box {
+      margin-bottom: 15px !important;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .project-block-two .inner-box .image-box {
+      height: 280px !important;
+    }
+    
+    .project-style-two .project-carousel .owl-item {
+      padding: 0 2px !important;
+    }
+    
+    .project-style-two .owl-carousel {
+      margin: 0 -2px !important;
+    }
+  }
+
+
+/* 6. FOOTER - Better mobile styling */
+.new-footer {
+  background: #1d2a28 !important;
+  padding: 60px 0 0 0 !important;
+  color: #fff !important;
+}
+
+.footer-container {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 40px !important;
+  max-width: 1200px !important;
+  margin: 0 auto !important;
+  padding: 0 30px 50px 30px !important;
+}
+
+.footer-col h4 {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+  margin-bottom: 20px !important;
+  color: #fff !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+.footer-col ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.footer-col ul li {
+  margin-bottom: 12px !important;
+  font-size: 15px !important;
+  line-height: 24px !important;
+}
+
+.footer-col ul li a {
+  color: rgba(255,255,255,0.8) !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.footer-col ul li a:hover {
+  color: #d29251 !important;
+  padding-left: 5px !important;
+}
+
+.footer-col p {
+  font-size: 15px !important;
+  line-height: 24px !important;
+  color: rgba(255,255,255,0.8) !important;
+  margin-bottom: 15px !important;
+}
+
+.footer-logo {
+  width: 180px !important;
+  height: auto !important;
+  margin-bottom: 20px !important;
+}
+
+@media (max-width: 991px) {
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 30px !important;
+    padding: 0 20px 40px 20px !important;
+  }
+  
+  .footer-col:first-child {
+    grid-column: 1 / -1 !important;
+    text-align: center !important;
+  }
+  
+  .footer-logo {
+    margin: 0 auto 20px auto !important;
+  }
+  
+  .footer-socials {
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .new-footer {
+    padding: 40px 0 0 0 !important;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    padding: 0 20px 30px 20px !important;
+  }
+  
+  .footer-col {
+    text-align: center !important;
+  }
+  
+  .footer-col:first-child {
+    grid-column: 1 !important;
+  }
+  
+  .footer-col h4 {
+    font-size: 16px !important;
+    margin-bottom: 15px !important;
+  }
+  
+  .footer-col ul li {
+    font-size: 14px !important;
+    margin-bottom: 10px !important;
+  }
+  
+  .footer-col p {
+    font-size: 14px !important;
+    line-height: 22px !important;
+  }
+  
+  .footer-logo {
+    width: 160px !important;
+  }
+  
+  .footer-socials {
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+  }
+  
+  .footer-socials a {
+    width: 50px !important;
+    height: 50px !important;
+  }
+  
+  .footer-socials a i {
+    font-size: 20px !important;
+  }
+  
+  .footer-bottom {
+    padding: 20px 15px !important;
+    font-size: 13px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-col h4 {
+    font-size: 15px !important;
+  }
+  
+  .footer-col ul li {
+    font-size: 13px !important;
+  }
+  
+  .footer-col p {
+    font-size: 13px !important;
+    line-height: 20px !important;
+  }
+  
+  .footer-logo {
+    width: 140px !important;
+  }
+  
+  .footer-bottom {
+    font-size: 12px !important;
+  }
+}
+
+.footer-bottom {
+  background: #16201e !important;
+  padding: 25px 20px !important;
+  text-align: center !important;
+  font-size: 14px !important;
+  color: rgba(255,255,255,0.7) !important;
+  border-top: 1px solid rgba(255,255,255,0.1) !important;
+}
