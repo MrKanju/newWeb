@@ -8508,7 +8508,7 @@ body {
 
 /* IMPORTANT: solid color instead of stroke */
 .counter-number .odometer {
-  font-size: 70px;
+  font-size: 52px;
   font-weight: 700;
   color: #d29251;
   line-height: 1;
@@ -8637,7 +8637,7 @@ body {
 
 /* Main number */
 .counter-number .odometer {
-  font-size: 80px;
+  font-size: 52px;
   font-weight: 700;
 
   /* Dark fill */
@@ -8650,7 +8650,7 @@ body {
     -1.5px  1.5px 0 #d29251,
      1.5px  1.5px 0 #d29251;
 
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   line-height: 1;
 }
 
@@ -8672,7 +8672,7 @@ body {
 /* ===== Elegant Thin Gold Outline ===== */
 
 .counter-number .odometer {
-  font-size: 80px;
+  font-size: 52px;
   font-weight: 600; /* reduced from 700 */
 
   color: #2a2f36; /* inner fill */
