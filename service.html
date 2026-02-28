@@ -666,6 +666,28 @@
 
         });
     </script>
+    <script>
+        // Auto-scroll the process flow on mobile
+        $(document).ready(function(){
+            if($(window).width() <= 991) {
+                const container = $('.process-flow-container');
+                const scrollWidth = container[0].scrollWidth;
+                const clientWidth = container[0].clientWidth;
+                
+                // Auto-scroll every 3 seconds
+                let scrollPos = 0;
+                setInterval(function(){
+                    scrollPos += clientWidth;
+                    if(scrollPos >= scrollWidth) {
+                        scrollPos = 0; // Reset to beginning
+                    }
+                    container.animate({
+                        scrollLeft: scrollPos
+                    }, 800);
+                }, 3000);
+            }
+        });
+        </script>
 </body><!-- End of .page_wrapper -->
 
 <!-- Mirrored from azim.hostlin.com/Kitchnox/service.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2025 15:39:47 GMT -->
