@@ -466,11 +466,12 @@
             let expanded = false;
         
             // Build grid with lazy loading
+            let globalIndex = 0;
             ['kitchen','dining','living','bedroom','office'].forEach(category => {
                 (imageMap[category] || []).forEach((imageName, index) => {
                     const item = `
                         <div class="col-lg-4 col-md-6 col-sm-12 grid-item ${category}"
-                             data-category="${category}" data-index="${index}">
+                            data-category="${category}" data-index="${index}" data-global-index="${globalIndex++}">
                             <div class="project-block">
                                 <div class="inner-box">
                                     <div class="image-box lazy-bg" 
@@ -520,10 +521,13 @@
                 filter: getFilterFn()
             });
         
+            // Then getFilterFn becomes clean:
             function getFilterFn() {
                 return function() {
                     var cat = $(this).data('category');
-                    var idx = parseInt($(this).data('index'));
+                    var idx = currentCategory === 'all'
+                        ? parseInt($(this).data('global-index'))
+                        : parseInt($(this).data('index'));
                     if (currentCategory !== 'all' && cat !== currentCategory) return false;
                     return expanded || idx < INITIAL_VISIBLE;
                 };
