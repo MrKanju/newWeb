@@ -5279,7 +5279,7 @@ contact-section .form-inner .form-group textarea{
 /* Zigzag Section Styles */
 .zigzag-section {
   width: 100%;
-  padding: 0 40px;
+  padding: 0 100px;
   box-sizing: border-box;
 }
 
@@ -5331,8 +5331,8 @@ contact-section .form-inner .form-group textarea{
 
 /* Text column — remaining ~52% */
 .zigzag-text {
-  flex: 0 0 52%;
-  max-width: 52%;
+  flex: 0 0 50%;
+  max-width: 50%;
   box-sizing: border-box;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -5357,9 +5357,9 @@ contact-section .form-inner .form-group textarea{
 }
 
 .zigzag-text p {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.8;
-  color: #666;
+  color: #0c0c0c;
   margin-bottom: 15px;
   overflow-wrap: break-word;
 }
