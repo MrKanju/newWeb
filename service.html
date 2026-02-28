@@ -635,113 +635,37 @@
       </script>
       
     <!-- Load Contact Widget -->
-   <script>
-$(document).ready(function(){
-
-    const categories = ['kitchen', 'dining', 'living', 'office'];
-    const totalImages = 16;
-    const initialVisible = 6; // 2 rows (3 per row)
-
-    const grid = $('#projectGrid');
-
-    for(let i = 1; i <= totalImages; i++) {
-
-        const category = categories[(i - 1) % categories.length];
-        const hiddenClass = i > initialVisible ? 'hidden-item' : '';
-
-        const item = `
-            <div class="col-lg-4 col-md-6 col-sm-12 grid-item ${category} ${hiddenClass}">
-                <div class="project-block">
-                    <div class="inner-box">
-                        <div class="image-box" style="background-image: url('assets/images/project/project-${i}.jpg');"></div>
-                    </div>
-                </div>
-            </div>
-        `;
-
-        grid.append(item);
-    }
-
-    var $grid = $('.grid').isotope({
-        itemSelector: '.grid-item',
-        layoutMode: 'fitRows'
-    });
-
-    // Filter click
-    $('.filter-tabs').on('click', 'li', function(){
-
-    var filterValue = $(this).attr('data-filter');
-
-    $('.filter-tabs li').removeClass('active');
-    $(this).addClass('active');
-
-    if(filterValue === "instagram") {
-
-    $('.grid').hide();
-    $('#instagramFeedContainer').show();
-    $('#viewMoreBtn').hide();   // 👈 Hide button
-
-} else {
-
-    $('.grid').show();
-    $('#instagramFeedContainer').hide();
-    $('#viewMoreBtn').show();   // 👈 Show button again
-    $grid.isotope({ filter: filterValue });
-}
-
-});
-    document.addEventListener('contextmenu', function(e) {
-    e.preventDefault();
-});
-
-    // View More simple toggle
-    $('#viewMoreBtn').click(function(){
-
-        if($(this).hasClass('expanded')) {
-            $('.hidden-item').hide();
-            $(this).removeClass('expanded').text('View More');
-        } else {
-            $('.hidden-item').show();
-            $(this).addClass('expanded').text('Show Less');
-        }
-
-        $grid.isotope('layout'); // refresh layout
-
-    });
-
-});
-</script>
     <script>
-fetch('contact-widget.html')
-    .then(response => response.text())
-    .then(data => {
-        document.getElementById('contact-widget-container').innerHTML = data;
-    })
-    .catch(error => console.error('Widget load error:', error));
-</script>
+        fetch('contact-widget.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('contact-widget-container').innerHTML = data;
+            })
+            .catch(error => console.error('Widget load error:', error));
+        </script>
 
-<script>
-$(document).ready(function(){
+        <script>
+        $(document).ready(function(){
 
-    $('.accordion-box .acc-btn').on('click', function(e){
-        e.preventDefault();
+            $('.accordion-box .acc-btn').on('click', function(e){
+                e.preventDefault();
 
-        var parent = $(this).closest('.accordion');
-        var content = parent.find('.acc-content');
+                var parent = $(this).closest('.accordion');
+                var content = parent.find('.acc-content');
 
-        if(parent.hasClass('active-block')){
-            parent.removeClass('active-block');
-            $(this).removeClass('active');
-            content.slideUp(300);
-        } else {
-            parent.addClass('active-block');
-            $(this).addClass('active');
-            content.slideDown(300);
-        }
-    });
+                if(parent.hasClass('active-block')){
+                    parent.removeClass('active-block');
+                    $(this).removeClass('active');
+                    content.slideUp(300);
+                } else {
+                    parent.addClass('active-block');
+                    $(this).addClass('active');
+                    content.slideDown(300);
+                }
+            });
 
-});
-</script>
+        });
+    </script>
 </body><!-- End of .page_wrapper -->
 
 <!-- Mirrored from azim.hostlin.com/Kitchnox/service.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2025 15:39:47 GMT -->

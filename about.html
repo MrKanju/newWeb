@@ -260,10 +260,10 @@
                 <!-- Filter Buttons -->
                 <div class="filters text-center mb_50">
                     <ul class="filter-tabs filter-btns clearfix">
-                        <li class="active filter" data-filter="*">All</li>
-                        <li class="filter" data-filter=".kitchen">Kitchen</li>
+                        <li class="active filter" data-filter=".kitchen">Kitchen</li>
                         <li class="filter" data-filter=".dining">Dining</li>
                         <li class="filter" data-filter=".living">Living</li>
+                        <li class="filter" data-filter=".bedroom">Bedroom</li>
                         <li class="filter" data-filter=".office">Office</li>
                         <li class="filter instagram-filter" data-filter="instagram">Instagram</li>
                     </ul>
@@ -433,105 +433,139 @@
 
     <!-- Project Gallery Script -->
     <script>
-    $(document).ready(function(){
-
-        const categories = ['kitchen', 'dining', 'living', 'office'];
-        const totalImages = 16;
-        const initialVisible = 6; // 2 rows (3 per row)
-
-        const grid = $('#projectGrid');
-
-        for(let i = 1; i <= totalImages; i++) {
-
-            const category = categories[(i - 1) % categories.length];
-            const hiddenClass = i > initialVisible ? 'hidden-item' : '';
-
-            const item = `
-                <div class="col-lg-4 col-md-6 col-sm-12 grid-item ${category} ${hiddenClass}">
-                    <div class="project-block">
-                        <div class="inner-box">
-                            <div class="image-box" style="background-image: url('assets/images/project/project-${i}.jpg');"></div>
-                        </div>
-                    </div>
-                </div>
-            `;
-
-            grid.append(item);
-        }
-
-        var $grid = $('.grid').isotope({
-    itemSelector: '.grid-item',
-    layoutMode: 'fitRows',
-
-});
-
-        // Filter click
-        $('.filter-tabs').on('click', 'li', function(){
-
-            var filterValue = $(this).attr('data-filter');
-
-            $('.filter-tabs li').removeClass('active');
-            $(this).addClass('active');
-
-            if(filterValue === "instagram") {
-
-                $('.grid').hide();
-                $('#instagramFeedContainer').show();
-                $('#viewMoreBtn').hide();
-
-            } else {
-
-                $('.grid').show();
-                $('#instagramFeedContainer').hide();
-                $('#viewMoreBtn').show();
-                $grid.isotope({ filter: filterValue });
+        $(document).ready(function(){
+            const imageMap = {
+                kitchen: ['kitchen-1.jpg','kitchen-2.jpg','kitchen-3.jpg','kitchen-4.jpg','kitchen-5.jpg','kitchen-6.jpg','kitchen-7.jpg','kitchen-8.jpg','kitchen-9.jpg','kitchen-10.jpg','kitchen-11.jpg','kitchen-12.jpg','kitchen-13.jpg','kitchen-14.jpg','kitchen-15.jpg','kitchen-16.jpg','kitchen-17.jpg','kitchen-18.jpg','kitchen-19.jpg','kitchen-20.jpg','kitchen-21.jpg','kitchen-22.jpg','kitchen-23.jpg','kitchen-24.jpg'],
+                dining:  ['dining-1.jpg','dining-2.jpg','dining-3.jpg','dining-4.jpg','dining-5.jpg','dining-6.jpg','dining-7.jpg','dining-8.jpg','dining-9.jpg','dining-10.jpg'],
+                living:  ['living-1.jpg','living-2.jpg','living-3.jpg','living-4.jpg','living-5.jpg','living-6.jpg','living-7.jpg','living-8.jpg','living-9.jpg','living-10.jpg','living-11.jpg','living-12.jpg','living-13.jpg','living-14.jpg','living-15.jpg','living-16.jpg'],
+                bedroom: ['bedroom-1.jpg','bedroom-2.jpg','bedroom-3.jpg','bedroom-4.jpg','bedroom-5.jpg','bedroom-6.jpg'],
+                office:  ['office-1.jpg','office-2.jpg','office-3.jpg','office-4.jpg','office-5.jpg']
+            };
+        
+            const INITIAL_VISIBLE = 6;
+            const grid = $('#projectGrid');
+            let currentCategory = 'kitchen';
+            let expanded = false;
+        
+            // Build grid with lazy loading
+            ['kitchen','dining','living','bedroom','office'].forEach(category => {
+                (imageMap[category] || []).forEach((imageName, index) => {
+                    const item = `
+                        <div class="col-lg-4 col-md-6 col-sm-12 grid-item ${category}"
+                             data-category="${category}" data-index="${index}">
+                            <div class="project-block">
+                                <div class="inner-box">
+                                    <div class="image-box lazy-bg" 
+                                         data-bg="assets/images/project/${imageName}" 
+                                         style="background-color: #f0f0f0;">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>`;
+                    grid.append(item);
+                });
+            });
+        
+            // Lazy load background images as they become visible
+            function lazyLoadImages() {
+                const lazyImages = document.querySelectorAll('.lazy-bg:not(.loaded)');
+                
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const lazyImage = entry.target;
+                            const bgUrl = lazyImage.getAttribute('data-bg');
+                            
+                            // Preload image first
+                            const img = new Image();
+                            img.onload = function() {
+                                lazyImage.style.backgroundImage = `url('${bgUrl}')`;
+                                lazyImage.classList.add('loaded');
+                            };
+                            img.src = bgUrl;
+                            
+                            observer.unobserve(lazyImage);
+                        }
+                    });
+                }, {
+                    rootMargin: '200px' // Load images 200px before they enter viewport
+                });
+        
+                lazyImages.forEach(img => imageObserver.observe(img));
             }
-
-        });
-
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        // View More simple toggle
-        $('#viewMoreBtn').click(function(){
-
-            if($(this).hasClass('expanded')) {
-                $('.hidden-item').hide();
-                $(this).removeClass('expanded').text('View More');
-            } else {
-                $('.hidden-item').show();
-                $(this).addClass('expanded').text('Show Less');
+        
+            // Initialize Isotope
+            var $grid = $('.grid').isotope({
+                itemSelector: '.grid-item',
+                layoutMode: 'fitRows',
+                transitionDuration: '0.4s',
+                filter: getFilterFn()
+            });
+        
+            function getFilterFn() {
+                return function() {
+                    var cat = $(this).data('category');
+                    var idx = parseInt($(this).data('index'));
+                    if (cat !== currentCategory) return false;
+                    return expanded || idx < INITIAL_VISIBLE;
+                };
             }
-
-            $grid.isotope('layout'); // refresh layout
-
-        });
-
-    });
-    </script>
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const params = new URLSearchParams(window.location.search);
-    const category = params.get("category");
-
-    if (category) {
-        const filterBtn = document.querySelector('[data-filter=".' + category + '"]');
-
-        if (filterBtn) {
-            filterBtn.click();
-
-            // Optional smooth scroll
-            const section = document.getElementById("recent-projects");
-            if (section) {
-                section.scrollIntoView({ behavior: "smooth" });
+        
+            function applyFilter() {
+                $grid.isotope({ filter: getFilterFn() });
+                // Trigger lazy load after filtering
+                setTimeout(lazyLoadImages, 100);
             }
-        }
-    }
-
-});
-</script>
+        
+            function updateViewMoreBtn() {
+                var total = (imageMap[currentCategory] || []).length;
+                if (total <= INITIAL_VISIBLE) {
+                    $('#viewMoreBtn').hide();
+                } else {
+                    $('#viewMoreBtn').show();
+                    if (expanded) {
+                        $('#viewMoreBtn').addClass('expanded').html('Show Less <i class="fas fa-arrow-up view-more-arrow"></i>');
+                    } else {
+                        $('#viewMoreBtn').removeClass('expanded').html('View More <i class="fas fa-arrow-down view-more-arrow"></i>');
+                    }
+                }
+            }
+        
+            // Filter tabs
+            $('.filter-tabs').on('click', 'li', function(){
+                var filterValue = $(this).attr('data-filter');
+                $('.filter-tabs li').removeClass('active');
+                $(this).addClass('active');
+                expanded = false;
+        
+                if (filterValue === 'instagram') {
+                    $('.grid').hide();
+                    $('#instagramFeedContainer').show();
+                    $('#viewMoreBtn').hide();
+                } else {
+                    $('.grid').show();
+                    $('#instagramFeedContainer').hide();
+                    currentCategory = filterValue.replace('.', '');
+                    applyFilter();
+                    updateViewMoreBtn();
+                }
+            });
+        
+            // View More toggle
+            $('#viewMoreBtn').on('click', function(){
+                expanded = !expanded;
+                applyFilter();
+                updateViewMoreBtn();
+            });
+        
+            // Prevent right-click
+            document.addEventListener('contextmenu', e => e.preventDefault());
+        
+            // Initial lazy load
+            lazyLoadImages();
+            updateViewMoreBtn();
+        });
+        </script>
 
 </body><!-- End of .page_wrapper -->
 
