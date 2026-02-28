@@ -755,14 +755,6 @@ footer.main-footer {
     margin-bottom: 15px !important;
   }
 
-
-  .counter-number .plus {
-    font-size: 32px !important;
-    color: #d2a25e !important;
-    font-weight: 600 !important;
-    display: inline-block !important;
-    line-height: 1 !important;
-  }
   
   .counter-label {
     font-size: 14px !important;
