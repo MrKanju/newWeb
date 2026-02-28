@@ -290,7 +290,7 @@ footer.main-footer {
 
 /* Bottom bar */
 .footer-bottom {
-    background: #22262c; /* darker strip */
+    background: #1f252c;
     text-align: center;
     padding: 18px 0;
     font-size: 14px;
@@ -1295,7 +1295,6 @@ footer.main-footer {
 
 /* 6. FOOTER - Better mobile styling */
 .new-footer {
-  background: #1d2a28 !important;
   padding: 60px 0 0 0 !important;
   color: #fff !important;
 }
@@ -1457,7 +1456,7 @@ footer.main-footer {
 }
 
 .footer-bottom {
-  background: #16201e !important;
+  background: #1f252c !important;
   padding: 25px 20px !important;
   text-align: center !important;
   font-size: 14px !important;
