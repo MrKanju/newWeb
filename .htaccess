@@ -1,0 +1,28 @@
+RewriteEngine On
+
+# Redirect /index or /index.html → /
+RewriteRule ^index\.html?$ / [R=301,L]
+
+# Redirect /home → /
+RewriteRule ^home/?$ / [R=301,L]
+
+# Clean URLs: /about → /about.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
+# Set default index file
+DirectoryIndex index.html
+
+# Security Headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set X-XSS-Protection "1; mode=block"
+</IfModule>
+
+# Cache static assets
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 year"
+</IfModule>
