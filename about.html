@@ -260,7 +260,8 @@
                 <!-- Filter Buttons -->
                 <div class="filters text-center mb_50">
                     <ul class="filter-tabs filter-btns clearfix">
-                        <li class="active filter" data-filter=".kitchen">Kitchen</li>
+                        <li class="active filter" data-filter=".all">All</li>
+                        <li class="filter" data-filter=".kitchen">Kitchen</li>
                         <li class="filter" data-filter=".dining">Dining</li>
                         <li class="filter" data-filter=".living">Living</li>
                         <li class="filter" data-filter=".bedroom">Bedroom</li>
@@ -461,7 +462,7 @@
         
             const INITIAL_VISIBLE = 6;
             const grid = $('#projectGrid');
-            let currentCategory = 'kitchen';
+            let currentCategory = 'all';
             let expanded = false;
         
             // Build grid with lazy loading
@@ -523,7 +524,7 @@
                 return function() {
                     var cat = $(this).data('category');
                     var idx = parseInt($(this).data('index'));
-                    if (cat !== currentCategory) return false;
+                    if (currentCategory !== 'all' && cat !== currentCategory) return false;
                     return expanded || idx < INITIAL_VISIBLE;
                 };
             }
@@ -535,7 +536,12 @@
             }
         
             function updateViewMoreBtn() {
-                var total = (imageMap[currentCategory] || []).length;
+                var total;
+                if (currentCategory === 'all') {
+                    total = Object.values(imageMap).reduce((sum, arr) => sum + arr.length, 0);
+                } else {
+                    total = (imageMap[currentCategory] || []).length;
+                }
                 if (total <= INITIAL_VISIBLE) {
                     $('#viewMoreBtn').hide();
                 } else {
@@ -554,7 +560,7 @@
                 $('.filter-tabs li').removeClass('active');
                 $(this).addClass('active');
                 expanded = false;
-        
+
                 if (filterValue === 'instagram') {
                     $('.grid').hide();
                     $('#instagramFeedContainer').show();
@@ -562,7 +568,7 @@
                 } else {
                     $('.grid').show();
                     $('#instagramFeedContainer').hide();
-                    currentCategory = filterValue.replace('.', '');
+                    currentCategory = filterValue.replace('.', ''); // becomes 'all', 'kitchen', etc.
                     applyFilter();
                     updateViewMoreBtn();
                 }
@@ -581,6 +587,18 @@
             // Initial lazy load
             lazyLoadImages();
             updateViewMoreBtn();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const incomingCategory = urlParams.get('category');
+            if (incomingCategory) {
+                currentCategory = incomingCategory;
+                expanded = false;
+                // Sync the active tab
+                $('.filter-tabs li').removeClass('active');
+                $('.filter-tabs li[data-filter=".' + incomingCategory + '"]').addClass('active');
+                applyFilter();
+                updateViewMoreBtn();
+            }
         });
         </script>
 
