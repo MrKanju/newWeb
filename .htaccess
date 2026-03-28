@@ -1,15 +1,21 @@
 RewriteEngine On
 
+# Redirect .html files to clean URLs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+)\.html$ /$1 [R=301,L]
+
+# Clean URLs: Serve .html files without extension
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^([^/]+)/?$ $1.html [L]
+
 # Redirect /index or /index.html → /
 RewriteRule ^index\.html?$ / [R=301,L]
 
 # Redirect /home → /
 RewriteRule ^home/?$ / [R=301,L]
-
-# Clean URLs: /about → /about.html
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule ^([^/]+)/?$ $1.html [L]
 
 # Set default index file
 DirectoryIndex index.html
