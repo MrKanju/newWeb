@@ -61,14 +61,16 @@ $mail = new PHPMailer(true);
 try {
     // SMTP config
     $mail->isSMTP();
-    $mail->Host = 'smtp.gmail.com';
+    $mail->SMTPAuth = true;
+
+    $mail->Host = 'localhost';
     $mail->SMTPAuth = true;
 
     $mail->Username = $config['email'];
     $mail->Password = $config['password'];
 
-    $mail->SMTPSecure = 'tls';
-    $mail->Port = 587;
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
+    $mail->Port = 465;
 
     // Encoding (for emojis)
     $mail->CharSet = 'UTF-8';
