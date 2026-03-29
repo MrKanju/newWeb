@@ -249,7 +249,7 @@
                                     <div class="video-wrapper">
                                         
                                         <iframe 
-                                            src="https://www.youtube.com/embed/WYAVrDzG0RU" 
+                                            src="https://www.youtube.com/embed/WYAVrDzG0RU?autoplay=1&mute=1" 
                                             title="Vismaya Interiors" 
                                             frameborder="0" 
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -286,7 +286,7 @@
                                 <div class="zigzag-video">
                                     <div class="video-wrapper">
                                         <iframe 
-                                            src="https://www.youtube.com/embed/v4FdlPTbWJ8" 
+                                            src="https://www.youtube.com/embed/v4FdlPTbWJ8?autoplay=1&mute=1" 
                                             title="Vismaya Interiors" 
                                             frameborder="0" 
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -322,7 +322,7 @@
                                 <div class="zigzag-video">
                                     <div class="video-wrapper">
                                         <iframe 
-                                            src="https://www.youtube.com/embed/dHOsb-GqbHg" 
+                                            src="https://www.youtube.com/embed/dHOsb-GqbHg?autoplay=1&mute=1" 
                                             title="Vismaya Interiors" 
                                             frameborder="0" 
                                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -702,6 +702,45 @@
             }
         });
         </script>
+         <!-- YouTube Video Autoplay on Scroll -->
+    <script>
+        // YouTube IFrame API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+        var player;
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('aboutVideo', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            // Intersection Observer for autoplay when scrolling
+            const videoSection = document.querySelector('.about-style-two');
+            const options = {
+                threshold: 0.5 // Play when 50% of section is visible
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        event.target.playVideo();
+                    } else {
+                        event.target.pauseVideo();
+                    }
+                });
+            }, options);
+
+            if (videoSection) {
+                observer.observe(videoSection);
+            }
+        }
+    </script>
 </body><!-- End of .page_wrapper -->
 
 <!-- Mirrored from azim.hostlin.com/Kitchnox/service.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 29 Dec 2025 15:39:47 GMT -->
