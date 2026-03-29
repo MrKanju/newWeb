@@ -1875,8 +1875,8 @@ window.odometerOptions = {
     // Add timeout to fetch request
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 10000); // 10 second timeout
-    
-    fetch('https://us-central1-vismaya-5d8da.cloudfunctions.net/bookConsultation', {
+    console.log("hello therer");
+    fetch('/api/submit.php', {
       method: 'POST',
       mode: 'cors',
       headers: {
