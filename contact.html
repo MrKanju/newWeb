@@ -1075,7 +1075,7 @@
                 const controller = new AbortController();
                 const timeoutId = setTimeout(() => controller.abort(), 10000);
                 
-                fetch('https://us-central1-vismaya-5d8da.cloudfunctions.net/bookConsultation', {
+                fetch('/api/submit.php', {
                     method: 'POST',
                     mode: 'cors',
                     headers: {
