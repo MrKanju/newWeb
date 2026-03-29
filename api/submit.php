@@ -61,9 +61,8 @@ $mail = new PHPMailer(true);
 try {
     // SMTP config
     $mail->isSMTP();
-    $mail->SMTPAuth = true;
 
-    $mail->Host = 'localhost';
+    $mail->Host = 'mail.vismayakitchen.com';
     $mail->SMTPAuth = true;
 
     $mail->Username = $config['email'];
