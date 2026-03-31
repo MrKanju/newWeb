@@ -102,6 +102,42 @@ try {
     // Send mail
     $mail->send();
 
+    // =============================
+    // SAVE TO GOOGLE SHEETS
+    // =============================
+    $webhook = "https://script.google.com/macros/s/AKfycbwzN6h4RfdXe8IfYwngLSLmE3zVKa3K7_V3uwBCpNL0bbEjzEdrhxnoUwzINn5RWog/exec"; // <-- paste your URL
+
+    $sheetData = [
+        "name" => $data['name'] ?? '',
+        "phone" => $data['phone'] ?? '',
+        "email" => $data['email'] ?? '',
+        "propertyType" => $data['propertyType'] ?? '',
+        "budget" => $data['budget'] ?? '',
+        "deliveryMonth" => $data['deliveryMonth'] ?? '',
+        "deliveryYear" => $data['deliveryYear'] ?? '',
+        "message" => $data['message'] ?? ''
+    ];
+
+    $payload = json_encode($sheetData);
+
+    $ch = curl_init($webhook);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'Content-Type: application/json'
+    ]);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+
+    $response = curl_exec($ch);
+    $error = curl_error($ch);
+
+    curl_close($ch);
+
+    // Optional: log error (don’t break flow)
+    if ($error) {
+        error_log("Sheets Error: " . $error);
+    }
+
     echo json_encode([
         "success" => true,
         "message" => "Email sent successfully"
