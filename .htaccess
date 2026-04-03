@@ -37,12 +37,6 @@ DirectoryIndex index.html
   ExpiresActive On
   ExpiresDefault "access plus 1 year"
 </IfModule>
-# php -- BEGIN cPanel-generated handler, do not edit
-# Set the “ea-php74” package as the default “PHP” programming language.
-<IfModule mime_module>
-  AddHandler application/x-httpd-ea-php74___lsphp .php .php7 .phtml
-</IfModule>
-# php -- END cPanel-generated handler, do not edit
 RewriteCond %{HTTP_HOST} ^.*$
 RewriteRule ^leads$ "https\:\/\/docs\.google\.com\/spreadsheets\/d\/1OxxG0laffWAS_YQ8fLjWfa6AxGDneFHH7nHsCcMrLM4\/edit\?pli\=1\&gid\=0\#gid\=0" [R=301,L]
 
@@ -50,3 +44,21 @@ RewriteRule ^leads$ "https\:\/\/docs\.google\.com\/spreadsheets\/d\/1OxxG0laffWA
 ErrorDocument 404 /error.html
 ErrorDocument 500 /error.html
 ErrorDocument 403 /error.html
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php74” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php74___lsphp .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+
+# redirects for old php pages
+# === Redirect old PHP pages ===
+Redirect 301 /singlepage.php https://vismayakitchen.com/
+Redirect 301 /product-detail/ https://vismayakitchen.com/services
+Redirect 301 /solution-detail.php https://vismayakitchen.com/services
+Redirect 301 /solutions.php https://vismayakitchen.com/services
+Redirect 301 /about.php https://vismayakitchen.com/about
+Redirect 301 /careers.php https://vismayakitchen.com/contact
+# === Pages you want to REMOVE completely ===
+Redirect gone /finishes.php
