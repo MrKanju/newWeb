@@ -58,13 +58,13 @@ Redirect 301 /singlepage.php https://vismayakitchen.com/
 
 # Remove query params and redirect properly
 RewriteCond %{THE_REQUEST} \s/solutions\.php [NC]
-RewriteRule ^solutions\.php$ https://vismayakitchen.com/services? [R=301,L]
+RewriteRule ^solutions\.php$ https://vismayakitchen.com/service? [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/solution-detail\.php [NC]
-RewriteRule ^solution-detail\.php$ https://vismayakitchen.com/services? [R=301,L]
+RewriteRule ^solution-detail\.php$ https://vismayakitchen.com/service? [R=301,L]
 
-RewriteCond %{THE_REQUEST} \s/product-detail [NC]
-RewriteRule ^product-detail/?$ https://vismayakitchen.com/services? [R=301,L]
+RewriteCond %{THE_REQUEST} \s/product-detail\.php [NC]
+RewriteRule ^product-detail\.php$ https://vismayakitchen.com/service? [R=301,L]
 
 Redirect 301 /about.php https://vismayakitchen.com/about
 Redirect 301 /careers.php https://vismayakitchen.com/contact
