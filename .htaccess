@@ -66,7 +66,10 @@ RewriteRule ^solution-detail\.php$ https://vismayakitchen.com/service? [R=301,L]
 RewriteCond %{THE_REQUEST} \s/product-detail\.php [NC]
 RewriteRule ^product-detail\.php$ https://vismayakitchen.com/service? [R=301,L]
 
-Redirect 301 /about.php https://vismayakitchen.com/about
-Redirect 301 /careers.php https://vismayakitchen.com/contact
+RewriteCond %{THE_REQUEST} \s/about\.php [NC]
+RewriteRule ^about\.php$ https://vismayakitchen.com/about? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/careers\.php [NC]
+RewriteRule ^careers\.php$ https://vismayakitchen.com/contact? [R=301,L]
 # === Pages you want to REMOVE completely ===
 Redirect gone /finishes.php
