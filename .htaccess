@@ -55,9 +55,17 @@ ErrorDocument 403 /error.html
 # redirects for old php pages
 # === Redirect old PHP pages ===
 Redirect 301 /singlepage.php https://vismayakitchen.com/
-Redirect 301 /product-detail.php/ https://vismayakitchen.com/services
-Redirect 301 /solution-detail.php https://vismayakitchen.com/services
-Redirect 301 /solutions.php https://vismayakitchen.com/services
+
+# Remove query params and redirect properly
+RewriteCond %{THE_REQUEST} \s/solutions\.php [NC]
+RewriteRule ^solutions\.php$ https://vismayakitchen.com/services? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/solution-detail\.php [NC]
+RewriteRule ^solution-detail\.php$ https://vismayakitchen.com/services? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/product-detail [NC]
+RewriteRule ^product-detail/?$ https://vismayakitchen.com/services? [R=301,L]
+
 Redirect 301 /about.php https://vismayakitchen.com/about
 Redirect 301 /careers.php https://vismayakitchen.com/contact
 # === Pages you want to REMOVE completely ===
