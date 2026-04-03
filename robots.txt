@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Sitemap: https://vismayakitchen.com/sitemap.xml
+
+User-agent: AdsBot-Google
+Allow: /
+
+Disallow: /api/
+Disallow: /*.json$
