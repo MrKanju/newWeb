@@ -71,5 +71,8 @@ RewriteRule ^about\.php$ https://vismayakitchen.com/about? [R=301,L]
 
 RewriteCond %{THE_REQUEST} \s/careers\.php [NC]
 RewriteRule ^careers\.php$ https://vismayakitchen.com/contact? [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/gallery\.php[\s?] [NC]
+RewriteRule ^gallery\.php$ https://vismayakitchen.com/about#recent-projects [R=301,L]
 # === Pages you want to REMOVE completely ===
 Redirect gone /finishes.php
